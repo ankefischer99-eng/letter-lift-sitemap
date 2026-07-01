@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nachhaker – Dashboard</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%2316a34a'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3E€%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --bg:#f8fafc;
+    --brand:#16a34a; --brand-dark:#15803d; --brand-soft:#dcfce7;
+    --warn:#b45309; --warn-soft:#fef3c7; --danger:#b91c1c; --danger-soft:#fee2e2;
+    --info:#075985; --info-soft:#e0f2fe;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  a{color:var(--brand-dark)}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);background:#fff}
+  .logo{font-weight:800;font-size:19px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink)}
+  .logo .dot{width:11px;height:11px;border-radius:50%;background:var(--brand);display:inline-block;box-shadow:0 0 0 4px var(--brand-soft)}
+  .mode{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px}
+  .mode.demo{background:var(--warn-soft);color:var(--warn)}
+  .mode.live{background:var(--brand-soft);color:var(--brand-dark)}
+  .btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;padding:10px 16px;border-radius:9px;font-weight:600;border:0;cursor:pointer;font-size:14px;transition:.15s}
+  .btn:hover{background:var(--brand-dark)}
+  .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn.sm{padding:6px 11px;font-size:13px}
+  .btn.danger{background:#fff;color:var(--danger);border:1px solid var(--danger-soft)}
+  h1{font-size:24px;letter-spacing:-.02em;margin:24px 0 4px}
+  .sub{color:var(--muted);margin:0 0 20px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px}
+  .card h2{font-size:16px;margin:0 0 14px}
+  label{display:block;font-weight:600;font-size:13px;margin:0 0 5px}
+  input,select{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:9px;font-size:14px;font-family:inherit;background:#fff}
+  input:focus,select:focus{outline:2px solid var(--brand-soft);border-color:var(--brand)}
+  .grid{display:grid;gap:12px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:1fr 1fr}
+  .field{margin-bottom:0}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+  .stat .n{font-size:24px;font-weight:800;letter-spacing:-.02em}
+  .stat .l{color:var(--muted);font-size:12px;margin-top:2px}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:middle}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
+  .tag{font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;white-space:nowrap}
+  .tag.offen{background:var(--info-soft);color:var(--info)}
+  .tag.faellig{background:var(--warn-soft);color:var(--warn)}
+  .tag.bezahlt{background:var(--brand-soft);color:var(--brand-dark)}
+  .tag.s0{background:var(--bg);color:var(--muted)}
+  .tag.s1{background:var(--brand-soft);color:var(--brand-dark)}
+  .tag.s2{background:var(--info-soft);color:var(--info)}
+  .tag.s3{background:var(--warn-soft);color:var(--warn)}
+  .tag.s4{background:var(--danger-soft);color:var(--danger)}
+  .empty{text-align:center;color:var(--muted);padding:40px 20px}
+  .muted{color:var(--muted);font-size:12px}
+  details.cfg{margin-bottom:18px}
+  details.cfg summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--muted)}
+  .preview{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px;white-space:pre-wrap;font-size:13px;color:#334155;margin-top:8px;display:none}
+  .rowactions{display:flex;gap:6px;flex-wrap:wrap}
+  @media(max-width:760px){.g3,.g2,.stats{grid-template-columns:1fr} table{font-size:13px} th:nth-child(4),td:nth-child(4){display:none}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%">
+    <a href="index.html" class="logo"><span class="dot"></span>Nachhaker</a>
+    <span id="modeBadge" class="mode demo">Demo-Modus</span>
+  </div>
+</nav>
+
+<div class="wrap">
+  <h1>Dashboard</h1>
+  <p class="sub">Rechnungen anlegen – Nachhaker übernimmt das Hinterherjagen. Bezahlt markiert = Kette stoppt.</p>
+
+  <details class="cfg">
+    <summary>⚙️ Backend-Verbindung (optional – ohne läuft alles lokal im Demo-Modus)</summary>
+    <div class="card" style="margin-top:12px">
+      <div class="grid g3">
+        <div class="field"><label>Backend-URL (Worker)</label><input id="cfgUrl" placeholder="https://nachhaker.xxx.workers.dev"></div>
+        <div class="field"><label>API-Key</label><input id="cfgKey" type="password" placeholder="dein API_KEY"></div>
+        <div class="field"><label>Deine E-Mail (Absender)</label><input id="cfgOwner" placeholder="du@firma.de"></div>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <button class="btn sm" onclick="saveCfg()">Speichern</button>
+        <button class="btn sm ghost" onclick="clearCfg()">Zurücksetzen</button>
+        <span id="cfgHint" class="muted" style="align-self:center"></span>
+      </div>
+    </div>
+  </details>
+
+  <div class="stats">
+    <div class="stat"><div class="n" id="stOpen">–</div><div class="l">offene Rechnungen</div></div>
+    <div class="stat"><div class="n" id="stOverdue">–</div><div class="l">davon überfällig</div></div>
+    <div class="stat"><div class="n" id="stSum">–</div><div class="l">offene Summe</div></div>
+  </div>
+
+  <div class="card">
+    <h2>Neue Rechnung anlegen</h2>
+    <div class="grid g3" style="margin-bottom:12px">
+      <div class="field"><label>Kunde</label><input id="fKunde" value="Müller GmbH"></div>
+      <div class="field"><label>Kunden-E-Mail</label><input id="fKundeEmail" value="buchhaltung@mueller.de"></div>
+      <div class="field"><label>Rechnungsnr.</label><input id="fNr" value="2026-0042"></div>
+    </div>
+    <div class="grid g3" style="margin-bottom:12px">
+      <div class="field"><label>Betrag (€)</label><input id="fBetrag" type="number" value="1450"></div>
+      <div class="field"><label>Fällig am</label><input id="fFaellig" type="date"></div>
+      <div class="field"><label>Ton</label><select id="fTon"><option value="freundlich">Freundlich</option><option value="neutral" selected>Neutral</option><option value="bestimmt">Bestimmt</option></select></div>
+    </div>
+    <div class="field" style="margin-bottom:12px"><label>Zahllink (optional)</label><input id="fLink" placeholder="https://…"></div>
+    <button class="btn" onclick="addInvoice()">Rechnung anlegen →</button>
+  </div>
+
+  <div class="card">
+    <h2>Deine Rechnungen</h2>
+    <div id="list"></div>
+  </div>
+  <p class="muted" style="text-align:center;margin-bottom:40px">Demo-Daten liegen nur in deinem Browser. Verbinde das Backend, um echt zu verschicken.</p>
+</div>
+
+<script>
+// ---- Config -------------------------------------------------------------
+const CFG = { url:"", key:"", owner:"" };
+function loadCfg(){
+  try{ Object.assign(CFG, JSON.parse(localStorage.getItem("nachhaker_cfg")||"{}")); }catch(_){}
+  cfgUrl.value=CFG.url||""; cfgKey.value=CFG.key||""; cfgOwner.value=CFG.owner||"";
+  updateMode();
+}
+function saveCfg(){
+  CFG.url=cfgUrl.value.trim().replace(/\/$/,""); CFG.key=cfgKey.value.trim(); CFG.owner=cfgOwner.value.trim();
+  localStorage.setItem("nachhaker_cfg", JSON.stringify(CFG));
+  cfgHint.textContent="Gespeichert."; updateMode(); render();
+}
+function clearCfg(){ localStorage.removeItem("nachhaker_cfg"); CFG.url=CFG.key=CFG.owner=""; loadCfg(); render(); }
+function isLive(){ return CFG.url && CFG.key; }
+function updateMode(){
+  const b=document.getElementById("modeBadge");
+  if(isLive()){ b.className="mode live"; b.textContent="Live-Backend"; }
+  else { b.className="mode demo"; b.textContent="Demo-Modus"; }
+}
+
+// ---- Eskalationslogik (Spiegel von backend/src/index.js) ----------------
+const TONE={freundlich:{gruss:"Hallo",close:"Ganz herzliche Grüße"},neutral:{gruss:"Guten Tag",close:"Freundliche Grüße"},bestimmt:{gruss:"Sehr geehrte Damen und Herren",close:"Mit freundlichen Grüßen"}};
+const STUFEN=[{nr:1,label:"Zahlungserinnerung",tage:3},{nr:2,label:"2. Erinnerung",tage:7},{nr:3,label:"1. Mahnung",tage:14},{nr:4,label:"2. Mahnung",tage:30}];
+const euro=c=>new Intl.NumberFormat("de-DE",{style:"currency",currency:"EUR"}).format((c||0)/100);
+const fmt=iso=>new Date(iso).toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit",year:"numeric"});
+const addDays=(iso,n)=>{const d=new Date(iso);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);};
+const overdueDays=iso=>Math.floor((Date.now()-new Date(iso).getTime())/86400000);
+function nextStage(inv){
+  const od=overdueDays(inv.faellig_am);
+  for(const s of STUFEN){ if(od>=s.tage && s.nr>(inv.stufe||0)) return {stufe:s, sendAt:addDays(inv.faellig_am,s.tage)}; }
+  // noch keine fällig -> die erste künftige zeigen
+  for(const s of STUFEN){ if(s.nr>(inv.stufe||0)) return {stufe:s, sendAt:addDays(inv.faellig_am,s.tage), future:true}; }
+  return null;
+}
+function buildMail(inv,nr){
+  const t=TONE[inv.ton]||TONE.neutral, b=euro(inv.betrag_cent), link=inv.zahllink||"[Zahllink]", k=inv.kunde, a=CFG.owner||"Dein Name";
+  if(nr===1) return {betreff:`Kurze Erinnerung zu Rechnung ${inv.rechnung_nr}`,body:`${t.gruss} ${k},\n\nvielleicht ist es untergegangen – Rechnung ${inv.rechnung_nr} über ${b} ist seit ${fmt(inv.faellig_am)} offen. Falls schon überwiesen: bitte ignorieren.\n\nDirekt zahlen: ${link}\n\n${t.close}\n${a}`};
+  if(nr===2) return {betreff:`Zweite Erinnerung: Rechnung ${inv.rechnung_nr} noch offen`,body:`${t.gruss} ${k},\n\nzu Rechnung ${inv.rechnung_nr} über ${b} (fällig am ${fmt(inv.faellig_am)}) fehlt noch der Zahlungseingang. Bitte in den nächsten Tagen ausgleichen.\n\nZahlen: ${link}\n\n${t.close}\n${a}`};
+  if(nr===3) return {betreff:`Zahlungserinnerung / 1. Mahnung – ${inv.rechnung_nr}`,body:`${t.gruss} ${k},\n\ntrotz Erinnerungen ist Rechnung ${inv.rechnung_nr} über ${b} offen. Bitte bis spätestens ${fmt(addDays(inv.faellig_am,21))} begleichen.\n\nZahlung: ${link}\n\n${t.close}\n${a}`};
+  return {betreff:`Letzte Mahnung vor weiteren Schritten – ${inv.rechnung_nr}`,body:`Sehr geehrte Damen und Herren,\n\nRechnung ${inv.rechnung_nr} über ${b} ist trotz mehrfacher Aufforderung nicht ausgeglichen. Letzte Frist: ${fmt(addDays(inv.faellig_am,37))}. Danach behalten wir uns Verzugszinsen (§288 BGB) und Inkasso vor.\n\nBegleichen: ${link}\n\nMit freundlichen Grüßen\n${a}`};
+}
+
+// ---- Storage-Abstraktion (Demo=localStorage / Live=API) -----------------
+async function apiGet(){
+  if(!isLive()) return JSON.parse(localStorage.getItem("nachhaker_inv")||"[]");
+  const r=await fetch(`${CFG.url}/api/invoices?owner=${encodeURIComponent(CFG.owner)}`,{headers:{"X-Api-Key":CFG.key}});
+  const j=await r.json(); return j.invoices||[];
+}
+async function apiAdd(inv){
+  if(!isLive()){ const a=JSON.parse(localStorage.getItem("nachhaker_inv")||"[]"); inv.id=Date.now(); a.unshift(inv); localStorage.setItem("nachhaker_inv",JSON.stringify(a)); return; }
+  await fetch(`${CFG.url}/api/invoices`,{method:"POST",headers:{"Content-Type":"application/json","X-Api-Key":CFG.key},body:JSON.stringify(inv)});
+}
+async function apiPaid(id){
+  if(!isLive()){ const a=JSON.parse(localStorage.getItem("nachhaker_inv")||"[]"); const it=a.find(x=>x.id==id); if(it) it.status="bezahlt"; localStorage.setItem("nachhaker_inv",JSON.stringify(a)); return; }
+  await fetch(`${CFG.url}/api/invoices/${id}/paid`,{method:"POST",headers:{"X-Api-Key":CFG.key}});
+}
+function demoDelete(id){ let a=JSON.parse(localStorage.getItem("nachhaker_inv")||"[]"); a=a.filter(x=>x.id!=id); localStorage.setItem("nachhaker_inv",JSON.stringify(a)); render(); }
+
+// ---- Actions ------------------------------------------------------------
+async function addInvoice(){
+  const betrag=Math.round(parseFloat(fBetrag.value||"0")*100);
+  const inv={ owner_email:CFG.owner||"demo@nachhaker.de", kunde:fKunde.value||"Kunde", kunde_email:fKundeEmail.value||"",
+    rechnung_nr:fNr.value||"—", betrag_cent:betrag, faellig_am:fFaellig.value||new Date().toISOString().slice(0,10),
+    ton:fTon.value, zahllink:fLink.value||null, status:"offen", stufe:0 };
+  await apiAdd(inv); await render();
+}
+async function markPaid(id){ await apiPaid(id); await render(); }
+function togglePreview(id){ const p=document.getElementById("pv_"+id); if(p) p.style.display=p.style.display==="block"?"none":"block"; }
+
+// ---- Render -------------------------------------------------------------
+async function render(){
+  let inv=[];
+  try{ inv=await apiGet(); }catch(e){ document.getElementById("list").innerHTML=`<div class="empty">Backend nicht erreichbar: ${e}</div>`; return; }
+  const offen=inv.filter(i=>i.status!=="bezahlt");
+  const overdue=offen.filter(i=>overdueDays(i.faellig_am)>=STUFEN[0].tage);
+  stOpen.textContent=offen.length;
+  stOverdue.textContent=overdue.length;
+  stSum.textContent=euro(offen.reduce((s,i)=>s+(i.betrag_cent||0),0));
+
+  if(!inv.length){ document.getElementById("list").innerHTML=`<div class="empty">Noch keine Rechnungen. Leg oben deine erste an – Nachhaker plant automatisch die Erinnerungen.</div>`; return; }
+  let rows="";
+  for(const i of inv){
+    const od=overdueDays(i.faellig_am);
+    const ns=nextStage(i);
+    let statusTag = i.status==="bezahlt" ? `<span class="tag bezahlt">✓ bezahlt</span>`
+      : (od>=STUFEN[0].tage ? `<span class="tag faellig">${od} T überfällig</span>` : `<span class="tag offen">offen</span>`);
+    let nextCell="—", preview="";
+    if(i.status!=="bezahlt" && ns){
+      const m=buildMail(i,ns.stufe.nr);
+      nextCell=`<span class="tag s${ns.stufe.nr}">${ns.stufe.label}</span><div class="muted">${ns.future?"ab ":""}${fmt(ns.sendAt)}</div>`;
+      preview=`<div id="pv_${i.id}" class="preview"><strong>Betreff:</strong> ${m.betreff}\n\n${m.body}</div>`;
+    } else if(i.status==="bezahlt"){ nextCell=`<span class="tag s0">gestoppt</span>`; }
+    const actions = i.status==="bezahlt" ? "" :
+      `<button class="btn sm" onclick="markPaid('${i.id}')">bezahlt</button>
+       <button class="btn sm ghost" onclick="togglePreview('${i.id}')">Vorschau</button>`+
+       (isLive()?"":`<button class="btn sm danger" onclick="demoDelete('${i.id}')">löschen</button>`);
+    rows+=`<tr><td><strong>${i.kunde}</strong><div class="muted">${i.rechnung_nr}</div></td>
+      <td>${euro(i.betrag_cent)}</td><td>${statusTag}</td><td>${nextCell}</td>
+      <td><div class="rowactions">${actions}</div>${preview}</td></tr>`;
+  }
+  document.getElementById("list").innerHTML=`<table><thead><tr><th>Kunde</th><th>Betrag</th><th>Status</th><th>Nächste Stufe</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+// ---- Init ---------------------------------------------------------------
+(function(){ const d=new Date(); d.setDate(d.getDate()-5); fFaellig.value=d.toISOString().slice(0,10); loadCfg(); render(); })();
+</script>
+</body>
+</html>
