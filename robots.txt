@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nachhaker.de/sitemap.xml

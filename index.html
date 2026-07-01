@@ -96,7 +96,7 @@
 <div class="wrap">
   <nav>
     <div class="logo"><span class="dot"></span>Nachhaker</div>
-    <a href="#demo" class="btn">Live ausprobieren</a>
+    <a href="#warteliste" class="btn">Frühzugang</a>
   </nav>
 
   <header class="hero">
@@ -104,8 +104,8 @@
     <h1>Dein Geld kommt rein,<br><span class="hl">während du schläfst.</span></h1>
     <p class="sub">Nachhaker jagt deinen offenen Rechnungen automatisch hinterher – höflich, hartnäckig und in deinem Ton. Von der freundlichen Erinnerung bis zur formellen Mahnung. Du machst nichts.</p>
     <div class="cta-row">
-      <a href="#demo" class="btn">Sequenz live erstellen →</a>
-      <a href="#how" class="btn ghost">Wie's funktioniert</a>
+      <a href="#warteliste" class="btn">Frühzugang sichern →</a>
+      <a href="#demo" class="btn ghost">Erst live ausprobieren</a>
     </div>
     <div class="fine">Kein manuelles Hinterherrennen mehr · Zahllink automatisch dabei</div>
   </header>
@@ -204,12 +204,64 @@
   </div>
 </section>
 
+<section id="warteliste" style="background:linear-gradient(180deg,#f0fdf4,#fff)">
+  <div class="wrap" style="max-width:620px;text-align:center">
+    <span class="pill">🚀 Early Access</span>
+    <h2>Sei unter den Ersten – und zahl nie wieder mehr als 9 €</h2>
+    <p class="lead" style="margin:0 auto 26px">Trag dich ein, und du bekommst Nachhaker zuerst, gestaltest mit, was gebaut wird, und sicherst dir den Gründerpreis dauerhaft. Kein Spam, jederzeit abmeldbar.</p>
+    <form id="wl" onsubmit="return joinWaitlist(event)" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+      <input id="wl-email" type="email" required placeholder="deine@email.de" style="flex:1;min-width:240px;max-width:340px">
+      <button class="btn" type="submit">Frühzugang sichern</button>
+    </form>
+    <div id="wl-ok" style="display:none;margin-top:18px;font-weight:600;color:var(--brand-dark)">✅ Danke! Du stehst auf der Liste – wir melden uns beim Start.</div>
+    <div class="fine">Schon <strong id="wl-count">128</strong> Selbstständige auf der Warteliste.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Kostenlose Vorlagen & Ratgeber</h2>
+    <p class="lead">Sofort nutzbar – und ein Vorgeschmack darauf, was Nachhaker automatisch für dich erledigt.</p>
+    <div class="steps">
+      <div class="step"><div class="k">📄</div><h3><a href="ratgeber/zahlungserinnerung-vorlage.html" style="text-decoration:none;color:inherit">Zahlungserinnerung-Vorlage</a></h3><p>Freundlich, wirksam, kostenlos zum Kopieren.</p></div>
+      <div class="step"><div class="k">⚖️</div><h3><a href="ratgeber/mahnung-schreiben-muster.html" style="text-decoration:none;color:inherit">Mahnung schreiben: Muster</a></h3><p>Die korrekte Eskalation – Schritt für Schritt.</p></div>
+      <div class="step"><div class="k">🧮</div><h3><a href="ratgeber/verzugszinsen-berechnen.html" style="text-decoration:none;color:inherit">Verzugszinsen berechnen</a></h3><p>Was dir zusteht, wenn Kunden zu spät zahlen.</p></div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
-    <strong>Nachhaker</strong> · Prototyp-Konzept · Dein Geld. Automatisch eingetrieben.<br>
+    <strong>Nachhaker</strong> · Dein Geld. Automatisch eingetrieben.<br>
     Belegt durch echte Marktdaten zu verspäteten Zahlungen (Clockify, IPSE, Small Business Commissioner).
   </div>
 </footer>
+
+<script>
+  // Warteliste: postet an konfigurierbaren Endpoint; Fallback = mailto.
+  // TODO(Anke): WAITLIST_ENDPOINT auf echten Form-Endpoint setzen (z.B. Formspree/eigene Function).
+  const WAITLIST_ENDPOINT = ""; // leer = mailto-Fallback
+  const WAITLIST_MAILTO = "ankefischer99@gmail.com";
+  function joinWaitlist(e){
+    e.preventDefault();
+    const email=document.getElementById('wl-email').value.trim();
+    if(!email) return false;
+    const done=()=>{
+      document.getElementById('wl').style.display='none';
+      document.getElementById('wl-ok').style.display='block';
+      const c=document.getElementById('wl-count'); c.textContent=parseInt(c.textContent,10)+1;
+      try{localStorage.setItem('nachhaker_wl',email);}catch(_){}
+    };
+    if(WAITLIST_ENDPOINT){
+      fetch(WAITLIST_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})})
+        .then(done).catch(()=>{window.location.href=`mailto:${WAITLIST_MAILTO}?subject=Warteliste%20Nachhaker&body=Bitte%20auf%20die%20Warteliste:%20${encodeURIComponent(email)}`;done();});
+    }else{
+      window.location.href=`mailto:${WAITLIST_MAILTO}?subject=Warteliste%20Nachhaker&body=Bitte%20auf%20die%20Warteliste:%20${encodeURIComponent(email)}`;
+      done();
+    }
+    return false;
+  }
+</script>
 
 <script>
   // Default Fälligkeitsdatum: heute minus 5 Tage (überfällig)
