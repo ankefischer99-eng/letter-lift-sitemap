@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verzugszinsen berechnen – Formel, Rechner &amp; Beispiel | Nachhaker</title>
+<meta name="description" content="Verzugszinsen einfach berechnen: kostenloser Rechner, die Formel und ein durchgerechnetes Beispiel. Plus: welche Zinssätze bei B2B und Verbrauchern gelten.">
+<style>
+  :root{
+    --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --bg:#f8fafc;
+    --brand:#16a34a; --brand-dark:#15803d; --brand-soft:#dcfce7;
+    --warn:#b45309; --warn-soft:#fef3c7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  a{color:var(--brand-dark)}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line);max-width:1040px;margin:0 auto}
+  .logo{font-weight:800;font-size:20px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink)}
+  .logo .dot{width:11px;height:11px;border-radius:50%;background:var(--brand);display:inline-block;box-shadow:0 0 0 4px var(--brand-soft)}
+  .btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;padding:11px 18px;border-radius:10px;font-weight:600;border:0;cursor:pointer;font-size:15px;transition:.15s}
+  .btn:hover{background:var(--brand-dark)}
+  article{padding:44px 0 20px}
+  .pill{display:inline-block;background:var(--brand-soft);color:var(--brand-dark);font-weight:600;font-size:13px;padding:6px 14px;border-radius:999px;margin-bottom:20px}
+  h1{font-size:clamp(28px,4.5vw,40px);line-height:1.12;letter-spacing:-.03em;margin:0 0 16px;font-weight:820}
+  h2{font-size:clamp(21px,3vw,27px);letter-spacing:-.02em;margin:38px 0 10px;font-weight:800}
+  h3{font-size:18px;margin:24px 0 6px}
+  p{margin:0 0 16px}
+  .lead{font-size:19px;color:var(--muted);margin-bottom:8px}
+  ul,ol{padding-left:22px;margin:0 0 16px}
+  li{margin:6px 0}
+  .calc{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:24px;margin:24px 0}
+  .calc label{display:block;font-weight:600;font-size:14px;margin:0 0 6px}
+  .calc .field{margin-bottom:14px}
+  .calc input,.calc select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit;background:#fff}
+  .calc input:focus,.calc select:focus{outline:2px solid var(--brand-soft);border-color:var(--brand)}
+  .calc .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .result{margin-top:18px;background:#fff;border:1px solid var(--brand);border-radius:14px;padding:18px 20px;box-shadow:0 8px 30px rgba(22,163,74,.10)}
+  .result .big{font-size:34px;font-weight:800;letter-spacing:-.02em;color:var(--brand-dark)}
+  .result .exp{color:var(--muted);font-size:14px;margin-top:6px}
+  .formula{background:#fff;border:1px dashed var(--line);border-radius:10px;padding:14px 18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;margin:16px 0}
+  .copybox{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:20px;margin:18px 0 24px;font-size:14.5px;line-height:1.65;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#334155}
+  .copybox .cp{position:absolute;top:12px;right:12px;background:#fff;border:1px solid var(--line);color:var(--ink);font-family:inherit;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:8px;cursor:pointer;transition:.15s}
+  .copybox .cp:hover{border-color:var(--brand);color:var(--brand-dark)}
+  .copybox .cp.done{background:var(--brand-soft);border-color:var(--brand);color:var(--brand-dark)}
+  .note{background:var(--brand-soft);border:1px solid #bbf7d0;border-radius:12px;padding:14px 18px;margin:20px 0;font-size:15px;color:#14532d}
+  .disc{background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:13px;padding:12px 16px;border-radius:10px;margin:24px 0}
+  .cta{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:30px;margin:40px 0 10px;text-align:center}
+  .cta h2{margin:0 0 10px}.cta p{color:var(--muted);margin:0 0 20px}
+  footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px;text-align:center;margin-top:40px}
+  @media(max-width:600px){.copybox .cp{position:static;display:inline-block;margin-bottom:12px}.calc .row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="../index.html"><span class="dot"></span>Nachhaker</a>
+  <a href="../index.html#warteliste" class="btn">Zur Warteliste</a>
+</nav>
+
+<div class="wrap">
+<article>
+  <span class="pill">Rechner · Formel · Beispiel</span>
+  <h1>Verzugszinsen berechnen</h1>
+  <p class="lead">Zahlt dein Kunde zu spät, darfst du ab Verzug Verzugszinsen verlangen. Hier berechnest du sie in Sekunden – mit interaktivem Rechner, Formel und einem durchgerechneten Beispiel.</p>
+
+  <h2>Welcher Zinssatz gilt?</h2>
+  <p>Verzugszinsen orientieren sich am <strong>Basiszinssatz</strong> der Deutschen Bundesbank (halbjährlich angepasst). Darauf kommt ein gesetzlicher Aufschlag:</p>
+  <ul>
+    <li><strong>Geschäftskunden (B2B):</strong> 9 Prozentpunkte über dem Basiszinssatz (§ 288 Abs. 2 BGB).</li>
+    <li><strong>Verbraucher (B2C):</strong> 5 Prozentpunkte über dem Basiszinssatz (§ 288 Abs. 1 BGB).</li>
+  </ul>
+  <p>Beispiel: Liegt der Basiszinssatz bei 2,27 %, ergibt das im B2B-Fall einen Verzugszinssatz von <strong>11,27 %</strong> pro Jahr. Im Rechner kannst du den aktuellen Basiszinssatz eintragen.</p>
+
+  <h2>Verzugszinsen-Rechner</h2>
+  <div class="calc">
+    <div class="field">
+      <label for="amount">Offener Rechnungsbetrag (€)</label>
+      <input id="amount" type="number" value="1450" min="0" step="0.01" oninput="calc()">
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="days">Tage im Verzug</label>
+        <input id="days" type="number" value="45" min="0" oninput="calc()">
+      </div>
+      <div class="field">
+        <label for="type">Kundentyp</label>
+        <select id="type" onchange="setRate();calc()">
+          <option value="b2b" selected>Geschäftskunde (+9 %)</option>
+          <option value="b2c">Verbraucher (+5 %)</option>
+          <option value="custom">Eigener Satz</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="base">Basiszinssatz (% p. a.)</label>
+        <input id="base" type="number" value="2.27" step="0.01" oninput="calc()">
+      </div>
+      <div class="field">
+        <label for="rate">Verzugszinssatz (% p. a.)</label>
+        <input id="rate" type="number" value="11.27" step="0.01" oninput="calc()">
+      </div>
+    </div>
+    <div class="result">
+      <div class="big" id="out">–</div>
+      <div class="exp" id="exp"></div>
+    </div>
+  </div>
+
+  <h2>Die Formel</h2>
+  <p>Verzugszinsen werden taggenau berechnet:</p>
+  <div class="formula">Zinsen = Betrag × (Zinssatz ÷ 100) × (Tage im Verzug ÷ 365)</div>
+
+  <h3>Durchgerechnetes Beispiel</h3>
+  <p>Eine offene Rechnung über <strong>1.450 €</strong> an einen Geschäftskunden, <strong>45 Tage</strong> im Verzug, Basiszinssatz 2,27 % → Verzugszinssatz 11,27 %:</p>
+  <div class="formula">1.450 € × (11,27 ÷ 100) × (45 ÷ 365)
+= 1.450 € × 0,1127 × 0,1233
+= rund 20,15 €</div>
+  <p>Dazu darfst du bei B2B-Geschäften in der Regel eine Verzugspauschale von <strong>40 €</strong> ansetzen (§ 288 Abs. 5 BGB), unabhängig von den Zinsen.</p>
+
+  <h2>Textbaustein für die Mahnung</h2>
+  <p>So weist du die Verzugszinsen sauber in deiner Mahnung aus:</p>
+  <div class="copybox" id="box1"><button class="cp" onclick="copyBox('box1',this)">Kopieren</button>Da sich die Rechnung [Rechnungsnummer] über [Betrag] € seit dem [Datum] in Verzug befindet, berechnen wir Verzugszinsen in Höhe von [Zinssatz] % p. a. (9 Prozentpunkte über dem Basiszinssatz).
+
+Für den Zeitraum vom [Fälligkeitsdatum] bis [Datum] ergeben sich Verzugszinsen von [Zinsbetrag] € zzgl. einer Verzugspauschale von 40 €.
+
+Wir bitten um Ausgleich des Gesamtbetrags bis zum [neue Frist].</div>
+
+  <div class="note">💡 Nachhaker rechnet Verzugszinsen und Pauschale automatisch aus und setzt sie ab der passenden Eskalationsstufe direkt in deine Mahnung ein.</div>
+
+  <div class="disc">⚠️ Der Rechner liefert eine unverbindliche Orientierung und ersetzt keine Rechts- oder Steuerberatung. Prüfe den aktuellen Basiszinssatz der Bundesbank.</div>
+
+  <div class="cta">
+    <h2>Zinsen automatisch, Mahnung automatisch</h2>
+    <p>Nachhaker rechnet und mahnt für dich – du musst keine Formel mehr im Kopf haben.</p>
+    <a class="btn" href="../index.html#warteliste">Nachhaker – lass deinen Rechnungen automatisch hinterherjagen</a>
+  </div>
+</article>
+</div>
+
+<footer>
+  <div class="wrap"><strong>Nachhaker</strong> · Dein Geld. Automatisch eingetrieben. · <a href="../index.html">Zur Startseite</a></div>
+</footer>
+
+<script>
+function euro(n){return new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(n||0);}
+function setRate(){
+  const t=document.getElementById('type').value;
+  const base=parseFloat(document.getElementById('base').value)||0;
+  const rateEl=document.getElementById('rate');
+  if(t==='b2b') rateEl.value=(base+9).toFixed(2);
+  else if(t==='b2c') rateEl.value=(base+5).toFixed(2);
+}
+function calc(){
+  const amount=parseFloat(document.getElementById('amount').value)||0;
+  const days=parseFloat(document.getElementById('days').value)||0;
+  const t=document.getElementById('type').value;
+  const base=parseFloat(document.getElementById('base').value)||0;
+  if(t!=='custom'){document.getElementById('rate').value=(base+(t==='b2b'?9:5)).toFixed(2);}
+  const rate=parseFloat(document.getElementById('rate').value)||0;
+  const interest=amount*(rate/100)*(days/365);
+  document.getElementById('out').textContent=euro(interest);
+  let exp=`${euro(amount)} · ${days} Tage · ${rate.toFixed(2)} % p. a.`;
+  if(t==='b2b') exp+=' · zzgl. 40 € Verzugspauschale möglich';
+  document.getElementById('exp').textContent=exp;
+}
+function copyBox(id,btn){
+  const el=document.getElementById(id).cloneNode(true);
+  const b=el.querySelector('.cp'); if(b) b.remove();
+  navigator.clipboard.writeText(el.textContent.trim()).then(()=>{
+    const o=btn.textContent; btn.textContent='Kopiert ✓'; btn.classList.add('done');
+    setTimeout(()=>{btn.textContent=o;btn.classList.remove('done');},1800);
+  });
+}
+calc();
+</script>
+</body>
+</html>

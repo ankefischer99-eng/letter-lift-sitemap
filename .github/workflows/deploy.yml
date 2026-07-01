@@ -1,0 +1,41 @@
+name: Deploy Nachhaker to GitHub Pages
+
+# Hinweis: In diesem Repo läuft der CI-Token unter einer eingeschränkten
+# Integration, die die Pages-API nicht ansprechen darf ("Resource not accessible
+# by integration"). Die "GitHub Actions"-Deploy-Methode kann hier daher nie
+# erfolgreich sein. Zuverlässig ist stattdessen die Pages-Einstellung
+# "Deploy from a branch". Dieser Workflow bleibt nur für ein späteres,
+# unbeschränktes Repo erhalten und läuft nur noch manuell.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

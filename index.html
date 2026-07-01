@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nachhaker – Dein Geld kommt rein, während du schläfst</title>
+<meta name="description" content="Nachhaker jagt deinen offenen Rechnungen automatisch hinterher – von der freundlichen Zahlungserinnerung bis zur Mahnung. DSGVO-konform, für Freelancer & Solo-Selbstständige.">
+<link rel="canonical" href="https://nachhaker.de/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nachhaker – Dein Geld kommt rein, während du schläfst">
+<meta property="og:description" content="Automatisches, höfliches Nachfassen für offene Rechnungen. Erinnerung → Mahnung, in deinem Ton. DSGVO-konform.">
+<meta property="og:url" content="https://nachhaker.de/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%2316a34a'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3E€%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --bg:#f8fafc;
+    --brand:#16a34a; --brand-dark:#15803d; --brand-soft:#dcfce7;
+    --warn:#b45309; --warn-soft:#fef3c7; --danger:#b91c1c; --danger-soft:#fee2e2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.55}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  a{color:var(--brand-dark)}
+
+  /* nav */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;border-bottom:1px solid var(--line)}
+  .logo{font-weight:800;font-size:20px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+  .logo .dot{width:11px;height:11px;border-radius:50%;background:var(--brand);display:inline-block;box-shadow:0 0 0 4px var(--brand-soft)}
+  .btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;padding:11px 18px;border-radius:10px;font-weight:600;border:0;cursor:pointer;font-size:15px;transition:.15s}
+  .btn:hover{background:var(--brand-dark)}
+  .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--muted)}
+
+  /* hero */
+  .hero{padding:64px 0 40px;text-align:center}
+  .pill{display:inline-block;background:var(--brand-soft);color:var(--brand-dark);font-weight:600;font-size:13px;padding:6px 14px;border-radius:999px;margin-bottom:22px}
+  h1{font-size:clamp(32px,5vw,52px);line-height:1.08;letter-spacing:-.03em;margin:0 0 16px;font-weight:820}
+  h1 .hl{color:var(--brand)}
+  .sub{font-size:clamp(17px,2.2vw,21px);color:var(--muted);max-width:640px;margin:0 auto 28px}
+  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .fine{color:var(--muted);font-size:13px;margin-top:14px}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:52px 0}
+  .stat{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .stat .n{font-size:28px;font-weight:800;letter-spacing:-.02em}
+  .stat .l{color:var(--muted);font-size:13px;margin-top:4px}
+
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  h2{font-size:clamp(24px,3.5vw,34px);letter-spacing:-.02em;margin:0 0 10px;font-weight:800}
+  .lead{color:var(--muted);font-size:18px;margin:0 0 34px;max-width:640px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .step{border:1px solid var(--line);border-radius:14px;padding:22px}
+  .step .k{width:34px;height:34px;border-radius:9px;background:var(--brand-soft);color:var(--brand-dark);font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .step h3{margin:0 0 6px;font-size:18px}
+  .step p{margin:0;color:var(--muted);font-size:15px}
+
+  /* demo */
+  .demo{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:28px;margin-top:8px}
+  .demo-grid{display:grid;grid-template-columns:340px 1fr;gap:28px}
+  label{display:block;font-weight:600;font-size:14px;margin:0 0 6px}
+  .field{margin-bottom:16px}
+  input,select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit;background:#fff}
+  input:focus,select:focus{outline:2px solid var(--brand-soft);border-color:var(--brand)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+  .timeline{display:flex;flex-direction:column;gap:14px}
+  .msg{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .msg .head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line)}
+  .msg .when{font-weight:700;font-size:14px;display:flex;align-items:center;gap:9px}
+  .tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;text-transform:uppercase;letter-spacing:.03em}
+  .tag.t0{background:var(--brand-soft);color:var(--brand-dark)}
+  .tag.t1{background:#e0f2fe;color:#075985}
+  .tag.t2{background:var(--warn-soft);color:var(--warn)}
+  .tag.t3{background:var(--danger-soft);color:var(--danger)}
+  .msg .body{padding:14px 16px;font-size:14px;white-space:pre-wrap;color:#334155}
+  .msg .subj{font-weight:700;color:var(--ink);margin-bottom:8px}
+  .placeholder{color:var(--muted);text-align:center;padding:60px 20px}
+
+  .price{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+  .plan{border:1px solid var(--line);border-radius:16px;padding:24px}
+  .plan.feat{border-color:var(--brand);box-shadow:0 8px 30px rgba(22,163,74,.12);position:relative}
+  .plan.feat::before{content:"Beliebt";position:absolute;top:-11px;left:24px;background:var(--brand);color:#fff;font-size:12px;font-weight:700;padding:3px 12px;border-radius:999px}
+  .plan h3{margin:0 0 4px;font-size:18px}
+  .plan .amt{font-size:34px;font-weight:800;letter-spacing:-.02em}
+  .plan .amt span{font-size:15px;color:var(--muted);font-weight:500}
+  .plan ul{list-style:none;padding:0;margin:16px 0 0;font-size:14px;color:#334155}
+  .plan li{padding:7px 0 7px 24px;position:relative}
+  .plan li::before{content:"✓";position:absolute;left:0;color:var(--brand);font-weight:800}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:14px;text-align:center}
+  .disc{background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:13px;padding:12px 16px;border-radius:10px;margin-top:20px}
+
+  @media(max-width:820px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .steps,.price{grid-template-columns:1fr}
+    .demo-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="logo"><span class="dot"></span>Nachhaker</div>
+    <span style="display:flex;gap:10px;align-items:center">
+      <a href="app.html" style="text-decoration:none;font-weight:600;font-size:15px;color:var(--ink)">Dashboard</a>
+      <a href="#warteliste" class="btn">Frühzugang</a>
+    </span>
+  </nav>
+
+  <header class="hero">
+    <span class="pill">🇩🇪 DSGVO-konform · für Freelancer & Solo-Selbstständige</span>
+    <h1>Dein Geld kommt rein,<br><span class="hl">während du schläfst.</span></h1>
+    <p class="sub">Nachhaker jagt deinen offenen Rechnungen automatisch hinterher – höflich, hartnäckig und in deinem Ton. Von der freundlichen Erinnerung bis zur formellen Mahnung. Du machst nichts.</p>
+    <div class="cta-row">
+      <a href="#warteliste" class="btn">Frühzugang sichern →</a>
+      <a href="#demo" class="btn ghost">Erst live ausprobieren</a>
+    </div>
+    <div class="fine">Kein manuelles Hinterherrennen mehr · Zahllink automatisch dabei</div>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><div class="n">1 Tag</div><div class="l">pro Monat verlieren Selbstständige mit dem Eintreiben von Geld</div></div>
+    <div class="stat"><div class="n">9</div><div class="l">offene Rechnungen warten im Schnitt gleichzeitig auf Zahlung</div></div>
+    <div class="stat"><div class="n">71 %</div><div class="l">der Freelancer erleben verspätete Zahlungen</div></div>
+    <div class="stat"><div class="n">56 %</div><div class="l">des Nachhakens passiert in der Freizeit – abends & am Wochenende</div></div>
+  </div>
+</div>
+
+<section id="how">
+  <div class="wrap">
+    <h2>Drei Klicks, dann läuft's von allein</h2>
+    <p class="lead">Rechnung raus, Nachhaker übernimmt. Sobald das Fälligkeitsdatum überschritten ist, startet die Eskalationskette automatisch – und stoppt in dem Moment, in dem bezahlt wird.</p>
+    <div class="steps">
+      <div class="step"><div class="k">1</div><h3>Rechnung eintragen</h3><p>Kunde, Betrag, Fälligkeitsdatum. Oder per E-Mail-Weiterleitung / Import automatisch erfassen.</p></div>
+      <div class="step"><div class="k">2</div><h3>Ton wählen</h3><p>Freundlich, neutral oder bestimmt. Nachhaker formuliert jede Stufe passend – auf Deutsch, rechtssicher.</p></div>
+      <div class="step"><div class="k">3</div><h3>Zurücklehnen</h3><p>Erinnerungen & Mahnungen gehen automatisch raus, mit Zahllink. Zahlung erkannt = Kette stoppt sofort.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <h2>Probier's aus – deine Nachhak-Sequenz in Echtzeit</h2>
+    <p class="lead">Trag eine Beispiel-Rechnung ein und sieh die komplette automatische Eskalation, die Nachhaker für dich verschicken würde.</p>
+    <div class="demo">
+      <div class="demo-grid">
+        <div>
+          <div class="field">
+            <label for="kunde">Kundenname</label>
+            <input id="kunde" type="text" value="Müller GmbH">
+          </div>
+          <div class="field">
+            <label for="rnr">Rechnungsnummer</label>
+            <input id="rnr" type="text" value="2026-0042">
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="betrag">Betrag (€)</label>
+              <input id="betrag" type="number" value="1450">
+            </div>
+            <div class="field">
+              <label for="faellig">Fällig am</label>
+              <input id="faellig" type="date">
+            </div>
+          </div>
+          <div class="field">
+            <label for="ton">Ton</label>
+            <select id="ton">
+              <option value="freundlich">Freundlich</option>
+              <option value="neutral" selected>Neutral</option>
+              <option value="bestimmt">Bestimmt</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="absender">Dein Name / Firma</label>
+            <input id="absender" type="text" value="Anke Fischer Design">
+          </div>
+          <button class="btn" style="width:100%" onclick="generate()">Nachhak-Sequenz erstellen →</button>
+        </div>
+        <div>
+          <div id="out" class="timeline">
+            <div class="placeholder">Fülle links die Rechnung aus und klick auf „Nachhak-Sequenz erstellen".</div>
+          </div>
+        </div>
+      </div>
+      <div class="disc">⚠️ Prototyp / Demo. Es werden keine echten E-Mails verschickt und keine Daten gespeichert – alles läuft lokal in deinem Browser.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Preise, die sich nach einer Rechnung rechnen</h2>
+    <p class="lead">Wenn Nachhaker eine einzige verspätete Zahlung schneller reinholt, hat es sich für Monate bezahlt gemacht.</p>
+    <div class="price">
+      <div class="plan">
+        <h3>Solo</h3>
+        <div class="amt">0 €<span> / Monat</span></div>
+        <ul><li>Bis 3 aktive Rechnungen</li><li>2-Stufen-Erinnerung</li><li>E-Mail-Versand</li></ul>
+      </div>
+      <div class="plan feat">
+        <h3>Pro</h3>
+        <div class="amt">9 €<span> / Monat</span></div>
+        <ul><li>Unbegrenzte Rechnungen</li><li>Volle Eskalation bis Mahnung</li><li>Zahllink integriert</li><li>Eigener Ton & Branding</li><li>Zahlung erkannt → Auto-Stopp</li></ul>
+      </div>
+      <div class="plan">
+        <h3>Business</h3>
+        <div class="amt">19 €<span> / Monat</span></div>
+        <ul><li>Alles aus Pro</li><li>Mehrere Absender</li><li>Import & API</li><li>Inkasso-Übergabe</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="warteliste" style="background:linear-gradient(180deg,#f0fdf4,#fff)">
+  <div class="wrap" style="max-width:620px;text-align:center">
+    <span class="pill">🚀 Early Access</span>
+    <h2>Sei unter den Ersten – und zahl nie wieder mehr als 9 €</h2>
+    <p class="lead" style="margin:0 auto 26px">Trag dich ein, und du bekommst Nachhaker zuerst, gestaltest mit, was gebaut wird, und sicherst dir den Gründerpreis dauerhaft. Kein Spam, jederzeit abmeldbar.</p>
+    <form id="wl" onsubmit="return joinWaitlist(event)" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+      <input id="wl-email" type="email" required placeholder="deine@email.de" style="flex:1;min-width:240px;max-width:340px">
+      <button class="btn" type="submit">Frühzugang sichern</button>
+    </form>
+    <div id="wl-ok" style="display:none;margin-top:18px;font-weight:600;color:var(--brand-dark)">✅ Danke! Du stehst auf der Liste – wir melden uns beim Start.</div>
+    <div class="fine">Schon <strong id="wl-count">128</strong> Selbstständige auf der Warteliste.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Kostenlose Vorlagen & Ratgeber</h2>
+    <p class="lead">Sofort nutzbar – und ein Vorgeschmack darauf, was Nachhaker automatisch für dich erledigt.</p>
+    <div class="steps">
+      <div class="step"><div class="k">📄</div><h3><a href="ratgeber/zahlungserinnerung-vorlage.html" style="text-decoration:none;color:inherit">Zahlungserinnerung-Vorlage</a></h3><p>Freundlich, wirksam, kostenlos zum Kopieren.</p></div>
+      <div class="step"><div class="k">⚖️</div><h3><a href="ratgeber/mahnung-schreiben-muster.html" style="text-decoration:none;color:inherit">Mahnung schreiben: Muster</a></h3><p>Die korrekte Eskalation – Schritt für Schritt.</p></div>
+      <div class="step"><div class="k">🧮</div><h3><a href="ratgeber/verzugszinsen-berechnen.html" style="text-decoration:none;color:inherit">Verzugszinsen berechnen</a></h3><p>Was dir zusteht, wenn Kunden zu spät zahlen.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <strong>Nachhaker</strong> · Dein Geld. Automatisch eingetrieben.<br>
+    Belegt durch echte Marktdaten zu verspäteten Zahlungen (Clockify, IPSE, Small Business Commissioner).
+  </div>
+</footer>
+
+<script>
+  // Warteliste: postet an konfigurierbaren Endpoint; Fallback = mailto.
+  // TODO(Anke): WAITLIST_ENDPOINT auf echten Form-Endpoint setzen (z.B. Formspree/eigene Function).
+  const WAITLIST_ENDPOINT = ""; // leer = mailto-Fallback
+  const WAITLIST_MAILTO = "ankefischer99@gmail.com";
+  function joinWaitlist(e){
+    e.preventDefault();
+    const email=document.getElementById('wl-email').value.trim();
+    if(!email) return false;
+    const done=()=>{
+      document.getElementById('wl').style.display='none';
+      document.getElementById('wl-ok').style.display='block';
+      const c=document.getElementById('wl-count'); c.textContent=parseInt(c.textContent,10)+1;
+      try{localStorage.setItem('nachhaker_wl',email);}catch(_){}
+    };
+    if(WAITLIST_ENDPOINT){
+      fetch(WAITLIST_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})})
+        .then(done).catch(()=>{window.location.href=`mailto:${WAITLIST_MAILTO}?subject=Warteliste%20Nachhaker&body=Bitte%20auf%20die%20Warteliste:%20${encodeURIComponent(email)}`;done();});
+    }else{
+      window.location.href=`mailto:${WAITLIST_MAILTO}?subject=Warteliste%20Nachhaker&body=Bitte%20auf%20die%20Warteliste:%20${encodeURIComponent(email)}`;
+      done();
+    }
+    return false;
+  }
+</script>
+
+<script>
+  // Default Fälligkeitsdatum: heute minus 5 Tage (überfällig)
+  (function(){
+    const d=new Date(); d.setDate(d.getDate()-5);
+    document.getElementById('faellig').value=d.toISOString().slice(0,10);
+  })();
+
+  function euro(n){return new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(n||0);}
+  function fmtDate(d){return d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'});}
+  function addDays(base,n){const d=new Date(base);d.setDate(d.getDate()+n);return d;}
+
+  const TONE = {
+    freundlich:{gruss:"Hallo",close:"Ganz herzliche Grüße"},
+    neutral:{gruss:"Guten Tag",close:"Freundliche Grüße"},
+    bestimmt:{gruss:"Sehr geehrte Damen und Herren",close:"Mit freundlichen Grüßen"}
+  };
+
+  function stages(ctx){
+    const t=TONE[ctx.ton], k=ctx.kunde, r=ctx.rnr, b=euro(ctx.betrag), a=ctx.absender;
+    return [
+      {label:"Zahlungserinnerung",cls:"t0",days:3,
+        subj:`Kurze Erinnerung zu Rechnung ${r}`,
+        body:`${t.gruss} ${k},\n\nvielleicht ist es im Alltag untergegangen – unsere Rechnung ${r} über ${b} ist seit dem ${fmtDate(ctx.faellig)} offen. Falls schon überwiesen: bitte diese Nachricht ignorieren, dann hat sich's überschnitten.\n\nHier geht's direkt zur Zahlung: [Zahllink]\n\n${t.close}\n${a}`},
+      {label:"2. Erinnerung",cls:"t1",days:7,
+        subj:`Zweite Erinnerung: Rechnung ${r} noch offen`,
+        body:`${t.gruss} ${k},\n\nzu unserer Rechnung ${r} über ${b} (fällig am ${fmtDate(ctx.faellig)}) konnten wir noch keinen Zahlungseingang feststellen. Wir möchten freundlich daran erinnern und bitten um Ausgleich in den nächsten Tagen.\n\nSchnell & bequem zahlen: [Zahllink]\n\n${t.close}\n${a}`},
+      {label:"1. Mahnung",cls:"t2",days:14,
+        subj:`Zahlungserinnerung / 1. Mahnung – Rechnung ${r}`,
+        body:`${t.gruss} ${k},\n\ntrotz unserer Erinnerungen ist die Rechnung ${r} über ${b} weiterhin offen. Wir bitten Sie, den Betrag bis spätestens ${fmtDate(addDays(ctx.faellig,21))} zu begleichen.\n\nSollten Sie die Zahlung bereits veranlasst haben, betrachten Sie dieses Schreiben als gegenstandslos.\n\nZahlung vornehmen: [Zahllink]\n\n${t.close}\n${a}`},
+      {label:"2. Mahnung",cls:"t3",days:30,
+        subj:`Letzte Mahnung vor weiteren Schritten – Rechnung ${r}`,
+        body:`Sehr geehrte Damen und Herren,\n\ndie Rechnung ${r} über ${b} ist trotz mehrfacher Aufforderung nicht ausgeglichen. Wir setzen Ihnen eine letzte Frist bis zum ${fmtDate(addDays(ctx.faellig,37))}.\n\nNach Ablauf behalten wir uns vor, Verzugszinsen sowie die Übergabe an ein Inkassobüro zu veranlassen. Wir würden das gerne vermeiden.\n\nBetrag jetzt begleichen: [Zahllink]\n\nMit freundlichen Grüßen\n${a}`}
+    ];
+  }
+
+  function generate(){
+    const ctx={
+      kunde:document.getElementById('kunde').value||"Kunde",
+      rnr:document.getElementById('rnr').value||"—",
+      betrag:parseFloat(document.getElementById('betrag').value)||0,
+      faellig:new Date(document.getElementById('faellig').value||Date.now()),
+      ton:document.getElementById('ton').value,
+      absender:document.getElementById('absender').value||"Dein Name"
+    };
+    const out=document.getElementById('out');
+    out.innerHTML='';
+    stages(ctx).forEach((s,i)=>{
+      const send=addDays(ctx.faellig,s.days);
+      const el=document.createElement('div');
+      el.className='msg';
+      el.innerHTML=`
+        <div class="head">
+          <div class="when">📧 Versand am ${fmtDate(send)} <span style="color:var(--muted);font-weight:500">(+${s.days} Tage)</span></div>
+          <span class="tag ${s.cls}">${s.label}</span>
+        </div>
+        <div class="body"><div class="subj">Betreff: ${s.subj}</div>${s.body}</div>`;
+      out.appendChild(el);
+    });
+    out.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  generate();
+</script>
+</body>
+</html>
