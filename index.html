@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nachhaker – Dein Geld kommt rein, während du schläfst</title>
-<meta name="description" content="Nachhaker jagt deinen offenen Rechnungen automatisch hinterher – von der freundlichen Zahlungserinnerung bis zur Mahnung. DSGVO-konform, für Freelancer & Solo-Selbstständige.">
+<meta name="description" content="Nachhaker jagt deinen offenen Rechnungen automatisch hinterher – von der freundlichen Zahlungserinnerung bis zur Mahnung. Für Freelancer & Solo-Selbstständige.">
 <link rel="canonical" href="https://nachhaker.de/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nachhaker – Dein Geld kommt rein, während du schläfst">
-<meta property="og:description" content="Automatisches, höfliches Nachfassen für offene Rechnungen. Erinnerung → Mahnung, in deinem Ton. DSGVO-konform.">
+<meta property="og:description" content="Automatisches, höfliches Nachfassen für offene Rechnungen. Erinnerung → Mahnung, in deinem Ton.">
 <meta property="og:url" content="https://nachhaker.de/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%2316a34a'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3E€%3C/text%3E%3C/svg%3E">
@@ -111,7 +111,7 @@
   </nav>
 
   <header class="hero">
-    <span class="pill">🇩🇪 DSGVO-konform · für Freelancer & Solo-Selbstständige</span>
+    <span class="pill">🇩🇪 Für Freelancer & Solo-Selbstständige</span>
     <h1>Dein Geld kommt rein,<br><span class="hl">während du schläfst.</span></h1>
     <p class="sub">Nachhaker jagt deinen offenen Rechnungen automatisch hinterher – höflich, hartnäckig und in deinem Ton. Von der freundlichen Erinnerung bis zur formellen Mahnung. Du machst nichts.</p>
     <div class="cta-row">
@@ -135,7 +135,7 @@
     <p class="lead">Rechnung raus, Nachhaker übernimmt. Sobald das Fälligkeitsdatum überschritten ist, startet die Eskalationskette automatisch – und stoppt in dem Moment, in dem bezahlt wird.</p>
     <div class="steps">
       <div class="step"><div class="k">1</div><h3>Rechnung eintragen</h3><p>Kunde, Betrag, Fälligkeitsdatum. Oder per E-Mail-Weiterleitung / Import automatisch erfassen.</p></div>
-      <div class="step"><div class="k">2</div><h3>Ton wählen</h3><p>Freundlich, neutral oder bestimmt. Nachhaker formuliert jede Stufe passend – auf Deutsch, rechtssicher.</p></div>
+      <div class="step"><div class="k">2</div><h3>Ton wählen</h3><p>Freundlich, neutral oder bestimmt. Nachhaker formuliert jede Stufe passend – auf Deutsch, im richtigen Ton.</p></div>
       <div class="step"><div class="k">3</div><h3>Zurücklehnen</h3><p>Erinnerungen & Mahnungen gehen automatisch raus, mit Zahllink. Zahlung erkannt = Kette stoppt sofort.</p></div>
     </div>
   </div>
@@ -176,7 +176,7 @@
           </div>
           <div class="field">
             <label for="absender">Dein Name / Firma</label>
-            <input id="absender" type="text" value="Anke Fischer Design">
+            <input id="absender" type="text" value="Mustermann Design">
           </div>
           <button class="btn" style="width:100%" onclick="generate()">Nachhak-Sequenz erstellen →</button>
         </div>
@@ -249,10 +249,10 @@
 </footer>
 
 <script>
-  // Warteliste: postet an konfigurierbaren Endpoint; Fallback = mailto.
-  // TODO(Anke): WAITLIST_ENDPOINT auf echten Form-Endpoint setzen (z.B. Formspree/eigene Function).
-  const WAITLIST_ENDPOINT = ""; // leer = mailto-Fallback
-  const WAITLIST_MAILTO = "ankefischer99@gmail.com";
+  // Warteliste: postet an einen konfigurierbaren Endpoint (eigener Worker/Formspree).
+  // Solange keiner gesetzt ist, wird die Anmeldung nur lokal im Browser gemerkt –
+  // keine personenbezogenen Daten werden übertragen oder gespeichert.
+  const WAITLIST_ENDPOINT = ""; // TODO: echten Endpoint eintragen, bevor live gesammelt wird
   function joinWaitlist(e){
     e.preventDefault();
     const email=document.getElementById('wl-email').value.trim();
@@ -265,9 +265,8 @@
     };
     if(WAITLIST_ENDPOINT){
       fetch(WAITLIST_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})})
-        .then(done).catch(()=>{window.location.href=`mailto:${WAITLIST_MAILTO}?subject=Warteliste%20Nachhaker&body=Bitte%20auf%20die%20Warteliste:%20${encodeURIComponent(email)}`;done();});
+        .then(done).catch(done);
     }else{
-      window.location.href=`mailto:${WAITLIST_MAILTO}?subject=Warteliste%20Nachhaker&body=Bitte%20auf%20die%20Warteliste:%20${encodeURIComponent(email)}`;
       done();
     }
     return false;
