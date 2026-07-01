@@ -1,8 +1,12 @@
 name: Deploy Nachhaker to GitHub Pages
 
+# Hinweis: In diesem Repo läuft der CI-Token unter einer eingeschränkten
+# Integration, die die Pages-API nicht ansprechen darf ("Resource not accessible
+# by integration"). Die "GitHub Actions"-Deploy-Methode kann hier daher nie
+# erfolgreich sein. Zuverlässig ist stattdessen die Pages-Einstellung
+# "Deploy from a branch". Dieser Workflow bleibt nur für ein späteres,
+# unbeschränktes Repo erhalten und läuft nur noch manuell.
 on:
-  push:
-    branches: [ "main", "claude/side-income-ideas-hx0vr1" ]
   workflow_dispatch:
 
 permissions:
