@@ -1,0 +1,20 @@
+name = "nachhaker"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+# Täglicher Cron: prüft überfällige Rechnungen und verschickt die nächste Stufe.
+[triggers]
+crons = ["0 8 * * *"]  # jeden Tag 08:00 UTC
+
+# D1-Datenbank. database_id nach `wrangler d1 create nachhaker` hier eintragen.
+[[d1_databases]]
+binding = "DB"
+database_name = "nachhaker"
+database_id = "PLACEHOLDER_NACH_wrangler_d1_create"
+
+# Secrets NICHT hier, sondern via:  wrangler secret put <NAME>
+#   RESEND_API_KEY   – E-Mail-Versand (resend.com, Gratis-Tier)
+#   API_KEY          – schützt die Schreib-Endpunkte im MVP
+#   FROM_EMAIL       – verifizierte Absenderadresse
+[vars]
+APP_ORIGIN = "https://nachhaker.de"
