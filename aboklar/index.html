@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aboklar – deine Abos & Fixkosten im Blick (100 % lokal)</title>
+<meta name="description" content="Behalte alle Abos und Fixkosten im Blick. Warnung vor Verlängerungen, Jahres-Hochrechnung. Alles bleibt in deinem Browser – kein Konto, kein Server.">
+<style>
+  :root{
+    --ink:#141a2e; --muted:#697089; --line:#e6e8f0; --bg:#f6f7fb; --card:#fff;
+    --accent:#4f46e5; --accent-dark:#4338ca; --accent-soft:#eef0fe;
+    --green:#178a54; --green-soft:#e3f5ec; --warn:#b45309; --warn-soft:#fef3c7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+  .wrap{max-width:860px;margin:0 auto;padding:0 18px}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+  .logo{font-weight:800;font-size:20px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+  .priv{font-size:12px;color:var(--green);font-weight:700;background:var(--green-soft);padding:5px 11px;border-radius:999px}
+  .hero{text-align:center;padding:22px 0 6px}
+  h1{font-size:clamp(24px,4.5vw,36px);letter-spacing:-.02em;margin:0 0 8px}
+  .sub{color:var(--muted);font-size:16px;max-width:520px;margin:0 auto}
+
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0 8px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .stat .n{font-size:24px;font-weight:800;letter-spacing:-.02em}
+  .stat .n.accent{color:var(--accent)}
+  .stat .l{color:var(--muted);font-size:12px;margin-top:2px}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0}
+  .card h2{font-size:15px;margin:0 0 12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  label{display:block;font-weight:600;font-size:12px;margin:0 0 5px}
+  input,select{width:100%;padding:10px 11px;border:1px solid var(--line);border-radius:9px;font-size:14px;font-family:inherit;background:#fff}
+  input:focus,select:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+  .row{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:10px;margin-bottom:10px}
+  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:10px 16px;border-radius:9px;font-weight:700;border:0;cursor:pointer;font-size:14px;transition:.15s}
+  .btn:hover{background:var(--accent-dark)}
+  .btn.sm{padding:6px 10px;font-size:12px}
+  .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);font-weight:600}
+
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);font-size:14px}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  td.amt{font-weight:700;white-space:nowrap}
+  .due{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--bg);color:var(--muted);white-space:nowrap}
+  .due.soon{background:var(--warn-soft);color:var(--warn)}
+  .empty{text-align:center;color:var(--muted);padding:34px 16px}
+  .toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .banner{background:var(--green-soft);border:1px solid #b8e6cd;color:#0f6b41;font-size:13px;padding:11px 14px;border-radius:10px;margin:14px 0}
+  .pro{background:linear-gradient(135deg,#eef0fe,#f6f7fb);border:1px solid #d6d9f7;border-radius:14px;padding:16px;margin:14px 0}
+  .pro h3{margin:0 0 6px;font-size:15px}
+  .pro p{margin:0 0 10px;color:var(--muted);font-size:13px}
+  .pro .lock{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:26px 0}
+  @media(max-width:640px){.row{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="logo">📊 Aboklar</div>
+    <span class="priv">🔒 100 % lokal · kein Konto</span>
+  </nav>
+
+  <header class="hero">
+    <h1>Behalte deine Abos &amp; Fixkosten im Griff</h1>
+    <p class="sub">Sieh sofort, was dich jeden Monat und im Jahr wirklich kostet – und werde vor Verlängerungen gewarnt.</p>
+  </header>
+
+  <div class="banner">🔒 <b>Deine Daten bleiben in deinem Browser.</b> Kein Server, kein Konto, keine Weitergabe. Wir haben deine Daten gar nicht – das ist das Prinzip.</div>
+
+  <div class="stats">
+    <div class="stat"><div class="n accent" id="stMonth">0,00 €</div><div class="l">pro Monat</div></div>
+    <div class="stat"><div class="n" id="stYear">0,00 €</div><div class="l">pro Jahr (hochgerechnet)</div></div>
+    <div class="stat"><div class="n" id="stCount">0</div><div class="l">Abos aktiv</div></div>
+  </div>
+
+  <div class="card">
+    <h2>Abo / Fixkosten hinzufügen</h2>
+    <div class="row">
+      <div><label>Name</label><input id="fName" placeholder="z. B. Netflix"></div>
+      <div><label>Betrag (€)</label><input id="fBetrag" type="number" step="0.01" placeholder="12,99"></div>
+      <div><label>Zyklus</label><select id="fZyklus"><option value="monatlich">monatlich</option><option value="jährlich">jährlich</option><option value="wöchentlich">wöchentlich</option><option value="vierteljährlich">vierteljährlich</option></select></div>
+      <div><label>Nächste Zahlung</label><input id="fDatum" type="date"></div>
+    </div>
+    <button class="btn" onclick="addSub()">Hinzufügen</button>
+    <span id="limitHint" class="due" style="margin-left:10px"></span>
+  </div>
+
+  <div id="warn"></div>
+
+  <div class="card">
+    <h2>Deine Abos</h2>
+    <div id="list"></div>
+    <div class="toolbar">
+      <span class="due" id="privlabel">Gespeichert nur in diesem Browser</span>
+      <span>
+        <button class="btn sm ghost" onclick="exportCSV()">Export CSV</button>
+        <button class="btn sm ghost" onclick="clearAll()">Alles löschen</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="pro" id="proBox">
+    <h3>⭐ Aboklar Pro</h3>
+    <p>Kostenlos bis 5 Abos. Für unbegrenzte Abos, Export &amp; (später) verschlüsselte Sync über mehrere Geräte: einmalig freischalten. Bezahlung läuft über einen externen Anbieter – wir bekommen dabei <b>keine</b> deiner Abo-Daten.</p>
+    <div class="lock">
+      <input id="license" placeholder="Lizenzschlüssel (Demo: PRO)" style="max-width:240px">
+      <button class="btn sm" onclick="unlock()">Freischalten</button>
+      <span id="proState" class="due"></span>
+    </div>
+  </div>
+
+  <footer>Aboklar · Konzept-Demo · Deine Abos gehören dir – und bleiben bei dir.</footer>
+</div>
+
+<script>
+  const KEY="aboklar_subs", PROKEY="aboklar_pro", FREE_LIMIT=5;
+  const euro=n=>new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(n||0);
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(_){return[]}};
+  const save=a=>localStorage.setItem(KEY,JSON.stringify(a));
+  const isPro=()=>localStorage.getItem(PROKEY)==="1";
+
+  const perMonth=s=>{const b=+s.betrag||0;switch(s.zyklus){
+    case"jährlich":return b/12;case"wöchentlich":return b*52/12;
+    case"vierteljährlich":return b/3;default:return b;}};
+  const daysUntil=iso=>{if(!iso)return null;return Math.ceil((new Date(iso)-new Date())/86400000);};
+
+  function addSub(){
+    const subs=load();
+    if(!isPro() && subs.length>=FREE_LIMIT){ document.getElementById('proBox').scrollIntoView({behavior:'smooth'}); flash('Gratis-Limit erreicht – schalte Pro frei für unbegrenzt.'); return; }
+    const name=fName.value.trim(); const betrag=parseFloat(fBetrag.value);
+    if(!name||!(betrag>=0)){flash('Bitte Name und Betrag angeben.');return;}
+    subs.push({id:Date.now(),name,betrag,zyklus:fZyklus.value,datum:fDatum.value||null});
+    save(subs); fName.value='';fBetrag.value='';fDatum.value=''; render();
+  }
+  function del(id){ save(load().filter(s=>s.id!==id)); render(); }
+  function clearAll(){ if(confirm('Wirklich alle Abos löschen? (nur lokal)')){ save([]); render(); } }
+  function unlock(){
+    if(document.getElementById('license').value.trim().toUpperCase()==="PRO"){
+      localStorage.setItem(PROKEY,"1"); flash('Pro freigeschaltet – danke! 🎉'); render();
+    } else flash('Ungültiger Schlüssel. (Demo-Code: PRO)');
+  }
+  function flash(msg){ const h=document.getElementById('limitHint'); h.textContent=msg; setTimeout(()=>h.textContent=hintText(),4000); }
+  function hintText(){ const n=load().length; return isPro()?'Pro aktiv · unbegrenzt':`${n}/${FREE_LIMIT} Abos (gratis)`; }
+
+  function exportCSV(){
+    const rows=[["Name","Betrag","Zyklus","Naechste Zahlung","pro Monat"],
+      ...load().map(s=>[s.name,String(s.betrag).replace('.',','),s.zyklus,s.datum||"",euro(perMonth(s))])];
+    const csv=rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(";")).join("\n");
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob(["﻿"+csv],{type:'text/csv'})); a.download='aboklar.csv'; a.click();
+  }
+
+  function render(){
+    const subs=load().sort((a,b)=>(a.datum||"9999").localeCompare(b.datum||"9999"));
+    const month=subs.reduce((s,x)=>s+perMonth(x),0);
+    stMonth.textContent=euro(month); stYear.textContent=euro(month*12); stCount.textContent=subs.length;
+    document.getElementById('proState').textContent=isPro()?'✓ Pro aktiv':'Gratis-Version';
+    document.getElementById('limitHint').textContent=hintText();
+
+    // Warnungen: fällig in <=7 Tagen
+    const soon=subs.filter(s=>{const d=daysUntil(s.datum);return d!==null&&d>=0&&d<=7;});
+    document.getElementById('warn').innerHTML = soon.length
+      ? `<div class="banner" style="background:var(--warn-soft);border-color:#f3d68a;color:var(--warn)">🔔 <b>${soon.length} Zahlung(en) in den nächsten 7 Tagen:</b> ${soon.map(s=>`${s.name} (${euro(s.betrag)})`).join(", ")}</div>` : "";
+
+    if(!subs.length){ document.getElementById('list').innerHTML=`<div class="empty">Noch nichts erfasst. Trag oben dein erstes Abo ein – Netflix, Spotify, Versicherung, Fitnessstudio …</div>`; return; }
+    let rows="";
+    for(const s of subs){
+      const d=daysUntil(s.datum);
+      const due = s.datum ? `<span class="due ${d!==null&&d<=7?'soon':''}">${d<0?'überfällig':d===0?'heute':'in '+d+' T'}</span>` : `<span class="due">–</span>`;
+      rows+=`<tr><td><b>${s.name}</b></td><td>${s.zyklus}</td><td>${due}</td><td class="amt">${euro(s.betrag)}</td><td class="amt">${euro(perMonth(s))}/M</td><td><button class="btn sm ghost" onclick="del(${s.id})">✕</button></td></tr>`;
+    }
+    document.getElementById('list').innerHTML=`<table><thead><tr><th>Abo</th><th>Zyklus</th><th>Nächste</th><th>Betrag</th><th>pro Monat</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
+  }
+  render();
+</script>
+</body>
+</html>
