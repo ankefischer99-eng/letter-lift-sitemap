@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BauMir – dein DIY-Generator</title>
+<style>
+  :root{
+    --ink:#231a12; --muted:#7a6a58; --line:#e7ded2; --bg:#faf6f0; --card:#fff;
+    --accent:#c2660a; --accent-dark:#a2540a; --accent-soft:#fdeede;
+    --green:#2f7d4f; --green-soft:#e4f3ea;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+  .logo{font-weight:800;font-size:20px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+  .logo .dot{font-size:20px}
+  .hero{text-align:center;padding:34px 0 10px}
+  .pill{display:inline-block;background:var(--accent-soft);color:var(--accent-dark);font-weight:700;font-size:12px;padding:6px 14px;border-radius:999px;margin-bottom:16px}
+  h1{font-size:clamp(28px,5vw,44px);letter-spacing:-.03em;margin:0 0 10px;line-height:1.08}
+  h1 .hl{color:var(--accent)}
+  .sub{font-size:17px;color:var(--muted);max-width:560px;margin:0 auto 8px}
+
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin:22px 0;box-shadow:0 6px 24px rgba(120,80,20,.06)}
+  label{display:block;font-weight:700;font-size:13px;margin:0 0 6px}
+  input,select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit;background:#fff}
+  input:focus,select:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+  .row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin-bottom:14px}
+  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:12px 20px;border-radius:10px;font-weight:700;border:0;cursor:pointer;font-size:15px;width:100%;transition:.15s}
+  .btn:hover{background:var(--accent-dark)}
+  .btn.buy{width:auto;padding:6px 12px;font-size:12px;background:var(--green)}
+  .btn.buy:hover{filter:brightness(.94)}
+
+  .result{display:none}
+  .rhead{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .rhead h2{margin:0 0 4px;font-size:24px;letter-spacing:-.01em}
+  .rhead p{margin:0;color:var(--muted);font-size:14px;max-width:460px}
+  .savings{background:var(--green-soft);border:1px solid #bfe3cd;border-radius:14px;padding:14px 18px;text-align:center;min-width:170px}
+  .savings .big{font-size:26px;font-weight:800;color:var(--green)}
+  .savings .l{font-size:12px;color:var(--muted)}
+  .savings .cmp{font-size:12px;color:var(--muted);margin-top:4px}
+  .savings .cmp b{color:var(--ink)}
+
+  h3{font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-dark);margin:26px 0 10px}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);font-size:14px}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  td.p{font-weight:700;white-space:nowrap}
+  .tools{display:flex;flex-wrap:wrap;gap:8px}
+  .tool{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px}
+  ol.steps{padding-left:0;counter-reset:s;list-style:none;margin:0}
+  ol.steps li{position:relative;padding:10px 0 10px 42px;border-bottom:1px solid var(--line);font-size:14px}
+  ol.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:9px;width:28px;height:28px;background:var(--accent-soft);color:var(--accent-dark);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+  .total{display:flex;justify-content:space-between;font-weight:800;font-size:16px;padding:12px 8px;background:var(--accent-soft);border-radius:10px;margin-top:8px}
+  .disc{background:#fff8ee;border:1px solid #f2d9a8;color:#8a5a12;font-size:12.5px;padding:12px 14px;border-radius:10px;margin-top:22px}
+  .demo-note{background:#eef2ff;border:1px solid #c7d2fe;color:#3730a3;font-size:12.5px;padding:10px 14px;border-radius:10px;margin-bottom:16px}
+  footer{text-align:center;color:var(--muted);font-size:13px;padding:30px 0}
+  @media(max-width:640px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="logo"><span class="dot">🔨</span>BauMir</div>
+    <span style="font-size:13px;color:var(--muted)">Konzept-Demo</span>
+  </nav>
+
+  <header class="hero">
+    <span class="pill">🪵 Selber bauen statt teuer kaufen</span>
+    <h1>Sag, was du bauen willst –<br><span class="hl">wir liefern den Bauplan.</span></h1>
+    <p class="sub">Materialliste mit Preisen, Bauanleitung Schritt für Schritt, und wie viel du gegenüber dem Fertigkauf sparst.</p>
+  </header>
+
+  <div class="panel">
+    <div class="demo-note">ℹ️ Konzept-Demo: Ausgabe wird lokal aus Beispiel-Logik erzeugt (noch keine echte KI/Live-Preise). Zum Fühlen, ob's cool ist.</div>
+    <div class="row">
+      <div><label for="was">Was willst du bauen?</label><input id="was" placeholder="z. B. Schuhregal, Couchtisch, Pflanzkübel" value="Schuhregal"></div>
+      <div><label for="stil">Stil</label><select id="stil"><option>Modern</option><option>Skandinavisch</option><option>Rustikal</option><option>Industrial</option></select></div>
+      <div><label for="groesse">Größe</label><select id="groesse"><option>Klein</option><option selected>Mittel</option><option>Groß</option></select></div>
+    </div>
+    <button class="btn" onclick="generate()">Bauplan generieren →</button>
+  </div>
+
+  <div id="result" class="result panel">
+    <div class="rhead">
+      <div>
+        <h2 id="rTitle"></h2>
+        <p id="rDesc"></p>
+      </div>
+      <div class="savings">
+        <div class="big" id="rSave"></div>
+        <div class="l">gespart vs. Fertigkauf</div>
+        <div class="cmp">DIY <b id="rDiy"></b> statt <b id="rBuy"></b></div>
+      </div>
+    </div>
+
+    <h3>🧾 Materialliste</h3>
+    <table>
+      <thead><tr><th>Material</th><th>Menge</th><th>ca. Preis</th><th></th></tr></thead>
+      <tbody id="rMat"></tbody>
+    </table>
+    <div class="total"><span>Materialkosten gesamt</span><span id="rTotal"></span></div>
+
+    <h3>🛠️ Werkzeug</h3>
+    <div class="tools" id="rTools"></div>
+
+    <h3>📋 Bauanleitung</h3>
+    <ol class="steps" id="rSteps"></ol>
+
+    <div class="disc">⚠️ Sicherheit: Nur Deko-, Möbel- und Gartenprojekte ohne Elektrik, Statik oder tragende Konstruktionen. Arbeite mit Schutzausrüstung. Angaben sind Richtwerte, keine geprüften Baupläne.</div>
+  </div>
+
+  <footer>BauMir · Konzept-Demo · „Selber machen lohnt sich wieder."</footer>
+</div>
+
+<script>
+const euro=n=>new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(n);
+const sizeFactor={Klein:0.7,Mittel:1,"Groß":1.4};
+
+// Vorlagen für gängige Projekte + generischer Fallback
+const TEMPLATES=[
+  {keys:["regal","schuhregal","bücherregal","board","wandregal"],name:"Regal",buy:129,
+   desc:"Ein schlichtes, stabiles Regal aus Leimholz – perfekt für Flur, Wohnzimmer oder Bad.",
+   mat:[["Leimholzplatte 80×20 cm","3 Stk","32,70"],["Kanthölzer 4×4 cm","4 Stk","11,60"],["Holzschrauben 4×50","1 Pkg","4,49"],["Holzleim","1 Fl","5,99"],["Klarlack matt","1 Dose","9,95"]],
+   tools:["Akkuschrauber","Säge","Schleifpapier","Zollstock","Pinsel"],
+   steps:["Platten und Kanthölzer auf Maß zuschneiden (oder im Baumarkt zuschneiden lassen).","Alle Kanten mit Schleifpapier (Körnung 120) glätten.","Kanthölzer als Seitenstützen mit Leim vorfixieren.","Böden mit je 2 Schrauben pro Seite verschrauben.","Trocknen lassen, dann mit Klarlack versiegeln.","Nach dem Trocknen an der Wand ausrichten und sicher befestigen."]},
+  {keys:["tisch","couchtisch","beistelltisch","schreibtisch"],name:"Tisch",buy:199,
+   desc:"Ein massiver Tisch mit klarer Linie – als Couch-, Beistell- oder Schreibtisch.",
+   mat:[["Massivholzplatte 120×60 cm","1 Stk","54,90"],["Tischbeine (Set)","1 Set","39,00"],["Schrauben-Set","1 Pkg","6,49"],["Holzöl","1 Fl","12,90"],["Filzgleiter","1 Pkg","3,49"]],
+   tools:["Akkuschrauber","Schleifpapier","Zollstock","Tuch"],
+   steps:["Plattenkanten und -fläche gründlich schleifen (120 → 180).","Beine mit dem Set an den Ecken anschrauben (Abstand ~8 cm zum Rand).","Platte 2× mit Holzöl einlassen, dazwischen trocknen lassen.","Filzgleiter unter die Beine kleben.","Aufstellen, Stand prüfen, fertig."]},
+  {keys:["pflanz","kübel","blumen","hochbeet","garten"],name:"Pflanzkübel",buy:79,
+   desc:"Ein robuster Holz-Pflanzkübel für Balkon oder Terrasse.",
+   mat:[["Terrassendielen 120 cm","6 Stk","23,40"],["Kanthölzer","2 Stk","5,80"],["Edelstahlschrauben","1 Pkg","6,99"],["Teichfolie","1 m","4,50"],["Holzschutzöl","1 Fl","10,90"]],
+   tools:["Akkuschrauber","Säge","Tacker","Schleifpapier"],
+   steps:["Dielen auf gleiche Länge zuschneiden.","Vier Seitenwände aus je 3 Dielen an Kanthölzern verschrauben.","Wände zu einem Kasten verbinden.","Innen mit Teichfolie austackern (Löcher unten für Wasserablauf).","Außen mit Holzschutzöl behandeln.","Mit Substrat befüllen und bepflanzen."]},
+  {keys:["hocker","stuhl","bank","sitz"],name:"Hocker",buy:69,
+   desc:"Ein kompakter Hocker – als Sitz, Beistell- oder Blumenhocker.",
+   mat:[["Leimholz 40×30 cm","1 Stk","12,90"],["Rundhölzer/Beine","4 Stk","15,60"],["Schrauben","1 Pkg","4,49"],["Holzleim","1 Fl","5,99"],["Klarlack","1 Dose","9,95"]],
+   tools:["Akkuschrauber","Säge","Schleifpapier","Winkel"],
+   steps:["Sitzfläche zuschneiden und schleifen.","Beine im leichten Winkel anzeichnen.","Beine verleimen und verschrauben.","Trocknen lassen, Stand prüfen.","Mit Klarlack versiegeln."]},
+];
+const GENERIC=n=>({name:n,buy:99,
+  desc:`Ein individuelles DIY-Projekt „${n}" aus Holz – schlicht und selbst gebaut.`,
+  mat:[["Leimholzplatte","2 Stk","29,80"],["Kantholz/Leisten","3 Stk","9,90"],["Holzschrauben","1 Pkg","4,49"],["Holzleim","1 Fl","5,99"],["Lack/Öl","1 Dose","10,90"]],
+  tools:["Akkuschrauber","Säge","Schleifpapier","Zollstock"],
+  steps:["Teile auf Maß zuschneiden (oder zuschneiden lassen).","Alle Kanten schleifen.","Teile verleimen und verschrauben.","Trocknen lassen.","Mit Lack oder Öl versiegeln."]});
+
+function pick(was){
+  const q=was.toLowerCase();
+  for(const t of TEMPLATES){ if(t.keys.some(k=>q.includes(k))) return t; }
+  return GENERIC(was||"DIY-Projekt");
+}
+function generate(){
+  const was=document.getElementById('was').value.trim();
+  const stil=document.getElementById('stil').value;
+  const groesse=document.getElementById('groesse').value;
+  const f=sizeFactor[groesse]||1;
+  const t=pick(was);
+
+  document.getElementById('rTitle').textContent=`${stil==="Modern"?"":stil+"er "}${t.name}${was&&!t.name.toLowerCase().includes(was.toLowerCase().split(" ")[0])?" – "+was:""}`;
+  document.getElementById('rDesc').textContent=t.desc;
+
+  let total=0;
+  const mat=t.mat.map(([n,m,p])=>{
+    const price=parseFloat(p.replace(",","."))*f;
+    total+=price;
+    return `<tr><td>${n}</td><td>${m}</td><td class="p">${euro(price)}</td><td><a class="btn buy" href="#" onclick="return false" title="Affiliate-Link (Demo)">Kaufen ▸</a></td></tr>`;
+  }).join("");
+  document.getElementById('rMat').innerHTML=mat;
+  document.getElementById('rTotal').textContent=euro(total);
+
+  const buy=t.buy*f;
+  document.getElementById('rDiy').textContent=euro(total);
+  document.getElementById('rBuy').textContent=euro(buy);
+  document.getElementById('rSave').textContent=euro(Math.max(0,buy-total));
+
+  document.getElementById('rTools').innerHTML=t.tools.map(x=>`<span class="tool">${x}</span>`).join("");
+  document.getElementById('rSteps').innerHTML=t.steps.map(s=>`<li>${s}</li>`).join("");
+
+  document.getElementById('result').style.display='block';
+  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+generate();
+</script>
+</body>
+</html>
