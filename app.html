@@ -73,7 +73,7 @@
 
 <div class="wrap">
   <h1>Dashboard</h1>
-  <p class="sub">Rechnungen anlegen – Nachhaker übernimmt das Hinterherjagen. Bezahlt markiert = Kette stoppt.</p>
+  <p class="sub">Rechnungen anlegen – Nachhaker verschickt die freundlichen Erinnerungen für dich. Bezahlt markiert = Erinnerungen stoppen.</p>
 
   <details class="cfg">
     <summary>⚙️ Backend-Verbindung (optional – ohne läuft alles lokal im Demo-Modus)</summary>
@@ -144,7 +144,7 @@ function updateMode(){
 
 // ---- Eskalationslogik (Spiegel von backend/src/index.js) ----------------
 const TONE={freundlich:{gruss:"Hallo",close:"Ganz herzliche Grüße"},neutral:{gruss:"Guten Tag",close:"Freundliche Grüße"},bestimmt:{gruss:"Sehr geehrte Damen und Herren",close:"Mit freundlichen Grüßen"}};
-const STUFEN=[{nr:1,label:"Zahlungserinnerung",tage:3},{nr:2,label:"2. Erinnerung",tage:7},{nr:3,label:"1. Mahnung",tage:14},{nr:4,label:"2. Mahnung",tage:30}];
+const STUFEN=[{nr:1,label:"Zahlungserinnerung",tage:3},{nr:2,label:"2. Erinnerung",tage:7},{nr:3,label:"3. Erinnerung",tage:14},{nr:4,label:"Freundliche Nachfrage",tage:30}];
 const euro=c=>new Intl.NumberFormat("de-DE",{style:"currency",currency:"EUR"}).format((c||0)/100);
 const fmt=iso=>new Date(iso).toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit",year:"numeric"});
 const addDays=(iso,n)=>{const d=new Date(iso);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);};
@@ -160,8 +160,8 @@ function buildMail(inv,nr){
   const t=TONE[inv.ton]||TONE.neutral, b=euro(inv.betrag_cent), link=inv.zahllink||"[Zahllink]", k=inv.kunde, a=CFG.owner||"Dein Name";
   if(nr===1) return {betreff:`Kurze Erinnerung zu Rechnung ${inv.rechnung_nr}`,body:`${t.gruss} ${k},\n\nvielleicht ist es untergegangen – Rechnung ${inv.rechnung_nr} über ${b} ist seit ${fmt(inv.faellig_am)} offen. Falls schon überwiesen: bitte ignorieren.\n\nDirekt zahlen: ${link}\n\n${t.close}\n${a}`};
   if(nr===2) return {betreff:`Zweite Erinnerung: Rechnung ${inv.rechnung_nr} noch offen`,body:`${t.gruss} ${k},\n\nzu Rechnung ${inv.rechnung_nr} über ${b} (fällig am ${fmt(inv.faellig_am)}) fehlt noch der Zahlungseingang. Bitte in den nächsten Tagen ausgleichen.\n\nZahlen: ${link}\n\n${t.close}\n${a}`};
-  if(nr===3) return {betreff:`Zahlungserinnerung / 1. Mahnung – ${inv.rechnung_nr}`,body:`${t.gruss} ${k},\n\ntrotz Erinnerungen ist Rechnung ${inv.rechnung_nr} über ${b} offen. Bitte bis spätestens ${fmt(addDays(inv.faellig_am,21))} begleichen.\n\nZahlung: ${link}\n\n${t.close}\n${a}`};
-  return {betreff:`Letzte Mahnung vor weiteren Schritten – ${inv.rechnung_nr}`,body:`Sehr geehrte Damen und Herren,\n\nRechnung ${inv.rechnung_nr} über ${b} ist trotz mehrfacher Aufforderung nicht ausgeglichen. Letzte Frist: ${fmt(addDays(inv.faellig_am,37))}. Danach behalten wir uns Verzugszinsen (§288 BGB) und Inkasso vor.\n\nBegleichen: ${link}\n\nMit freundlichen Grüßen\n${a}`};
+  if(nr===3) return {betreff:`Erinnerung: Rechnung ${inv.rechnung_nr} weiterhin offen`,body:`${t.gruss} ${k},\n\ntrotz meiner Erinnerungen ist Rechnung ${inv.rechnung_nr} über ${b} noch offen. Ich würde mich freuen, wenn du den Betrag in den nächsten Tagen begleichen könntest.\n\nFalls die Zahlung schon unterwegs ist, ignoriere diese Nachricht bitte.\n\nZahlung: ${link}\n\n${t.close}\n${a}`};
+  return {betreff:`Kurze Nachfrage zu Rechnung ${inv.rechnung_nr}`,body:`${t.gruss} ${k},\n\ndie Rechnung ${inv.rechnung_nr} über ${b} ist leider immer noch offen. Falls etwas unklar ist oder es ein Problem gibt, melde dich gern – wir finden bestimmt eine Lösung.\n\nAnsonsten freue ich mich über den Ausgleich: ${link}\n\n${t.close}\n${a}`};
 }
 
 // ---- Storage-Abstraktion (Demo=localStorage / Live=API) -----------------

@@ -9,7 +9,7 @@
  *
  * Cron (täglich): findet überfällige, offene Rechnungen, ermittelt die nächste
  * Eskalationsstufe und verschickt die passende deutsche E-Mail (Zahlungs-
- * erinnerung -> Mahnung). Bei status = 'bezahlt' stoppt die Kette automatisch.
+ * mehrere freundliche Erinnerungen). Bei status = 'bezahlt' stoppt die Kette automatisch.
  */
 
 const CORS = {
@@ -34,8 +34,8 @@ const TONE = {
 const STUFEN = [
   { nr: 1, label: "Zahlungserinnerung", nachTagen: 3 },
   { nr: 2, label: "2. Erinnerung", nachTagen: 7 },
-  { nr: 3, label: "1. Mahnung", nachTagen: 14 },
-  { nr: 4, label: "2. Mahnung", nachTagen: 30 },
+  { nr: 3, label: "3. Erinnerung", nachTagen: 14 },
+  { nr: 4, label: "Freundliche Nachfrage", nachTagen: 30 },
 ];
 
 const euro = (cent) =>
@@ -70,13 +70,13 @@ function buildMail(inv, stufeNr) {
       };
     case 3:
       return {
-        betreff: `Zahlungserinnerung / 1. Mahnung – Rechnung ${nr}`,
-        body: `${t.gruss} ${k},\n\ntrotz unserer Erinnerungen ist Rechnung ${nr} über ${b} weiterhin offen. Wir bitten um Begleichung bis spätestens ${fmt(addDays(inv.faellig_am, 21))}.\n\nSollten Sie bereits gezahlt haben, betrachten Sie dies als gegenstandslos.\n\nZahlung: ${link}\n\n${t.close}\n${a}`,
+        betreff: `Erinnerung: Rechnung ${nr} weiterhin offen`,
+        body: `${t.gruss} ${k},\n\ntrotz meiner Erinnerungen ist Rechnung ${nr} über ${b} noch offen. Ich würde mich freuen, wenn du den Betrag in den nächsten Tagen begleichen könntest.\n\nFalls die Zahlung schon unterwegs ist, ignoriere diese Nachricht bitte.\n\nZahlung: ${link}\n\n${t.close}\n${a}`,
       };
     default:
       return {
-        betreff: `Letzte Mahnung vor weiteren Schritten – Rechnung ${nr}`,
-        body: `Sehr geehrte Damen und Herren,\n\nRechnung ${nr} über ${b} ist trotz mehrfacher Aufforderung nicht ausgeglichen. Letzte Frist: ${fmt(addDays(inv.faellig_am, 37))}.\n\nDanach behalten wir uns Verzugszinsen (§288 BGB) sowie die Übergabe an ein Inkassobüro vor.\n\nBetrag begleichen: ${link}\n\nMit freundlichen Grüßen\n${a}`,
+        betreff: `Kurze Nachfrage zu Rechnung ${nr}`,
+        body: `${t.gruss} ${k},\n\ndie Rechnung ${nr} über ${b} ist leider immer noch offen. Falls etwas unklar ist oder es ein Problem gibt, melde dich gern – wir finden bestimmt eine Lösung.\n\nAnsonsten freue ich mich über den Ausgleich: ${link}\n\n${t.close}\n${a}`,
       };
   }
 }
