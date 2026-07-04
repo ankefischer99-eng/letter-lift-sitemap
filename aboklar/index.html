@@ -261,7 +261,7 @@
       const kat = s.kategorie ? `<span class="kat">${s.kategorie}</span>` : "";
       rows+=`<tr><td><b>${s.name}</b> ${kat}</td><td>${s.zyklus}</td><td>${due}</td><td class="amt">${euro(s.betrag)}</td><td class="amt">${euro(perMonth(s))}/M</td><td style="white-space:nowrap"><button class="btn sm ghost" onclick="edit(${s.id})">✎</button> <button class="btn sm ghost" onclick="del(${s.id})">✕</button></td></tr>`;
     }
-    document.getElementById('list').innerHTML=`<table><thead><tr><th>Abo</th><th>Zyklus</th><th>Nächste</th><th>Betrag</th><th>pro Monat</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
+    document.getElementById('list').innerHTML=`<div style="overflow-x:auto"><table style="min-width:520px"><thead><tr><th>Abo</th><th>Zyklus</th><th>Nächste</th><th>Betrag</th><th>pro Monat</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
 
     // Kategorie-Aufschlüsselung
     const byKat={};
