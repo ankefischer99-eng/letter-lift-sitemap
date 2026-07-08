@@ -1,0 +1,31 @@
+name: Jobs holen
+
+on:
+  schedule:
+    - cron: "30 4 * * *" # täglich ~06:30 Berlin (Sommerzeit)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  holen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Jobs aus allen Quellen holen und filtern
+        run: node scripts/fetch-jobs.mjs --profil profil.md --out "daten/jobs-$(date +%F).json"
+
+      - name: Ergebnis committen
+        run: |
+          git config user.name "jobagent"
+          git config user.email "actions@users.noreply.github.com"
+          git add daten/
+          git diff --cached --quiet && echo "Keine neuen Daten" && exit 0
+          git commit -m "Jobs vom $(date +%F)"
+          git push
