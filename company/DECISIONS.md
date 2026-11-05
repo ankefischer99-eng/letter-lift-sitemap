@@ -58,3 +58,15 @@ Auswahlkriterien: (1) belegte, bezahlte Nachfrage existiert schon, (2) Agenten l
 - **Rückfallebene — H1 Typ D** (Tabellen/Daten auf Marktplätzen).
 Abbruch: Wette A stirbt, wenn Scout A weder Rechtspflicht noch bezahlte Nachfrage im Kleinbetriebssegment belegt. Wette B stirbt, wenn Scout B keine 5 Nischen mit belegten Verkäufen und < 50 Wettbewerbern findet.
 Verworfen (vorerst): Affiliate (Reichweite nötig), Arbitrage/Reselling (Kapitalbindung), eigene SaaS (F1), Werbung (kein Konversionsbeleg).
+
+## D13 · 2026-11-05 · TikTok „Revelations" ist das einzige echte Reichweiten-Asset
+> 1.000 Follower mit KI-Themen = bestehendes, thematisch passendes Publikum. Substack (6–7) ist vorerst kein Kanal.
+Nutzung: (1) Vertriebskanal für eigene Produkte aus Wette A, (2) Affiliate für KI-/Tech-Tools als Zusatz.
+Ehrliche Erwartung Affiliate: bei ~1.000 Followern Einnahmen im einstelligen bis niedrigen zweistelligen €-Bereich pro Monat (ANNAHME, abhängig von Views und Klickrate; wird gemessen, nicht geglaubt). Pflicht: Werbekennzeichnung („Anzeige"/Affiliate-Hinweis).
+Entscheidung über Affiliate erst nach Analytics (T9): Land, Alter, Ø-Views.
+
+## D14 · 2026-11-05 · Wette A bekommt Produktform: „KI-Starterpaket für Unternehmen"
+Ankes Idee übernommen und geschärft. Bausteine: Präsentation (Live-Schulung), E-Learning-Modul, Wissenstest, Teilnahmenachweis, Muster-KI-Nutzungsrichtlinie, Datenschutz-Kapitel (DSGVO, keine Personendaten in öffentliche KI-Tools, Freigabeprozess).
+Agenten-Hebel: **Anpassung an die Richtlinien des Kunden** — Kunde liefert seine Regeln, Lieferagent baut das Paket darauf um. Das ist Arbeit, die Agenten schnell und gut können und Menschen teuer ist.
+Grenzen: keine Garantie „erfüllt Art. 4 AI Act" oder „rechtssicher" (keine Rechtsberatung, RDG); stattdessen „unterstützt beim Aufbau von KI-Kompetenz und dokumentiert die Schulung".
+Preise und Stufen erst nach Scout-A-Daten (Wettbewerbspreise). Kein Bau vor Auswertung.

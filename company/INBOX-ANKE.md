@@ -11,6 +11,7 @@ Format: `- [JJJJ-MM-TT] T<n>/Auftrag/Beleg: Inhalt`
 
 ## Verarbeitet
 
+- [2026-11-05] SaaS = LetterLift (eingestellt, Idee veraltet). Assets: Substack (ca. 6–7 Follower, Ankes Forschung), TikTok „Revelations" (> 1.000 Follower, Format „AI under the microscope"). Affiliate für Tech/KI denkbar. Produktidee Anke: E-Learning + Präsentation „KI im Unternehmen für Einsteiger" inkl. Datenschutz, anpassbar an Konzernrichtlinien der Kundenfirma. → D13, D14, T9. (Koordinator)
 - [2026-11-05] T2: Nebentätigkeit beim Arbeitgeber angemeldet, Gewerbe angemeldet, Kleinunternehmerin mit USt-ID. Rolle: Anke = Human Advisor + Gesicht der Firma; Claude = Chef. Freigabe: alles Legale, auch nicht-illegale Graubereiche nach Diskussion. Kein Bezug zum aktuellen Job nötig. Anke hat bereits ein komplettes SaaS gebaut. → D11, D12, T2 geschlossen. (Koordinator)
 - [2026-11-05] Scout-Report 1 verarbeitet → LEARNINGS (3), F3, D10, T8. (Koordinator)
 - [2026-11-05] T1: (a) ca. 10 h/Woche, sofern Kleinigkeiten. (b) Leitet 3 Abteilungen im Callcenter-Bereich der Energiewirtschaft: Training & Quality, Sales & Performance Management, Test- und Versuchslabor; verantwortlich für AI Enablement. (c) Englisch gut, Business-Englisch nicht. (d) angestellt. T6: Pro ca. 20 €/Monat (aus dem Gedächtnis, Beleg fehlt). → D8, D9, T1/T6 geschlossen, T2 verschärft, T7 neu. (eingetragen vom Koordinator)

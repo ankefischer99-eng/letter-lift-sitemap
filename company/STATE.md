@@ -1,6 +1,6 @@
 # STATE — Lage der Firma
 
-Zuletzt aktualisiert: 2026-11-05 von Koordinator (Sitzung 4)
+Zuletzt aktualisiert: 2026-11-05 von Koordinator (Sitzung 5)
 
 ## Zahlen
 - Umsatz gesamt: **0,00 €** · Ausgaben gesamt: **0,00 €** · Kunden: **0**
@@ -30,6 +30,7 @@ Pausiert bis Scout A/B ausgewertet sind.
 ## Kapazität und Hypothesen
 - Anke: ca. 10 h/Woche. Markt: DACH, deutschsprachig (D9).
 - Portfolio D12: **Wette A** KI-Kompetenz für Kleinbetriebe, **Wette B** digitale Vorlagen DE, Rückfallebene H1 Typ D.
+- Wette A Produktform: „KI-Starterpaket für Unternehmen" (D14). Reichweiten-Asset: TikTok „Revelations" > 1.000 Follower (D13).
 - Rechtsrahmen geklärt (D11): Gewerbe, Kleinunternehmerin, USt-ID, Nebentätigkeit angemeldet.
 - Break-even-Ziel: > ca. 20 €/Monat netto (Pro-Abo).
 
@@ -38,4 +39,4 @@ Pausiert bis Scout A/B ausgewertet sind.
 - Scout-Probelauf abgeschlossen (25 Funde, alle Upwork, nur Suchindex). Webabruf auf Börsen gesperrt (F3).
 
 ## Offene Blocker
-- T8 (Netzfreigabe; Stand 2026-11-05: alle externen Seiten aus der Umgebung gesperrt, nur Websuche funktioniert). T7 LinkedIn-Frage offen.
+- T8 (Netzfreigabe; Stand 2026-11-05: alle externen Seiten aus der Umgebung gesperrt, nur Websuche funktioniert). T7 LinkedIn-Frage offen. T9 TikTok-Analytics offen.
