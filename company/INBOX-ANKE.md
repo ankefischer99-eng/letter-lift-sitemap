@@ -11,6 +11,7 @@ Format: `- [JJJJ-MM-TT] T<n>/Auftrag/Beleg: Inhalt`
 
 ## Verarbeitet
 
+- [2026-11-05] Lieferung-Report Kit v1 + Vertrieb-Report (E4, obsolet) verarbeitet → D20, LEARNINGS, T14 aktiv, T15. (Koordinator)
 - [2026-11-05] Weitere Praxisinhalte von Anke: Skills erklären („Agent = Mitarbeiter, Skill = Handbuch"), was ist .md / wann / wie aufbauen, Agent vs. Chat, welches Modell wann, PowerPoint bauen, Forms bauen, Excel-Grundsätze, **Plausibilitätssheet** bei Excel-Auswertungen, Mermaid. → D19, zweite Nachricht an Lieferung. (Koordinator)
 - [2026-11-05] Qualitätsvorgabe Kit: muss Aha-Erlebnisse erzeugen. Bewährte Übung aus Ankes AI-Enablement-Praxis: gleicher Prompt einmal ohne, einmal mit Kontext → Unterschied selbst erleben. → D18, Nachricht an Lieferung. (Koordinator)
 - [2026-11-05] Ja: Konten auf Ankes Namen (Fiverr usw.), Zugriffe, Freigaben. TikTok heißt **„Rebelaicious"**, ohne Gesicht, Inhalte: KI-Forschung. Vorgabe: einmal erstellen, oft verkaufen; kombinieren; Painpoints mit einfachen Mitteln; skalierbar. → D17, E6, T12, T13. (Koordinator)

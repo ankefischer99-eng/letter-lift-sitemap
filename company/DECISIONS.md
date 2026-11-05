@@ -110,3 +110,12 @@ Ankes Praxisinhalte sind zu viel für ein Einsteigerkit und zu wertvoll zum Wegl
 - Später möglich: Bundle Stufe 1+2, Branchenvarianten, EN-Version, Update-Abo (KI-Inhalte veralten schnell; Pflege = Grund für wiederkehrenden Umsatz).
 Begründung: Kleines Produkt wird fertig und testet den Markt; Stufe 2 ist das Upsell an bestehende Käufer (billigster Kunde ist ein bestehender). Kein Bau von Stufe 2 vor E6-Signal.
 Regel: tool-neutral formulieren, „Stand: <Monat Jahr>" auf jedes Dokument, keine Preis-/Ranglisten von Modellen.
+
+## D20 · 2026-11-05 · Kit v1 technisch abgenommen; Preise; Vertrieb erst nach Ankes Abnahme
+- Technische Abnahme durch Koordinator (Stichprobe + Verbotsliste) bestanden. Fachliche Abnahme durch Anke (T14) ist das Qualitätstor.
+- **Preise (Hypothesen, nach 30 Tagen prüfen):** Selbstbedienung (Digistore24) **79 €** für eine Betriebslizenz (ganzes Team, ein Betrieb). Fiverr „angepasst an deine Firma" **199 €**.
+  Begründung: Kurse kosten 119–690 € pro Person (Scout A); wir verkaufen pro Betrieb und liefern Vorlagen zum Selbsteinsatz, also deutlich darunter, aber klar über Gratisvorlagen. 79 € liegt unter typischen Spontankauf-Hürden für Firmenausgaben (ANNAHME).
+- **Vertriebsagent startet erst nach T14**, damit Texte nicht zweimal geschrieben werden und das Pro-Kontingent geschont wird. Konten (T12/T13) laufen parallel.
+- Keine anwaltliche Prüfung vor Start (Budget); stattdessen minimale Werbeaussagen. Neu prüfen nach ersten Verkäufen.
+- Nutzungsbedingungen (Betriebslizenz, keine Weitergabe, Haftungsausschluss) als Text für die Produktseite → Vertrieb nach T14.
+- E4-Angebotskit (`opportunities/angebote-2026-11-05-ki-starter.md`) ist obsolet (D16), bleibt als Archiv.
