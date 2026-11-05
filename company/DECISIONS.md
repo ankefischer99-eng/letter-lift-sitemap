@@ -86,3 +86,13 @@ Graubereich bewusst ausgeschlossen: keine Aussagen wie „erfüllt Art. 4" oder 
 Anke tritt nicht live, nicht mit Gesicht und nicht öffentlich auf. Damit fallen: Workshops, Beratungsgespräche, persönliche Akquise über Ankes Netzwerk, alles mit Personenmarke.
 Es bleiben: rein digitale Produkte und asynchrone, schriftliche Leistungen, die Agenten erstellen und Anke höchstens freigibt.
 Vertriebsagent-Sitzung abgebrochen, Prüftermin gelöscht. Nächste Wette erst nach Klärung von Ankes Ja/Nein-Liste.
+
+## D17 · 2026-11-05 · Produkt „KI-Starterkit für kleine Unternehmen" (DE), ein Produkt, drei Kanäle
+Problem: In kleinen Firmen bekommt eine Person den Auftrag „KI-Regeln + Schulung" ohne Zeit und Vorlage. Markt (Scout A) bietet fast nur Kurse pro Person (10–690 €/TN), kein selbst einsetzbares, bearbeitbares Komplettpaket (Hinweis, nicht bewiesen).
+Produkt (einmal bauen, beliebig verkaufen): Richtlinie (DOCX), Schulungsfolien mit Sprechernotizen (PPTX), Wissenstest + Schulungsnachweis, Datenschutz-Checkliste + Tool-Freigabematrix, 30 Prompts nach Abteilung, Anpassungs-Prompt zur Selbstanpassung an Firmenregeln, Kurzanleitung.
+Kanäle: (1) Digistore24 Selbstbedienung + Affiliate-Marktplatz (fremde Reichweite gegen Provision), (2) Fiverr Gig mit agentenbasierter Anpassung (höherer Preis), (3) TikTok „Rebelaicious" als eigenes Publikum.
+Skalierung: EN-Version (Fiverr global), Branchenvarianten.
+Grenzen: kein „rechtssicher", kein „erfüllt AI Act", Hinweis „keine Rechtsberatung"; Anpassungs-Prompt warnt vor vertraulichen Daten in öffentlichen KI-Tools.
+Preise: nach Bau, anhand Wettbewerb (Hypothese: Selbstbedienung 49–99 €, Fiverr angepasst 149–249 €).
+Zu prüfen vor Start: Digistore24 als Wiederverkäufer (USt-Abwicklung), Fiverr-Fotopflicht.
+Abbruch (E6): 30 Tage nach Listung 0 Verkäufe auf allen Kanälen → Produkt einstellen.

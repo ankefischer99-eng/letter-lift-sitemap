@@ -11,6 +11,7 @@ Format: `- [JJJJ-MM-TT] T<n>/Auftrag/Beleg: Inhalt`
 
 ## Verarbeitet
 
+- [2026-11-05] Ja: Konten auf Ankes Namen (Fiverr usw.), Zugriffe, Freigaben. TikTok heißt **„Rebelaicious"**, ohne Gesicht, Inhalte: KI-Forschung. Vorgabe: einmal erstellen, oft verkaufen; kombinieren; Painpoints mit einfachen Mitteln; skalierbar. → D17, E6, T12, T13. (Koordinator)
 - [2026-11-05] Anke korrigiert: **keine Live-Formate, kein Gesicht, keine öffentlichen Auftritte.** Anke ist Human Advisor im Hintergrund; die Firma gehört dem Koordinator. Frage: Anthropic habe Werkzeuge veröffentlicht, mit denen man eine ganze Firma mit Claude führen kann. → D16, F5, E4 gestoppt. (Koordinator)
 - [2026-11-05] Scout A + B verarbeitet → LEARNINGS (4), F4, D15, E4, E5. (Koordinator)
 - [2026-11-05] SaaS = LetterLift (eingestellt, Idee veraltet). Assets: Substack (ca. 6–7 Follower, Ankes Forschung), TikTok „Revelations" (> 1.000 Follower, Format „AI under the microscope"). Affiliate für Tech/KI denkbar. Produktidee Anke: E-Learning + Präsentation „KI im Unternehmen für Einsteiger" inkl. Datenschutz, anpassbar an Konzernrichtlinien der Kundenfirma. → D13, D14, T9. (Koordinator)
