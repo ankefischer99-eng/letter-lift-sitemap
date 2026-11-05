@@ -81,3 +81,8 @@ Begründung: F4. Der günstigste Weg zu einem Nachfragebeleg ist jetzt ein echte
 - **Recherche pausiert** bis T8.
 Graubereich bewusst ausgeschlossen: keine Aussagen wie „erfüllt Art. 4" oder „rechtssicher" (RDG, irreführende Werbung).
 Überprüfen: E4-Abbruchkriterium.
+
+## D16 · 2026-11-05 · E4 gestoppt; neue harte Randbedingung: Geschäft muss ohne Ankes Auftritt funktionieren
+Anke tritt nicht live, nicht mit Gesicht und nicht öffentlich auf. Damit fallen: Workshops, Beratungsgespräche, persönliche Akquise über Ankes Netzwerk, alles mit Personenmarke.
+Es bleiben: rein digitale Produkte und asynchrone, schriftliche Leistungen, die Agenten erstellen und Anke höchstens freigibt.
+Vertriebsagent-Sitzung abgebrochen, Prüftermin gelöscht. Nächste Wette erst nach Klärung von Ankes Ja/Nein-Liste.

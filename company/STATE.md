@@ -1,6 +1,6 @@
 # STATE — Lage der Firma
 
-Zuletzt aktualisiert: 2026-11-05 von Koordinator (Sitzung 6)
+Zuletzt aktualisiert: 2026-11-05 von Koordinator (Sitzung 7)
 
 ## Zahlen
 - Umsatz gesamt: **0,00 €** · Ausgaben gesamt: **0,00 €** · Kunden: **0**
@@ -13,17 +13,8 @@ Agenten produzieren, Anke verkauft und gibt frei. Diese Hypothese darf vom Scout
 
 ## Aufträge an die Agenten (gültig bis zur nächsten Koordinatorsitzung)
 
-### Vertrieb — Angebotskit für E4 „KI-Starter für Teams" (D15) → Datei `opportunities/angebote-2026-11-05-ki-starter.md`
-Zielgruppe: Teams/Kleinbetriebe 3–20 Personen in DACH, die KI (ChatGPT, Copilot, Claude o. Ä.) nutzen oder einführen wollen.
-Leistung: 90 Min Live-Online-Workshop (bis 10 Personen) + KI-Nutzungsrichtlinie, angepasst an die Regeln/Vorgaben des Kunden + Teilnahmedokumentation. Preis 390 € pauschal (Kleinunternehmerin gem. § 19 UStG, keine USt). Lieferung des Materials 5 Werktage nach Zusage.
-Inhalt des Workshops (grob): Was KI kann und nicht kann; sichere Nutzung; Datenschutz/DSGVO (keine personenbezogenen oder vertraulichen Daten in öffentliche Tools); Halluzinationen erkennen; Freigabe- und Kennzeichnungsregeln; Praxisübungen am eigenen Arbeitsalltag.
-Liefere:
-1. Einseiter (Problem → Leistung → Ablauf → Preis → Über Anke → Kontakt), deutsch, nüchtern, ohne Superlative.
-2. 3 Nachrichtenvorlagen an **persönliche Kontakte** (WhatsApp/Signal; LinkedIn-Direktnachricht an bestehende Kontakte; E-Mail an Bekannte), je max. 80 Wörter, persönlich anpassbar.
-3. 1 LinkedIn-Post (Ankes Stimme, Erfahrungswert statt Werbesprech).
-4. 1 TikTok-Skript ≤ 45 s im Stil „AI under the microscope", mit Werbekennzeichnung.
-5. FAQ (8 Fragen inkl. „Ist das ein Pflichtnachweis nach AI Act?" → ehrliche Antwort).
-Verboten: „rechtssicher", „erfüllt Art. 4", „zertifiziert", erfundene Referenzen/Kundenzahlen, Dringlichkeitstricks. „Über Anke" nur mit Fakten aus INBOX-ANKE.md.
+### Vertrieb
+Pausiert (D16). Kein Angebot vor Ankes Ja/Nein-Liste.
 
 ### Scout
 Pausiert bis T8 (D15).
@@ -34,7 +25,7 @@ Inaktiv bis Zusage in E4.
 ## Kapazität und Hypothesen
 - Anke: ca. 10 h/Woche. Markt: DACH, deutschsprachig (D9).
 - Portfolio D12: **Wette A** KI-Kompetenz für Kleinbetriebe, **Wette B** digitale Vorlagen DE, Rückfallebene H1 Typ D.
-- **Aktuell: Verkaufstest E4 (D15).** Wette B und Recherche pausiert.
+- **Aktuell: E4 gestoppt (D16). Randbedingung: kein Auftritt von Anke.** Nächster Schritt: Ankes Ja/Nein-Liste, dann neue Wette.
 - Wette A Produktform: „KI-Starterpaket für Unternehmen" (D14). Reichweiten-Asset: TikTok „Revelations" > 1.000 Follower (D13).
 - Rechtsrahmen geklärt (D11): Gewerbe, Kleinunternehmerin, USt-ID, Nebentätigkeit angemeldet.
 - Break-even-Ziel: > ca. 20 €/Monat netto (Pro-Abo).

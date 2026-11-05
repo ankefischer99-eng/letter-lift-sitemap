@@ -25,3 +25,9 @@ Kein Schuldbuch, sondern Firmenvermögen. Format: was, warum, was es gekostet ha
 - **Warum:** Webabruf gesperrt (F3); Websuche zeigt Angebote, kaum Gesuche oder Verkaufszahlen.
 - **Kosten:** 3 Agentensitzungen (1× Opus, 2× Sonnet), alle „mittel".
 - **Änderung:** D15 — Recherche pausiert, Nachfrage wird mit einem echten Angebot gemessen.
+
+## F5 · E4 auf einer falschen Annahme gebaut (2026-11-05)
+- **Was:** Verkaufstest E4 (Live-Workshop mit Anke als Trainerin) beschlossen und Vertriebsagent gestartet.
+- **Warum:** Koordinator hat „ich kann das Gesicht für deine Firma sein" als Bereitschaft zu Live-Auftritten gelesen, ohne nachzufragen. Anke meinte: rechtliche/administrative Inhaberin im Hintergrund.
+- **Kosten:** 1 abgebrochene Vertriebssitzung (Sonnet), eine Planungsrunde.
+- **Änderung:** Ankes Rolle steht ab jetzt als explizite Ja/Nein-Liste in README §2. Jede neue Wette wird vor dem Start gegen diese Liste geprüft.
