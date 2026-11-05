@@ -102,3 +102,11 @@ Quelle: Ankes Praxiserfahrung (eigenes Know-how, kein Material des Arbeitgebers)
 Pflicht: Aha-Übung „gleicher Prompt ohne/mit Kontext" + 2–3 weitere Aha-Übungen + Arbeitsblatt; Prompt-Bibliothek nutzt sichtbar den Kontext-Baukasten (Rolle, Ziel, Zielgruppe, Ton, Beispiel, Format).
 Begründung: Gegen kostenlose Vorlagen und Kurse gewinnt das Kit nur, wenn es nachweislich besser wirkt. Ein Aha-Erlebnis ist zugleich das beste Verkaufsargument (Produktseite, TikTok).
 Qualitätstor: Anke prüft v1 vor Veröffentlichung (Freigabe).
+
+## D19 · 2026-11-05 · Produktleiter statt aufgeblähtes Kit
+Ankes Praxisinhalte sind zu viel für ein Einsteigerkit und zu wertvoll zum Weglassen. Entscheidung:
+- **Stufe 1 — KI-Starterkit (v1, im Bau):** Regeln, Schulung, Aha-Übungen + kurzes Kapitel „Grundbegriffe in einfacher Sprache" (Chat vs. Agent, Skill = Handbuch, .md, Modellwahl, Mermaid) + Plausibilitätscheck-Prompts für Excel.
+- **Stufe 2 — KI-Praxispaket (nach Verkaufssignal für Stufe 1):** Schritt-für-Schritt-Workflows für Präsentationen, Formulare, Excel-Auswertungen mit Plausibilitätssheet, Markdown-Wissensbasis, eigene Skills/Handbücher bauen, Diagramme mit Mermaid.
+- Später möglich: Bundle Stufe 1+2, Branchenvarianten, EN-Version, Update-Abo (KI-Inhalte veralten schnell; Pflege = Grund für wiederkehrenden Umsatz).
+Begründung: Kleines Produkt wird fertig und testet den Markt; Stufe 2 ist das Upsell an bestehende Käufer (billigster Kunde ist ein bestehender). Kein Bau von Stufe 2 vor E6-Signal.
+Regel: tool-neutral formulieren, „Stand: <Monat Jahr>" auf jedes Dokument, keine Preis-/Ranglisten von Modellen.

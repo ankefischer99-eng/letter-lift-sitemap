@@ -30,14 +30,15 @@ Liefere als echte Dateien (python-docx/python-pptx/openpyxl, bei Bedarf installi
 6. `Anpassungs-Prompt.docx` (Schritt-für-Schritt: eigene Regeln einfügen → Richtlinie/Folien anpassen lassen; deutliche Warnung: keine vertraulichen oder personenbezogenen Daten in öffentliche KI-Tools, ggf. vorher anonymisieren).
 7. `Kurzanleitung-In-einer-Woche-eingefuehrt.docx` (1–2 Seiten).
 8. `Aha-Uebungen-Arbeitsblatt.docx` (D18: Kernübung „gleicher Prompt ohne/mit Kontext" + 2–3 weitere Erlebnis-Übungen).
-9. `QA.md` (Prüfprotokoll: Dateien geöffnet/validiert, Rechtschreibung, Verbotsliste geprüft, bekannte Grenzen).
+9. `Grundbegriffe-in-einfacher-Sprache.docx` (D19) + Plausibilitätscheck-Prompts in der Prompt-Bibliothek.
+10. `QA.md` (Prüfprotokoll: Dateien geöffnet/validiert, Rechtschreibung, Verbotsliste geprüft, bekannte Grenzen).
 Jedes Dokument enthält den Hinweis: „Diese Vorlage ersetzt keine Rechtsberatung." Verboten: „rechtssicher", „erfüllt den AI Act", „zertifiziert". Rechtliche Aussagen allgemein halten; keine Paragraphen-Zitate ohne Quelle.
 
 
 ## Kapazität und Hypothesen
 - Anke: ca. 10 h/Woche. Markt: DACH, deutschsprachig (D9).
 - Portfolio D12: **Wette A** KI-Kompetenz für Kleinbetriebe, **Wette B** digitale Vorlagen DE, Rückfallebene H1 Typ D.
-- **Aktuell: E6 — KI-Starterkit bauen (D17).** Randbedingung D16: kein Auftritt von Anke. Kanäle: Digistore24, Fiverr, TikTok „Rebelaicious".
+- **Aktuell: E6 — KI-Starterkit bauen (D17, D18, D19). Stufe 2 „Praxispaket" erst nach Verkaufssignal.** Randbedingung D16: kein Auftritt von Anke. Kanäle: Digistore24, Fiverr, TikTok „Rebelaicious".
 - Wette A Produktform: „KI-Starterpaket für Unternehmen" (D14). Reichweiten-Asset: TikTok „Revelations" > 1.000 Follower (D13).
 - Rechtsrahmen geklärt (D11): Gewerbe, Kleinunternehmerin, USt-ID, Nebentätigkeit angemeldet.
 - Break-even-Ziel: > ca. 20 €/Monat netto (Pro-Abo).
