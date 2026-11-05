@@ -18,3 +18,15 @@ Verworfen: separater Finanz-, Marketing-, Revisionsagent (vorerst im Koordinator
 Begründung: Käufer posten dort Kaufabsicht öffentlich → keine eigene Reichweite nötig. Rechenkosten pro Auftrag ≈ 1–2 $ bei Preisen von 50–150 €.
 Risiko: neue Profile ohne Bewertungen, Plattformgebühren, Ankes Zeit als Engpass.
 Überprüfen: nach Scout-Lauf 1 (Daten statt Bauchgefühl).
+
+## D5 · 2026-11-05 · Vorerst kein API-Guthaben
+Begründung: Pro ist bereits bezahlt; API-Ausgaben vor dem ersten Umsatz wären Geld für Agenten, die noch nichts verdient haben. Eigene Regel: max. 20 € Vorschuss.
+Risiko: Pro-Limits (5-Stunden-Fenster) teilen sich Agenten und Ankes eigene Nutzung → Agententakt niedrig halten.
+Überprüfen: sobald Limits den Betrieb zweimal blockieren ODER der erste Umsatz eingeht. Dann API mit hartem Ausgabelimit (Start 10 €).
+
+## D6 · 2026-11-05 · Pro-Abo ist Fixkosten der Firma
+Begründung: Strenge Rechnung statt Schönrechnen. Die Firma ist erst profitabel, wenn sie ihre eigene Laufzeit bezahlt.
+Verworfen: Anteilige Zurechnung (würde den Break-even künstlich senken).
+
+## D7 · 2026-11-05 · Agenten-Sessions laufen künftig auf Sonnet, nicht Opus
+Begründung: Recherche/Entwürfe brauchen kein Spitzenmodell; Opus verbraucht das Pro-Kontingent schneller. Koordinator darf für Entscheidungen Opus nutzen.

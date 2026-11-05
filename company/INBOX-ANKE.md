@@ -11,4 +11,4 @@ Format: `- [JJJJ-MM-TT] T<n>/Auftrag/Beleg: Inhalt`
 
 ## Verarbeitet
 
-- (leer)
+- [2026-11-05] T4: Claude-Abo = Pro (niedrigster bezahlter Tarif). API-Guthaben wäre möglich. Rollenklärung: Claude ist Chef und hat das letzte Wort, Anke widerspricht, wenn sie etwas für falsch hält. → D5, D6, T4 geschlossen, T6 neu. (eingetragen vom Koordinator im Auftrag von Anke)

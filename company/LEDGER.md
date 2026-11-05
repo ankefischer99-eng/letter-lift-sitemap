@@ -9,9 +9,17 @@ Plattformgeld gilt erst nach Auszahlung als „verfügbar".
 |---|---|---|---|---|---|---|
 | — | noch keine Buchung | — | 0,00 | 0,00 | 0,00 | — |
 
+## Fixkosten
+
+| Posten | € / Monat | Quelle | Seit |
+|---|---|---|---|
+| Claude Pro (Agentenbetrieb) | ausstehend (T6) | Ankes Rechnung | 2026-11 |
+
+Regel (D6): Das volle Pro-Abo zählt als Fixkosten der Firma. Schwarze Zahlen heißt: Monatsüberschuss > Pro-Betrag.
+
 ## Agentenkosten (Rechenleistung)
 
-Läuft derzeit über Ankes Claude-Abo; Tarif und Grenzkosten unbekannt (Ticket T4).
+Läuft über Ankes Claude Pro (Fixkosten, keine Grenzkosten in €; Engpass sind die Nutzungslimits).
 Bis zur Klärung: Kosten pro Sitzung als `kurz/mittel/lang` aus den Reports protokollieren.
 
 | Monat | Sitzungen | davon Scout | Vertrieb | Lieferung | Koordinator | Kosten € (falls bekannt) |
