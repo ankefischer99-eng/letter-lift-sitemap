@@ -29,7 +29,8 @@ Liefere als echte Dateien (python-docx/python-pptx/openpyxl, bei Bedarf installi
 5. `Prompt-Bibliothek.docx` (30 Prompts: Verwaltung, Vertrieb, Kundenservice, Marketing, Personal; je Zweck + Prompt + Hinweis).
 6. `Anpassungs-Prompt.docx` (Schritt-für-Schritt: eigene Regeln einfügen → Richtlinie/Folien anpassen lassen; deutliche Warnung: keine vertraulichen oder personenbezogenen Daten in öffentliche KI-Tools, ggf. vorher anonymisieren).
 7. `Kurzanleitung-In-einer-Woche-eingefuehrt.docx` (1–2 Seiten).
-8. `QA.md` (Prüfprotokoll: Dateien geöffnet/validiert, Rechtschreibung, Verbotsliste geprüft, bekannte Grenzen).
+8. `Aha-Uebungen-Arbeitsblatt.docx` (D18: Kernübung „gleicher Prompt ohne/mit Kontext" + 2–3 weitere Erlebnis-Übungen).
+9. `QA.md` (Prüfprotokoll: Dateien geöffnet/validiert, Rechtschreibung, Verbotsliste geprüft, bekannte Grenzen).
 Jedes Dokument enthält den Hinweis: „Diese Vorlage ersetzt keine Rechtsberatung." Verboten: „rechtssicher", „erfüllt den AI Act", „zertifiziert". Rechtliche Aussagen allgemein halten; keine Paragraphen-Zitate ohne Quelle.
 
 

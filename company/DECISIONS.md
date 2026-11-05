@@ -96,3 +96,9 @@ Grenzen: kein „rechtssicher", kein „erfüllt AI Act", Hinweis „keine Recht
 Preise: nach Bau, anhand Wettbewerb (Hypothese: Selbstbedienung 49–99 €, Fiverr angepasst 149–249 €).
 Zu prüfen vor Start: Digistore24 als Wiederverkäufer (USt-Abwicklung), Fiverr-Fotopflicht.
 Abbruch (E6): 30 Tage nach Listung 0 Verkäufe auf allen Kanälen → Produkt einstellen.
+
+## D18 · 2026-11-05 · Didaktisches Kernprinzip des Kits: Erleben vor Erklären
+Quelle: Ankes Praxiserfahrung (eigenes Know-how, kein Material des Arbeitgebers).
+Pflicht: Aha-Übung „gleicher Prompt ohne/mit Kontext" + 2–3 weitere Aha-Übungen + Arbeitsblatt; Prompt-Bibliothek nutzt sichtbar den Kontext-Baukasten (Rolle, Ziel, Zielgruppe, Ton, Beispiel, Format).
+Begründung: Gegen kostenlose Vorlagen und Kurse gewinnt das Kit nur, wenn es nachweislich besser wirkt. Ein Aha-Erlebnis ist zugleich das beste Verkaufsargument (Produktseite, TikTok).
+Qualitätstor: Anke prüft v1 vor Veröffentlichung (Freigabe).
