@@ -28,6 +28,8 @@ DOCX = {
     "Prompt-Bibliothek.docx": (None, None),
     "Anpassungs-Prompt.docx": (None, None),
     "Kurzanleitung-In-einer-Woche-eingefuehrt.docx": (1, 2),
+    "Aha-Uebungen-Arbeitsblatt.docx": (None, None),
+    "Grundbegriffe-in-einfacher-Sprache.docx": (2, 3),
 }
 PPTX = "KI-Schulung.pptx"
 XLSX = "Datenschutz-Checkliste-und-Tool-Freigabe.xlsx"
@@ -111,10 +113,14 @@ def main():
     texts[PPTX] = pptx_text(path)
     n = len(prs.slides)
     notes = [len(s.notes_slide.notes_text_frame.text.strip()) if s.has_notes_slide else 0 for s in prs.slides]
-    ex = [i + 1 for i, s in enumerate(prs.slides) if "Praxisübung" in (s.shapes.title.text if s.shapes.title else "")]
+    ex = [i + 1 for i, s in enumerate(prs.slides) if (s.shapes.title.text if s.shapes.title else "").startswith("Praxisübung")]
     res.append((PPTX, "Öffnen mit python-pptx; Folienzahl", f"{n} Folien (Soll 18–24)", 18 <= n <= 24))
     res.append((PPTX, "Sprechernotiz auf jeder Folie", f"{sum(1 for x in notes if x > 40)}/{n} Folien mit Notiz > 40 Zeichen; kürzeste {min(notes)} Zeichen", all(x > 40 for x in notes)))
     res.append((PPTX, "Zwei Praxisübungen", f"Folien {ex}", len(ex) == 2))
+    aha = [i + 1 for i, s in enumerate(prs.slides) if (s.shapes.title.text if s.shapes.title else "").startswith("Aha-Übung 1") or "Aha-Übungen" in (s.shapes.title.text if s.shapes.title else "")]
+    res.append((PPTX, "Aha-Übung 1 (2 Folien: Anleitung + Auswertung) und Folie „Weitere Aha-Übungen“", f"Folien {aha}", len(aha) == 3))
+    gb = [i + 1 for i, s in enumerate(prs.slides) if (s.shapes.title.text if s.shapes.title else "").startswith("Grundbegriffe")]
+    res.append((PPTX, "Kapitel Grundbegriffe (Soll 3–5 Folien)", f"Folien {gb}", 3 <= len(gb) <= 5))
     res.append((PPTX, "Hinweis „ersetzt keine Rechtsberatung“", f"auf {sum(1 for s in prs.slides if any(sh.has_text_frame and DISCLAIMER in sh.text_frame.text for sh in s.shapes))}/{n} Folien (Fußzeile)", DISCLAIMER in texts[PPTX]))
     soffice_convert(path, "pdf", tmp)
     pp = len(PdfReader(os.path.join(tmp, PPTX.replace(".pptx", ".pdf"))).pages)
@@ -206,15 +212,22 @@ def main():
     import b5_prompts
     for cat, lst in b5_prompts.CATS:
         cats[cat] = len(lst)
-    res.append(("Prompt-Bibliothek.docx", "Anzahl Prompts (Tabellen mit Nr.)", f"{len(ptables)} (Soll 30); je Bereich {cats}", len(ptables) == 30 and all(v == 6 for v in cats.values())))
+    res.append(("Prompt-Bibliothek.docx", "Anzahl Prompts (Tabellen mit Nr.)", f"{len(ptables)} (Soll 34 = 5 Bereiche × 6 + 4 Excel); je Bereich {cats}", len(ptables) == 34))
     allfilled = all(len(t.rows) == 4 and all(t.rows[i].cells[1].text.strip() for i in (1, 2, 3)) for t in ptables)
     res.append(("Prompt-Bibliothek.docx", "Jeder Prompt hat Zweck, Prompt-Text und Hinweis", "ja" if allfilled else "NEIN", allfilled))
+    bk_ok = all(all(f"{l}:" in t.rows[2].cells[1].text for l in b5_prompts.LABELS) for t in ptables)
+    res.append(("Prompt-Bibliothek.docx", "Kontext-Baukasten sichtbar: jeder Prompt hat ROLLE/ZIEL/ZIELGRUPPE/TON/BEISPIEL/FORMAT/GRENZEN/MATERIAL", "ja" if bk_ok else "NEIN", bk_ok))
+    xl = [t for t in ptables if "Plausibilität" in t.rows[2].cells[1].text]
+    res.append(("Prompt-Bibliothek.docx", "Excel-/Auswertungs-Prompts mit Plausibilitätscheck (Soll ≥ 3)", f"{len(xl)}", len(xl) >= 3))
     # Test
     qs = b3_test._rebalance()
     pos = [("ABCD"[c]) for (_, _, c, _) in qs]
     dist = {k: pos.count(k) for k in "ABCD"}
     res.append(("Wissenstest-und-Nachweis.docx", "12 Fragen mit je 4 Antworten und Lösung", f"{len(qs)} Fragen; Verteilung richtiger Antworten {dist}", len(qs) == 12 and max(dist.values()) <= 4))
 
+    # --- Stand-Datum auf jedem Dokument
+    for name, t in texts.items():
+        res.append((name, "„Stand: November 2026“ vorhanden", "ja" if "Stand: November 2026" in t else "FEHLT", "Stand: November 2026" in t))
     # --- Verbotsliste
     for label, pat in FORBIDDEN.items():
         hits = []
@@ -222,7 +235,7 @@ def main():
             for m in re.finditer(pat, t, flags=re.I):
                 a = max(0, m.start() - 30)
                 hits.append(f"{name}: …{t[a:m.end() + 30]!r}")
-        res.append(("alle 7 Dateien", f"Verbotsliste: {label}", "0 Treffer" if not hits else "; ".join(hits[:3]), not hits))
+        res.append(("alle 9 Dateien", f"Verbotsliste: {label}", "0 Treffer" if not hits else "; ".join(hits[:3]), not hits))
 
     # --- Rechtschreibung (Wörterbuch-Heuristik)
     spell_info = "nicht ausgeführt (pyspellchecker fehlt)"
@@ -282,10 +295,12 @@ def write_qa(res, spell_info, unknown_all):
     A("| 2 | `KI-Schulung.pptx`: 18–24 Folien, Sprechernotizen auf jeder Folie, schlichtes Layout, 2 Praxisübungen | erfüllt (Zahlen oben); Layout nur per LibreOffice-Rendering gesichtet, nicht in PowerPoint |")
     A("| 3 | `Wissenstest-und-Nachweis.docx`: 12 Fragen mit Lösungsblatt + Teilnahmeliste/Nachweisvorlage | erfüllt |")
     A("| 4 | `Datenschutz-Checkliste-und-Tool-Freigabe.xlsx`: Checkliste + Bewertungsmatrix | erfüllt (20 Prüfpunkte, 7 Kriterien + 3 K.-o.-Fragen, Register, Datenampel) |")
-    A("| 5 | `Prompt-Bibliothek.docx`: 30 Prompts, 5 Bereiche, je Zweck + Prompt + Hinweis | erfüllt |")
+    A("| 5 | `Prompt-Bibliothek.docx`: Prompts nach Abteilung, je Zweck + Prompt + Hinweis | erfüllt: 34 Prompts (30 in den 5 Pflichtbereichen + 4 Excel-/Auswertungs-Prompts, D19); alle im Kontext-Baukasten (D18) |")
     A("| 6 | `Anpassungs-Prompt.docx`: Schritt für Schritt, deutliche Warnung vor vertraulichen/personenbezogenen Daten in öffentlichen KI-Tools, Anonymisierung | erfüllt (Warnkasten direkt am Anfang, wiederholt in Schritt 2) |")
     A("| 7 | `Kurzanleitung-In-einer-Woche-eingefuehrt.docx`: 1–2 Seiten | erfüllt (Zahl oben) |")
-    A("| 8 | `QA.md` | diese Datei |")
+    A("| 8 | `Aha-Uebungen-Arbeitsblatt.docx` (D18): Kernübung „gleicher Prompt ohne/mit Kontext“ + 2–3 weitere Aha-Übungen, Notizfelder, Reflexionsfrage je Übung | erfüllt: 4 Übungen (1 Pflicht + 3 weitere), siehe Abschnitt 3a |")
+    A("| 9 | `Grundbegriffe-in-einfacher-Sprache.docx` (D19): Chat vs. Agent, Skill, Markdown/.md, Modellwahl, Mermaid; 2–3 Seiten | erfüllt (Seitenzahl oben), tool-neutral, ohne Herstellernamen/Preise/Ranglisten |")
+    A("| 10 | `QA.md` | diese Datei |")
     A("| – | Hinweis „Diese Vorlage ersetzt keine Rechtsberatung.“ in jedem Dokument | erfüllt (Fußzeile/Fußzeilen-Textfeld/Tabellenblatt, zusätzlich Hinweis-Kasten am Anfang) |")
     A("| – | Verbotsliste (3 Begriffe) + keine Paragraphen-/Artikelzitate | 0 Treffer (Skript, siehe oben); inhaltlich bleiben Rechtsaussagen allgemein („Datenschutzrecht“, „gesetzliche Meldefristen“, „Transparenzvorgaben“) |")
     A("| – | Keine erfundenen Statistiken | Das Kit enthält keine Marktzahlen/Statistiken. Prozentangaben im Kit sind nur Bewertungsschwellen (75 %/50 %), Kürzungsziele in Prompts und die Bestehensgrenze (9 von 12), jeweils als Vorschlag/Platzhalter |")
@@ -298,14 +313,24 @@ def write_qa(res, spell_info, unknown_all):
     A("- **Konsistenz:** Datenampel (grün/gelb/rot) und Freigabestufen 1/2/3 sind in Richtlinie, Folien, Test, Excel und Prompt-Bibliothek gleich definiert; Prüfverfahren „5-Punkte-Prüfung“ überall identisch.")
     A("- **Praxisübung 2 (Folie 17):** Der Übungstext ist frei erfunden und enthält absichtlich Fehler; Aktenzeichen ist als „[erfunden]“ gekennzeichnet.")
     A("")
+    A("## 3a. Umsetzung der Aha-Übungen (D18) und Ergänzungen (D19)")
+    A("")
+    A("- **Prinzip „Erleben vor Erklären“:** In `KI-Schulung.pptx` folgen Aha-Übung 1 (Folie 3 Anleitung, Folie 4 Auswertung/Vergleichsfragen) direkt auf die Zielfolie, **vor** jeder Erklärung. Erst danach kommt der Kontext-Baukasten (Folie 14), der erklärt, was die Gruppe selbst erlebt hat. Die Sprechernotizen verbieten der Schulungsleitung ausdrücklich, vorher zu erklären.")
+    A("- **Aha-Übung 1 (Pflicht):** gleicher Auftrag zweimal an das KI-Tool: erst nackt („Schreib eine Antwort auf diese Kundenbeschwerde“), dann mit Baukasten (Rolle, Ziel, Zielgruppe, Ton, Beispiel, Format, Grenzen). Erfundene Beschwerde im Arbeitsblatt, Vergleichstabelle mit 5 Kriterien, 3 Vergleichsfragen, Reflexionsfrage, Notizfelder.")
+    A("- **Weitere Übungen (Arbeitsblatt, 1 Folie als Überblick):** (2) Halluzination provozieren und entlarven: nach Fachbüchern zu einem erfundenen Nischenthema fragen, jedes Buch selbst nachsuchen, dann „Bist du sicher?“ und eine Variante mit Grenzen; (3) schlechten Prompt in vier Runden verbessern; (4) Aufgabe mit und ohne Beispiel. Alle ohne Fachwissen, mit erfundenen oder öffentlichen Beispielen, ohne vertrauliche Daten.")
+    A("- **Prompt-Bibliothek:** jeder der 34 Prompts besteht aus den Feldern ROLLE/ZIEL/ZIELGRUPPE/TON/BEISPIEL/FORMAT/GRENZEN/MATERIAL (automatisch geprüft, siehe Tabelle); die Baukasten-Erklärung steht am Anfang.")
+    A("- **Plausibilitätscheck (D19):** 4 Excel-/Auswertungs-Prompts fordern alle ein Blatt „Plausibilität“ (Gegenrechnen von Summen, Stichproben, Ausreißern); ein Satz erklärt warum („KI kann sich verrechnen, der Plausibilitätscheck macht Fehler sichtbar“).")
+    A("- **Änderungen an v1 durch die Ergänzungen:** Schulungsdauer von 75 auf ca. 90 Minuten (bis 120 mit allen Aha-Übungen) – Schätzung, nicht gemessen. Um bei 24 Folien zu bleiben, wurden vier Foliengruppen zusammengelegt (KI-Grundlagen, Richtlinie/erlaubt/verboten, personenbezogene/vertrauliche Daten, Kennzeichnung/Melden); die Inhalte stehen weiter in Folien und Sprechernotizen, die Folien sind dadurch dichter. Grundbegriffe: Folien 20–22 plus eigenes Dokument. „Nächster Schritt“ (ohne Werbung) in der Kurzanleitung; Aufbauthemen (Präsentations-, Formular-, Excel-Workflows, eigene Skills) sind nicht enthalten.")
+    A("- **Aha-Wirkung nicht getestet:** Ob die Übungen bei echten Teilnehmenden den erhofften Aha-Effekt auslösen, ist unbelegt; die Ergebnisse hängen vom Tool ab (Übung 2 besonders: Tools mit Websuche können korrekte Quellen liefern, das Arbeitsblatt weist darauf hin).")
+    A("")
     A("## 4. Bekannte Grenzen (ehrlich)")
     A("")
-    A("1. **Nicht in Microsoft Office geöffnet.** Geprüft wurde mit python-docx/-pptx/openpyxl und LibreOffice. Seitenumbrüche und Folienlayout können in Word/PowerPoint minimal abweichen. Bitte einmal in Word/PowerPoint/Excel öffnen und Seitenzahlen sowie die Folien 13, 17 und 18 (viel Text; im LibreOffice-Rendering ohne Überlauf) ansehen.")
+    A("1. **Nicht in Microsoft Office geöffnet.** Geprüft wurde mit python-docx/-pptx/openpyxl und LibreOffice. Seitenumbrüche und Folienlayout können in Word/PowerPoint minimal abweichen. Bitte einmal in Word/PowerPoint/Excel öffnen und Seitenzahlen sowie die Folien 3, 8, 10, 12, 17 und 19 (viel Text; Layout nur im LibreOffice-Rendering geprüft) ansehen.")
     A("2. **Keine Rechtsprüfung.** Kein Jurist hat die Texte gesehen. Rechtliche Aussagen sind absichtlich allgemein gehalten; ob und wie die Vorlage zu einem konkreten Betrieb, Tarif- oder Betriebsratsfall passt, ist offen. Zur EU-KI-Verordnung und zur Rechtslage enthält das Kit bewusst keine Detailaussagen und keine Zitate (Scout-A-Quellen waren nur Suchsnippets, D17).")
     A("3. **Nicht an echten Nutzerinnen/Nutzern getestet.** Dass die Zielperson das Kit „in einer Woche“ einsetzen kann, ist eine Planungsannahme (Zeitschätzung in der Kurzanleitung: ca. 8–10 Stunden, **Schätzung, nicht gemessen**). Test mit 1–2 Personen aus Ankes Umfeld oder bezahlten Erstkäufern wäre der erste Beleg.")
     A("4. **Die KI-Anpassungsprompts (A–D) wurden nicht gegen ein KI-Tool ausgeführt** (kein Tool-Zugriff vorgesehen). Ihre Wirkung ist unerprobt; die Schutzregeln im Prompt (nichts erfinden, keine Zitate, Änderungen markieren) sind Absicht, keine Garantie.")
     A("5. **Keine Tool-Bewertungen realer Produkte.** Die Excel-Matrix enthält nur ein fiktives Beispiel. Schwellen (75 %/50 %) und Gewichte sind Vorschläge ohne empirische Grundlage.")
-    A("6. **Schulung:** Zeitbedarf (75 Min.) und Übungsdauer (je 10 Min.) sind Schätzungen. Folie 6 beschreibt das Halluzinations-Muster allgemein; es werden bewusst keine konkreten Vorfälle genannt (nicht belegt).")
+    A("6. **Schulung:** Zeitbedarf (90 Min.) und Übungsdauer (je 10 Min.) sind Schätzungen. Folie 6 beschreibt das Halluzinations-Muster allgemein; es werden bewusst keine konkreten Vorfälle genannt (nicht belegt).")
     A("7. **Marktbezug:** Das Kit sagt nichts über gesetzliche Pflichten zur Schulung. Der Stand der Rechtslage (Scout A, Sekundärquellen) ist ungeprüft; Marketingtexte (Vertrieb) dürfen daraus keine Pflicht ableiten.")
     A("8. **Nutzungsrechte/Lizenz:** Das Kit enthält keine Lizenz- oder Nutzungsbedingungen und keinen Anbieter-/Impressumshinweis. Das ist eine Entscheidung für Anke (Digistore24/Fiverr-AGB, Weitergabe, Branding). Bewusst nicht erfunden.")
     A("9. **Barrierefreiheit:** Kontrast/Struktur sind schlicht gehalten, aber nicht mit einem Prüfwerkzeug getestet. Alt-Texte entfallen, da keine Bilder enthalten sind.")
@@ -316,7 +341,7 @@ def write_qa(res, spell_info, unknown_all):
     A("```")
     A("cd company/deliveries/produkt-ki-starterkit-v1")
     A("pip install python-docx python-pptx openpyxl pypdf pyspellchecker")
-    A("python3 build/build_kit.py     # erzeugt die 7 Office-Dateien")
+    A("python3 build/build_kit.py     # erzeugt die 9 Office-Dateien")
     A("python3 build/verify_kit.py    # prüft und schreibt QA.md neu")
     A("```")
     A("Varianten (Englisch, Branchen): Texte in `build/b1_…b7_*.py` ersetzen, Layout steckt in `build/kit_lib.py`. `KIT_OUT=<Ordner>` leitet die Ausgabe um.")

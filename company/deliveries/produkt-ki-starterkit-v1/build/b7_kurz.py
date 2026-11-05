@@ -13,17 +13,17 @@ def build(outdir):
             ["Di", "Richtlinie mit KI anpassen lassen und selbst prüfen; Platzhalter [IN KLAMMERN] ersetzen.", "KI-Nutzungsrichtlinie, Anpassungs-Prompt (Schritt 4, 6)", "2 Std."],
             ["Mi", "Tools sammeln, die schon genutzt werden. Die wichtigsten 1–3 mit Checkliste/Matrix prüfen und im Register eintragen.", "Datenschutz-Checkliste-und-Tool-Freigabe.xlsx", "1,5 Std."],
             ["Do", "Richtlinie von Geschäftsleitung (ggf. Datenschutz, Betriebsrat) freigeben lassen. Folien anpassen: Beispiele, Kontakt, Tool-Liste.", "KI-Schulung.pptx", "2 Std."],
-            ["Fr", "Schulung halten (ca. 75 Min.), Wissenstest, Teilnahmeliste unterschreiben lassen.", "KI-Schulung, Wissenstest-und-Nachweis", "2 Std."],
-            ["Danach", "Prompt-Bibliothek verteilen, Meldeweg bekannt machen, Termin für Auffrischung und Überprüfung eintragen.", "Prompt-Bibliothek", "0,5 Std."],
+            ["Fr", "Schulung halten (ca. 90 Min., Aha-Übung 1 ist Pflicht), Wissenstest, Teilnahmeliste unterschreiben lassen.", "KI-Schulung, Aha-Uebungen-Arbeitsblatt, Wissenstest-und-Nachweis", "2 Std."],
+            ["Danach", "Prompt-Bibliothek und Grundbegriffe verteilen, Meldeweg bekannt machen, Termin für Auffrischung und Überprüfung eintragen.", "Prompt-Bibliothek, Grundbegriffe-in-einfacher-Sprache", "0,5 Std."],
         ],
-        widths=[1.6, 8.0, 4.8, 2.0],
-        size=9.5,
+        widths=[1.4, 7.6, 5.4, 2.0],
+        size=9,
     )
     D.h2("Das brauchen Sie")
     D.bullets(
         [
             "Ein freigegebenes oder zumindest unkritisch nutzbares KI-Tool für die Anpassung (nur anonymisierte, allgemeine Angaben eingeben).",
-            "Word, PowerPoint, Excel (oder kompatible Programme), einen Raum oder eine Videokonferenz und etwa 75 Minuten Zeit aller Betroffenen.",
+            "Word, PowerPoint, Excel (oder kompatible Programme), einen Raum oder eine Videokonferenz und etwa 90 Minuten Zeit aller Betroffenen.",
             "Jemanden, der entscheiden darf (Geschäftsleitung).",
         ]
     )
@@ -37,6 +37,8 @@ def build(outdir):
             "**Nachweis vergessen.** Teilnahmeliste am Schulungstag unterschreiben lassen.",
         ]
     )
+    D.h2("Nächster Schritt")
+    D.p("Wenn das Kit im Betrieb läuft, können Sie vertiefen: Arbeitsabläufe mit Präsentationen, Formularen und Tabellenauswertungen sowie eigene „Handbücher“ (Skills) für die KI. Das ist nicht Teil dieses Kits.", size=10, after=3)
     D.h2("Bevor Sie starten")
     D.p(
         "Dieses Kit unterstützt Sie dabei, Regeln aufzustellen und Beschäftigte zu schulen. Es ersetzt keine Rechtsberatung, und es sagt nichts darüber, welche gesetzlichen Vorgaben in Ihrem Fall im Einzelnen gelten. "

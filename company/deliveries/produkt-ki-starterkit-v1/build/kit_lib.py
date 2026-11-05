@@ -12,7 +12,7 @@ from docx.shared import Cm, Pt, RGBColor
 
 DISCLAIMER = "Diese Vorlage ersetzt keine Rechtsberatung."
 KIT_NAME = "KI-Starterkit für kleine Unternehmen"
-VERSION = "Version 1.0 · Stand 05.11.2026"
+VERSION = "Version 1.0 · Stand: November 2026"
 
 DARK = RGBColor(0x1F, 0x3A, 0x5F)
 GREY = RGBColor(0x55, 0x55, 0x55)
@@ -228,6 +228,42 @@ class Doc:
                 "oder Ihre Datenschutzbeauftragte bzw. Ihren Datenschutzbeauftragten."
             ],
         )
+
+    def notes_box(self, label, height_cm=3.0):
+        """Leeres Notizfeld (einzellige Tabelle mit fester Mindesthöhe)."""
+        from docx.enum.table import WD_ROW_HEIGHT_RULE
+        tbl = self.d.add_table(rows=2, cols=1)
+        tbl.style = "Table Grid"
+        c = tbl.rows[0].cells[0]
+        _shade(c, SOFT_FILL)
+        c.text = ""
+        r = c.paragraphs[0].add_run(label)
+        r.bold = True
+        r.font.size = Pt(10)
+        c.paragraphs[0].paragraph_format.space_after = Pt(1)
+        c.paragraphs[0].paragraph_format.keep_with_next = True
+        tbl.rows[1].height = Cm(height_cm)
+        tbl.rows[1].height_rule = WD_ROW_HEIGHT_RULE.AT_LEAST
+        trpr = tbl.rows[1]._tr.get_or_add_trPr()
+        cs = OxmlElement("w:cantSplit")
+        cs.set(qn("w:val"), "true")
+        trpr.append(cs)
+        self.d.add_paragraph().paragraph_format.space_after = Pt(2)
+
+    def mono(self, text):
+        """Codeblock in Schreibmaschinenschrift (für Markdown-/Mermaid-Beispiele)."""
+        tbl = self.d.add_table(rows=1, cols=1)
+        tbl.style = "Table Grid"
+        c = tbl.rows[0].cells[0]
+        _shade(c, "F2F2F2")
+        c.text = ""
+        for i, line in enumerate(text.split("\n")):
+            para = c.paragraphs[0] if i == 0 else c.add_paragraph()
+            para.paragraph_format.space_after = Pt(0)
+            run = para.add_run(line)
+            run.font.name = "Consolas"
+            run.font.size = Pt(9.5)
+        self.d.add_paragraph().paragraph_format.space_after = Pt(2)
 
     def page_break(self):
         self.d.add_paragraph().add_run().add_break(WD_BREAK.PAGE)

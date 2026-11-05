@@ -2,155 +2,271 @@ from kit_lib import *
 
 FILE = "Prompt-Bibliothek.docx"
 
-# (Titel, Zweck, Prompt, Hinweis)
+BSP = "[OPTIONAL, aber wirksam: ein kurzes, gelungenes Beispiel aus Ihrem Betrieb, anonymisiert]"
+GRZ0 = "Erfinde nichts; markiere Unsicheres mit „[unklar]“."
+PLAUS = ("Erstelle zusätzlich ein Blatt „Plausibilität“, in dem du jede Auswertung gegenrechnest (Summen, Stichproben, Ausreißer) "
+         "und Auffälligkeiten markierst. Nenne ausdrücklich, was du nicht prüfen konntest.")
+
+# Felder: (Titel, Zweck, ROLLE, ZIEL, ZIELGRUPPE, TON, BEISPIEL, FORMAT, GRENZEN, MATERIAL, Hinweis)
 CATS = [
     ("Verwaltung", [
         ("Besprechungsprotokoll aus Stichpunkten", "Aus eigenen Notizen ein sauberes Protokoll machen.",
-         "Du bist Assistenz der Geschäftsführung. Erstelle aus den folgenden Stichpunkten ein Besprechungsprotokoll mit den Abschnitten: Teilnehmende (nur Kürzel), Beschlüsse, Aufgaben (wer, was, bis wann), offene Punkte. Erfinde nichts; wenn Angaben fehlen, schreibe „[unklar]“.\n\nStichpunkte:\n[ANONYMISIERTE NOTIZEN]",
-         "Namen durch Kürzel ersetzen. Aufgaben und Fristen anschließend mit den echten Notizen abgleichen."),
+         "Assistenz der Geschäftsführung", "Ein Besprechungsprotokoll aus den Stichpunkten erstellen", "Teilnehmende und Abwesende, die nachlesen",
+         "Sachlich, knapp", BSP, "Abschnitte: Teilnehmende (nur Kürzel), Beschlüsse, Aufgaben (wer, was, bis wann), offene Punkte", GRZ0,
+         "[ANONYMISIERTE NOTIZEN]",
+         "Namen durch Kürzel ersetzen. Aufgaben und Fristen mit den echten Notizen abgleichen."),
         ("E-Mail professionell umformulieren", "Einen eigenen Entwurf klarer und höflicher machen.",
-         "Formuliere den folgenden E-Mail-Entwurf professionell, freundlich und kurz (maximal [120] Wörter). Behalte alle Inhalte und Zahlen unverändert bei und ergänze nichts. Ton: [sachlich/herzlich].\n\nEntwurf:\n[TEXT OHNE PERSONENDATEN]",
+         "Erfahrene Sachbearbeiterin für Geschäftskorrespondenz", "Den Entwurf klar, höflich und kurz formulieren, ohne Inhalte zu ändern", "[EMPFÄNGERGRUPPE, z. B. Geschäftspartner]",
+         "[sachlich/herzlich]", BSP, "Maximal [120] Wörter, Betreff vorschlagen", "Alle Inhalte und Zahlen unverändert lassen, nichts hinzufügen",
+         "[ENTWURF OHNE PERSONENDATEN]",
          "Namen, Nummern und Adressen vor dem Einfügen entfernen und danach selbst wieder einsetzen."),
-        ("Langen Text zusammenfassen", "Schneller verstehen, worum es geht – bei nicht vertraulichen Texten.",
-         "Fasse den folgenden Text in [5] Stichpunkten und einem Satz Gesamtfazit zusammen. Trenne klar zwischen dem, was im Text steht, und deiner Einschätzung. Markiere Stellen, bei denen du unsicher bist.\n\nText:\n[ÖFFENTLICHER ODER FREIGEGEBENER TEXT]",
-         "Nur grüne (oder für das Tool freigegebene gelbe) Texte. Zusammenfassungen können Wichtiges weglassen – bei wichtigen Entscheidungen Original lesen."),
+        ("Langen Text zusammenfassen", "Schneller verstehen, worum es geht – nur bei nicht vertraulichen Texten.",
+         "Aufmerksame Redakteurin", "Den Text für eine Entscheidung zusammenfassen", "[WER LIEST DIE ZUSAMMENFASSUNG?]",
+         "Neutral", BSP, "[5] Stichpunkte plus ein Satz Gesamtfazit; getrennt: „Steht im Text“ und „Meine Einschätzung“", "Unsicheres markieren, nichts ergänzen, was nicht im Text steht",
+         "[ÖFFENTLICHER ODER FREIGEGEBENER TEXT]",
+         "Nur grüne (oder für das Tool freigegebene gelbe) Texte. Zusammenfassungen können Wichtiges weglassen: bei wichtigen Entscheidungen das Original lesen."),
         ("Checkliste oder Ablauf erstellen", "Eine wiederkehrende Aufgabe als Checkliste festhalten.",
-         "Erstelle eine Checkliste für den Ablauf „[AUFGABE, z. B. Neue Mitarbeiterin einrichten]“ in einem kleinen Betrieb mit [ANZAHL] Personen. Gliedere nach Phasen (vorher, am Tag, danach), nenne für jeden Schritt eine verantwortliche Rolle (keine Namen) und markiere Schritte, die mit Datenschutz zu tun haben, mit „(Datenschutz prüfen)“.",
-         "Ergebnis mit den tatsächlichen Abläufen im Betrieb abgleichen; die KI kennt sie nicht."),
+         "Organisationsberater/in für Kleinbetriebe", "Eine Checkliste für den Ablauf „[AUFGABE]“ erstellen", "Beschäftigte eines Betriebs mit [ANZAHL] Personen",
+         "Klar, handlungsorientiert", BSP, "Phasen (vorher, am Tag, danach); je Schritt eine Rolle (keine Namen); Datenschutz-Schritte mit „(Datenschutz prüfen)“ markieren", GRZ0,
+         "[STICHPUNKTE ZUM ABLAUF]",
+         "Mit den tatsächlichen Abläufen im Betrieb abgleichen; die KI kennt sie nicht."),
         ("Agenda für eine Besprechung", "Eine Besprechung vorbereiten.",
-         "Erstelle eine Agenda für eine Besprechung von [60] Minuten zum Thema „[THEMA]“. Teilnehmende: [ROLLEN]. Ziel: [ZIEL]. Gib pro Punkt Dauer, Ziel (informieren/entscheiden/ideen sammeln) und Vorbereitungsaufgabe an. Plane 10 % Puffer ein.",
-         "Zeiten realistisch nachprüfen. Keine internen Details, wenn das Tool nicht freigegeben ist."),
+         "Moderator/in", "Eine Agenda für [60] Minuten zum Thema „[THEMA]“ erstellen; Ziel der Besprechung: [ZIEL]", "Teilnehmende: [ROLLEN]",
+         "Strukturiert, zeitbewusst", BSP, "Tabelle: Punkt, Dauer, Ziel (informieren/entscheiden/Ideen sammeln), Vorbereitung; 10 % Puffer", "Keine Zeiten über die Gesamtdauer",
+         "[THEMENLISTE]",
+         "Zeiten realistisch nachprüfen. Keine internen Details, wenn das Tool nicht dafür freigegeben ist."),
         ("Tabellenformel erklären oder bauen", "Excel/Google-Sheets-Formeln ohne echte Daten.",
-         "Ich arbeite mit [Excel/Google Sheets]. Spalte A enthält [BESCHREIBUNG, z. B. Datum], Spalte B [BESCHREIBUNG]. Ich möchte [ZIEL, z. B. die Summe je Monat berechnen]. Schlage eine Formel vor, erkläre sie in einfachen Worten und nenne zwei Fälle, in denen sie falsche Ergebnisse liefern könnte. Nutze nur erfundene Beispieldaten.",
+         "Geduldiger Tabellenkalkulations-Trainer", "Eine Formel für [ZIEL, z. B. Summe je Monat] vorschlagen und erklären", "Anwender ohne Programmierkenntnisse",
+         "Einfach, mit Beispiel", BSP, "Formel, Erklärung in einfachen Worten, zwei Fälle, in denen sie falsche Ergebnisse liefern könnte", "Nur erfundene Beispieldaten verwenden",
+         "Ich arbeite mit [Excel/Google Sheets]. Spalte A enthält [BESCHREIBUNG], Spalte B [BESCHREIBUNG].",
          "Formel an einer kleinen Testtabelle ausprobieren. Keine echten Daten einfügen."),
     ]),
     ("Vertrieb", [
         ("Begleitschreiben zum Angebot", "Einen Angebotsbegleittext entwerfen.",
-         "Du bist Vertriebsmitarbeiter/in in einem kleinen Unternehmen der Branche [BRANCHE]. Schreibe ein kurzes Begleitschreiben (maximal [150] Wörter) zu einem Angebot über [LEISTUNG]. Betone den Nutzen: [NUTZEN 1], [NUTZEN 2]. Nenne keine Preise, Fristen oder Garantien, die ich nicht angegeben habe. Ende mit einem klaren nächsten Schritt: [SCHRITT].",
+         "Vertriebsmitarbeiter/in eines kleinen Unternehmens der Branche [BRANCHE]", "Ein Begleitschreiben zu einem Angebot über [LEISTUNG] verfassen, das zum nächsten Schritt „[SCHRITT]“ führt", "[ANSPRECHPARTNER-TYP, z. B. Geschäftsführung eines kleinen Betriebs]",
+         "Freundlich, kompetent, nicht aufdringlich", BSP, "Maximal [150] Wörter; Nutzen: [NUTZEN 1], [NUTZEN 2]", "Keine Preise, Fristen oder Garantien nennen, die ich nicht angegeben habe",
+         "[STICHPUNKTE ZUM ANGEBOT, ohne Personendaten]",
          "Preise, Fristen und Zusagen selbst eintragen und prüfen. Kundennamen erst im fertigen Dokument einsetzen."),
         ("Nachfassmail an Bestandskontakte", "Eine freundliche Erinnerung nach einem Angebot.",
-         "Schreibe eine kurze, freundliche Nachfassmail (maximal [100] Wörter) zu einem Angebot, das vor [ZEITRAUM] verschickt wurde. Kein Druck, keine Übertreibung. Biete [HILFE, z. B. Rückfragen klären] an. Ton: [TON].",
+         "Aufmerksame Vertriebsmitarbeiterin", "Nachfragen, ob das Angebot vom [ZEITRAUM] noch Fragen offenlässt", "Bestehender Geschäftskontakt",
+         "[TON, z. B. freundlich, ohne Druck]", BSP, "Maximal [100] Wörter, ein Angebot zur Hilfe: [HILFE]", "Keine Übertreibung, kein künstlicher Zeitdruck",
+         "[STICHPUNKTE ZUM ANGEBOT]",
          "Nur an Kontakte, mit denen eine Geschäftsbeziehung besteht oder die zugestimmt haben. Regeln zu Werbung im Zweifel mit Rechtsberatung klären."),
         ("Einwände vorbereiten", "Auf typische Einwände vorbereitet sein.",
-         "Unsere Leistung: [BESCHREIBUNG]. Zielgruppe: [ZIELGRUPPE]. Nenne die 8 häufigsten Einwände, die Interessenten haben könnten (z. B. Preis, Zeit, Vertrauen). Formuliere zu jedem eine ehrliche, kurze Antwort ohne Übertreibung und eine Rückfrage, die das Gespräch öffnet. Erfinde keine Kundenzahlen oder Referenzen.",
+         "Erfahrene Vertriebstrainerin", "Die 8 häufigsten Einwände sammeln und ehrliche Antworten samt Rückfrage formulieren", "Interessenten: [ZIELGRUPPE]",
+         "Respektvoll, ehrlich", BSP, "Tabelle: Einwand, kurze Antwort, Rückfrage", "Keine Kundenzahlen, Referenzen oder Garantien erfinden",
+         "Unsere Leistung: [BESCHREIBUNG]",
          "Antworten mit echten Erfahrungen abgleichen. Referenzen und Zahlen ausschließlich selbst ergänzen."),
         ("Gesprächsvorbereitung aus öffentlichen Infos", "Sich auf ein Erstgespräch vorbereiten.",
-         "Ich bereite ein Erstgespräch mit einem Unternehmen der Branche [BRANCHE] vor. Hier ist öffentlich verfügbare Information: [TEXT AUS WEBSEITE/PRESSE, öffentlich]. Erstelle: 1) was wir daraus ableiten können, 2) fünf offene Fragen, die ich stellen sollte, 3) eine mögliche Gesprächsstruktur. Trenne klar zwischen Fakten aus dem Text und Vermutungen.",
+         "Vertriebsanalyst/in", "Aus den öffentlichen Informationen Fragen und eine Gesprächsstruktur ableiten", "Ich selbst (Vorbereitung)",
+         "Sachlich", BSP, "1) Ableitungen, 2) fünf offene Fragen, 3) Gesprächsstruktur; Fakten aus dem Text und Vermutungen getrennt", "Nichts hinzuerfinden",
+         "Öffentlich verfügbare Information: [TEXT AUS WEBSEITE/PRESSE]",
          "Nur öffentliche Informationen verwenden. Keine Daten aus dem Kundenmanagement-System."),
         ("Nutzen statt Merkmale", "Produktmerkmale in Kundennutzen übersetzen.",
-         "Hier sind die Merkmale unseres Angebots: [MERKMALE]. Übersetze jedes Merkmal in einen konkreten Nutzen für [ZIELGRUPPE] nach dem Muster „Merkmal → Was bedeutet das im Alltag? → Warum ist das für Sie wichtig?“. Verwende einfache Sprache und keine Superlative.",
+         "Texter/in", "Jedes Merkmal in einen konkreten Nutzen übersetzen", "[ZIELGRUPPE]",
+         "Einfach, ohne Superlative", BSP, "Je Merkmal: Merkmal → Was bedeutet das im Alltag? → Warum ist das wichtig?", "Keine Wirkversprechen, die wir nicht belegen können",
+         "Merkmale: [LISTE]",
          "Prüfen, ob jeder Nutzen belegbar ist. Streichen, was wir nicht halten können."),
         ("Leitfaden für das Erstgespräch", "Ein Gespräch strukturieren.",
-         "Erstelle einen Leitfaden für ein 20-minütiges Erstgespräch mit [ZIELGRUPPE] zu [THEMA]. Struktur: Einstieg, Bedarf klären (6 offene Fragen), Lösung kurz vorstellen, Einwände, Abschluss mit nächstem Schritt. Formuliere ehrlich und ohne Drucktechniken.",
+         "Vertriebstrainer/in", "Einen Leitfaden für ein 20-minütiges Erstgespräch zu [THEMA] erstellen", "Mitarbeitende im Vertrieb",
+         "Ehrlich, ohne Drucktechniken", BSP, "Einstieg, Bedarf klären (6 offene Fragen), Lösung kurz vorstellen, Einwände, Abschluss mit nächstem Schritt", GRZ0,
+         "Zielgruppe der Gespräche: [ZIELGRUPPE]",
          "Leitfaden zu Ihrem Stil anpassen und ausprobieren."),
     ]),
     ("Kundenservice", [
         ("Antwortentwurf auf eine Kundenanfrage", "Antworten schneller und freundlicher formulieren.",
-         "Du bist Kundenservice-Mitarbeiter/in. Schreibe eine Antwort auf die folgende Kundenanfrage. Ton: freundlich, klar, lösungsorientiert. Länge: maximal [120] Wörter. Gib keine Zusagen zu Erstattung, Fristen oder Kulanz, die nicht in den unten genannten Regeln stehen.\n\nRegeln: [UNSERE REGELN IN STICHPUNKTEN]\nAnfrage (anonymisiert): [ANFRAGE OHNE NAMEN/NUMMERN]",
+         "Kundenservice-Mitarbeiter/in", "Eine hilfreiche Antwort auf die Anfrage schreiben", "Kundin/Kunde mit Anliegen",
+         "Freundlich, klar, lösungsorientiert", BSP, "Maximal [120] Wörter, Anrede und Gruß", "Keine Zusagen zu Erstattung, Fristen oder Kulanz, die nicht in den Regeln stehen",
+         "Regeln: [UNSERE REGELN IN STICHPUNKTEN]\nAnfrage (anonymisiert): [ANFRAGE OHNE NAMEN/NUMMERN]",
          "Name, Bestellnummer, Adresse weglassen und im Ergebnis wieder einsetzen. Zusagen vor dem Senden prüfen."),
         ("Beschwerde deeskalierend beantworten", "Eine verärgerte Nachricht ruhig beantworten.",
-         "Die folgende Kundenbeschwerde ist emotional. Schreibe eine Antwort, die 1) das Anliegen in einem Satz zusammenfasst, 2) Verständnis zeigt, ohne Schuld zu erfinden, 3) einen konkreten nächsten Schritt nennt: [SCHRITT], 4) mit einem freundlichen Abschluss endet. Keine Floskeln, keine Rechtfertigungen.\n\nBeschwerde (anonymisiert): [TEXT]",
-         "Keine Schuldanerkenntnisse oder Zusagen ohne Rücksprache. Bei rechtlichen Drohungen: [NAME/Funktion] einbinden."),
+         "Erfahrene Servicekraft für Beschwerden", "Das Anliegen aufgreifen, Verständnis zeigen, nächsten Schritt „[SCHRITT]“ nennen", "Verärgerte Kundin/verärgerter Kunde",
+         "Ruhig, respektvoll, ohne Floskeln", BSP, "Vier Teile: Anliegen in einem Satz, Verständnis, nächster Schritt, Abschluss", "Keine Schuld erfinden, keine Rechtfertigungen, keine Zusagen ohne Rücksprache",
+         "Beschwerde (anonymisiert): [TEXT]",
+         "Keine Schuldanerkenntnisse oder Zusagen ohne Rücksprache. Bei rechtlichen Drohungen [NAME/Funktion] einbinden."),
         ("FAQ-Entwurf", "Aus häufigen Fragen eine FAQ-Liste entwickeln.",
-         "Hier sind häufige Kundenfragen (ohne Personendaten): [LISTE]. Formuliere zu jeder eine kurze, klare Antwort in [2–3] Sätzen. Wo du die Antwort nicht aus meinen Angaben kennst, schreibe „[Antwort ergänzen]“. Gruppiere nach Themen.",
+         "Redakteur/in für Kundeninformation", "Zu jeder Frage eine kurze, klare Antwort formulieren", "Kundinnen und Kunden auf unserer Webseite",
+         "Einfach, freundlich", BSP, "[2–3] Sätze je Antwort, nach Themen gruppiert", "Wo die Antwort nicht aus meinen Angaben hervorgeht, „[Antwort ergänzen]“ schreiben",
+         "Häufige Fragen (ohne Personendaten): [LISTE]",
          "Antworten mit den tatsächlichen Regeln abgleichen; die KI darf keine Lücken füllen."),
         ("Tonalitäts-Check", "Eigene Texte auf Wirkung prüfen.",
-         "Prüfe den folgenden Text auf Wirkung beim Kunden: Wirkt er freundlich, klar, respektvoll? Nenne drei Stellen, die missverständlich oder schroff sein könnten, und schlage Alternativen vor. Verändere keine Inhalte.\n\nText:\n[TEXT OHNE PERSONENDATEN]",
-         "Die KI beurteilt Wirkung nur ungefähr. Im Zweifel eine Kollegin oder einen Kollegen lesen lassen."),
+         "Kommunikationstrainerin", "Wirkung des Textes beim Kunden einschätzen", "Kundinnen und Kunden",
+         "Konstruktiv", BSP, "Drei missverständliche oder schroffe Stellen mit Alternativvorschlag", "Keine Inhalte verändern",
+         "Text: [TEXT OHNE PERSONENDATEN]",
+         "Die KI beurteilt Wirkung nur ungefähr. Im Zweifel Kollegin oder Kollegen lesen lassen."),
         ("Anfragen sortieren", "Beispielanfragen in Kategorien einteilen.",
-         "Ordne die folgenden anonymisierten Beispielanfragen in Kategorien (z. B. Lieferung, Rechnung, Reklamation, Technik, Sonstiges). Gib eine Tabelle mit Nummer, Kategorie, Dringlichkeit (hoch/mittel/niedrig) und einer Begründung in einem Satz aus.\n\nAnfragen:\n[NUMMERIERTE, ANONYMISIERTE BEISPIELE]",
+         "Servicekoordinator/in", "Anfragen nach Kategorie und Dringlichkeit einordnen", "Interne Weiterleitung",
+         "Sachlich", BSP, "Tabelle: Nummer, Kategorie (z. B. Lieferung, Rechnung, Reklamation, Technik, Sonstiges), Dringlichkeit (hoch/mittel/niedrig), Begründung in einem Satz", GRZ0,
+         "Anfragen: [NUMMERIERTE, ANONYMISIERTE BEISPIELE]",
          "Nur anonymisierte Beispiele. Die Zuordnung ist ein Vorschlag; Dringlichkeit entscheidet ein Mensch."),
         ("Textbausteine für Standardfälle", "Eine Sammlung wiederverwendbarer Antworten aufbauen.",
-         "Erstelle fünf Textbausteine für folgende Standardsituationen: [SITUATIONEN, z. B. Lieferverzögerung, Terminbestätigung, Reklamation eingegangen]. Jeder Baustein: maximal [80] Wörter, mit Platzhaltern in eckigen Klammern für Name, Datum und Details. Keine Zusagen, die ich nicht genannt habe.",
-         "Bausteine rechtlich unkritisch halten; keine Garantien oder Fristen formulieren, die Sie nicht prüfen konnten."),
+         "Servicetexter/in", "Fünf Textbausteine für diese Situationen schreiben: [SITUATIONEN]", "Kundinnen und Kunden",
+         "Freundlich, klar", BSP, "Maximal [80] Wörter je Baustein; Platzhalter in eckigen Klammern für Name, Datum, Details", "Keine Zusagen oder Fristen, die ich nicht genannt habe",
+         "[SITUATIONEN, z. B. Lieferverzögerung, Terminbestätigung]",
+         "Rechtlich unkritisch halten; keine Garantien formulieren, die Sie nicht geprüft haben."),
     ]),
     ("Marketing", [
         ("Ideen für Social-Media-Beiträge", "Themen für einen Monat sammeln.",
-         "Wir sind ein kleines Unternehmen in der Branche [BRANCHE] für [ZIELGRUPPE]. Schlage 12 Themen für Beiträge auf [KANAL] vor. Pro Thema: Kernbotschaft, Format (Text/Bild/Video) und ein Beispiel für die erste Zeile. Keine erfundenen Zahlen, keine Kundenbeispiele, keine Heilversprechen.",
+         "Social-Media-Redakteur/in für die Branche [BRANCHE]", "12 Themen für Beiträge auf [KANAL] vorschlagen", "[ZIELGRUPPE]",
+         "[TON, z. B. locker, kompetent]", BSP, "Tabelle: Thema, Kernbotschaft, Format (Text/Bild/Video), erste Zeile als Beispiel", "Keine erfundenen Zahlen, Kundenbeispiele oder Heilversprechen",
+         "[STICHPUNKTE ZU UNSEREM ANGEBOT]",
          "Auswahl selbst treffen. Werbung muss als solche erkennbar sein; Bildrechte klären."),
         ("Newsletter-Entwurf", "Einen Newsletter strukturieren.",
-         "Schreibe den Entwurf eines Newsletters (maximal [250] Wörter) für [ZIELGRUPPE] zum Thema „[THEMA]“. Struktur: Betreff (3 Varianten), Einstieg, drei Abschnitte mit Zwischenüberschriften, Handlungsaufforderung: [CTA]. Ton: [TON]. Erfinde keine Fakten, Zitate oder Statistiken.",
+         "Newsletter-Redakteur/in", "Einen Newsletter zum Thema „[THEMA]“ entwerfen mit Handlungsaufforderung: [CTA]", "[ZIELGRUPPE]",
+         "[TON]", BSP, "Maximal [250] Wörter; Betreff (3 Varianten), Einstieg, drei Abschnitte mit Zwischenüberschriften", "Keine erfundenen Fakten, Zitate oder Statistiken",
+         "[STICHPUNKTE]",
          "Fakten prüfen. Versand nur an Personen, die zugestimmt haben; Pflichtangaben und Abmeldelink nicht vergessen."),
         ("Produktbeschreibung", "Einen Beschreibungstext entwerfen.",
-         "Schreibe eine Produktbeschreibung (maximal [100] Wörter) für [PRODUKT]. Eigenschaften: [LISTE]. Zielgruppe: [ZIELGRUPPE]. Verwende nur die genannten Eigenschaften, keine Superlative und keine Wirkversprechen.",
+         "Produkttexter/in", "Eine Produktbeschreibung für [PRODUKT] verfassen", "[ZIELGRUPPE]",
+         "Klar, ohne Superlative", BSP, "Maximal [100] Wörter", "Nur die genannten Eigenschaften verwenden, keine Wirkversprechen",
+         "Eigenschaften: [LISTE]",
          "Technische Angaben mit dem Datenblatt abgleichen."),
         ("Blogartikel-Gliederung", "Ein Thema strukturieren.",
-         "Erstelle die Gliederung eines Blogartikels zum Thema „[THEMA]“ für [ZIELGRUPPE]: Arbeitstitel (3 Varianten), Einleitung (Problem), 4–6 Zwischenüberschriften mit je 2 Stichpunkten, Fazit, 3 Fragen für einen FAQ-Abschnitt. Markiere Stellen, wo wir eigene Erfahrung oder belegte Zahlen ergänzen müssen, mit „[Beleg ergänzen]“.",
+         "Fachredakteur/in", "Die Gliederung eines Blogartikels zum Thema „[THEMA]“ erstellen", "[ZIELGRUPPE]",
+         "Verständlich, praxisnah", BSP, "Arbeitstitel (3 Varianten), Einleitung, 4–6 Zwischenüberschriften mit je 2 Stichpunkten, Fazit, 3 FAQ-Fragen", "Stellen, an denen eigene Erfahrung oder Belege nötig sind, mit „[Beleg ergänzen]“ markieren; keine Quellen nennen",
+         "[STICHPUNKTE]",
          "Fachliche Aussagen selbst belegen. Keine Quellen von der KI übernehmen, ohne sie zu öffnen."),
         ("Website-Text verständlicher machen", "Text kürzen und vereinfachen.",
-         "Vereinfache den folgenden Webseitentext auf Sprachniveau [B1], kürze ihn um etwa [30 %] und behalte alle sachlichen Aussagen. Markiere Stellen, an denen Inhalt wegfiel.\n\nText:\n[ÖFFENTLICHER TEXT]",
+         "Lektor/in für einfache Sprache", "Den Text auf Sprachniveau [B1] vereinfachen und um etwa [30 %] kürzen", "Besucher unserer Webseite",
+         "Freundlich, klar", BSP, "Gleiche Struktur, Stellen mit entfallenem Inhalt markieren", "Alle sachlichen Aussagen beibehalten",
+         "[ÖFFENTLICHER TEXT]",
          "Ergebnis mit dem Original abgleichen; rechtliche Pflichtangaben nie von der KI ändern lassen."),
         ("Redaktionsplan", "Inhalte planen.",
-         "Erstelle einen Redaktionsplan für 4 Wochen als Tabelle (Woche, Kanal, Thema, Format, Ziel, Verantwortlich als Rolle). Kontext: [BRANCHE], [ZIELGRUPPE], verfügbare Zeit: [STUNDEN] pro Woche. Plane realistisch und kennzeichne optionale Beiträge.",
+         "Content-Planer/in", "Einen Redaktionsplan für 4 Wochen erstellen", "[ZIELGRUPPE], Branche [BRANCHE]",
+         "Realistisch", BSP, "Tabelle: Woche, Kanal, Thema, Format, Ziel, Verantwortlich (Rolle); optionale Beiträge kennzeichnen", "Planen für höchstens [STUNDEN] pro Woche",
+         "[STICHPUNKTE ZU THEMEN UND KANÄLEN]",
          "Mit den tatsächlichen Kapazitäten abgleichen."),
     ]),
     ("Personal", [
         ("Stellenanzeige entwerfen", "Eine Anzeige formulieren.",
-         "Schreibe den Entwurf einer Stellenanzeige für [POSITION] in einem Betrieb mit [ANZAHL] Beschäftigten in [ORT/REMOTE]. Aufgaben: [LISTE]. Anforderungen (nur wirklich nötige): [LISTE]. Wir bieten: [LISTE]. Formuliere inklusiv und diskriminierungsfrei, ohne Altersangaben, ohne Geschlechtsfestlegung, und gib keine Gehaltsversprechen, die ich nicht genannt habe.",
+         "Personalreferent/in", "Eine Stellenanzeige für [POSITION] in [ORT/REMOTE] entwerfen", "Potenzielle Bewerberinnen und Bewerber",
+         "Einladend, ehrlich", BSP, "Aufgaben, Anforderungen (nur wirklich nötige), Wir bieten", "Inklusiv und diskriminierungsfrei, keine Altersangaben, keine Gehaltsversprechen",
+         "Aufgaben: [LISTE]; Anforderungen: [LISTE]; Wir bieten: [LISTE]; Betrieb mit [ANZAHL] Beschäftigten",
          "Vor Veröffentlichung auf Rechtskonformität prüfen (z. B. Gleichbehandlung, Gehaltsangaben). Keine Daten von Bewerbenden einfügen."),
         ("Onboarding-Checkliste", "Neue Kolleginnen und Kollegen strukturiert einführen.",
-         "Erstelle eine Onboarding-Checkliste für [POSITION] mit Abschnitten: vor dem ersten Tag, erster Tag, erste Woche, erster Monat. Pro Punkt: Verantwortliche Rolle und Hinweis. Berücksichtige Zugänge, Datenschutz- und KI-Schulung, Ansprechpersonen und Feedbackgespräche.",
+         "Personalentwickler/in", "Eine Onboarding-Checkliste für [POSITION] erstellen", "Führungskraft und neue Mitarbeitende",
+         "Praktisch", BSP, "Abschnitte: vor dem ersten Tag, erster Tag, erste Woche, erster Monat; je Punkt Rolle und Hinweis", "Berücksichtigen: Zugänge, Datenschutz- und KI-Schulung, Ansprechpersonen, Feedbackgespräche; nichts erfinden",
+         "[UNSERE SYSTEME UND ABLÄUFE IN STICHPUNKTEN]",
          "An Ihre tatsächlichen Systeme und Abläufe anpassen."),
         ("Interviewleitfaden", "Strukturierte Fragen vorbereiten.",
-         "Erstelle einen Interviewleitfaden für [POSITION] mit 8 verhaltensbasierten Fragen (z. B. „Erzählen Sie von einer Situation, in der …“), je einem Hinweis, worauf wir achten, und einer Bewertungsskala von 1 bis 5 mit Kriterien. Keine Fragen zu geschützten persönlichen Merkmalen wie Familienplanung, Religion, Herkunft oder Gesundheit.",
+         "Erfahrene Interviewerin für strukturierte Gespräche", "Einen Leitfaden für [POSITION] erstellen", "Interviewende im Betrieb",
+         "Sachlich, wertschätzend", BSP, "8 verhaltensbasierte Fragen („Erzählen Sie von einer Situation, in der …“), je mit Hinweis und Bewertungsskala 1–5 mit Kriterien", "Keine Fragen zu geschützten Merkmalen wie Familienplanung, Religion, Herkunft, Gesundheit",
+         "Anforderungen: [LISTE]",
          "Die KI trifft keine Auswahlentscheidung. Keine Bewerbungsunterlagen hochladen. Fragen vorab prüfen."),
-        ("Feedbackgespräch vorbereiten", "Ein Gespräch gut strukturieren – ohne Personendaten.",
-         "Ich bereite ein Feedbackgespräch mit einer Mitarbeiterin/einem Mitarbeiter in der Rolle [ROLLE] vor. Situation (allgemein, ohne Namen): [BESCHREIBUNG]. Erstelle: eine Gesprächsstruktur mit Einstieg, konkretem Feedback nach dem Muster Beobachtung–Wirkung–Wunsch, vier offenen Fragen und einem Abschluss mit Vereinbarungen. Bleibe sachlich und wertschätzend.",
+        ("Feedbackgespräch vorbereiten", "Ein Gespräch strukturieren – ohne Personendaten.",
+         "Führungskräftecoach", "Ein Feedbackgespräch vorbereiten", "Führungskraft; Gegenüber ist ein/e Mitarbeitende/r in der Rolle [ROLLE]",
+         "Wertschätzend, sachlich", BSP, "Einstieg, Feedback nach Beobachtung–Wirkung–Wunsch, vier offene Fragen, Abschluss mit Vereinbarungen", "Nur mit der allgemeinen Situation arbeiten, keine Namen, Gesundheits- oder Leistungsdaten",
+         "Situation (allgemein, ohne Namen): [BESCHREIBUNG]",
          "Keine Namen, Gesundheitsdaten oder Leistungsdaten eingeben. Die Bewertung der Person bleibt Sache der Führungskraft."),
         ("Lerneinheit oder Schulungsplan", "Interne Weiterbildung planen.",
-         "Erstelle einen Plan für eine Lerneinheit von [45] Minuten zum Thema „[THEMA]“ für [ZIELGRUPPE] ohne Vorkenntnisse. Struktur: Ziel, Einstieg, zwei Erklärblöcke, eine Übung, Wissenscheck mit 3 Fragen. Nenne den Zeitbedarf je Block.",
+         "Trainer/in für Erwachsenenbildung", "Eine Lerneinheit von [45] Minuten zum Thema „[THEMA]“ planen", "Beschäftigte ohne Vorkenntnisse",
+         "Anschaulich", BSP, "Ziel, Einstieg, zwei Erklärblöcke, eine Übung, Wissenscheck mit 3 Fragen; Zeit je Block", GRZ0,
+         "[STICHPUNKTE ZUM THEMA]",
          "Inhalte fachlich prüfen und an Ihren Betrieb anpassen."),
         ("Rundschreiben zur Regeländerung", "Eine interne Mitteilung verständlich formulieren.",
-         "Formuliere eine interne Mitteilung (maximal [150] Wörter) an alle Beschäftigten: Was ändert sich ([ÄNDERUNG])? Ab wann ([DATUM])? Warum? Was müssen die Beschäftigten tun? Wer hilft bei Fragen ([KONTAKT])? Ton: klar und respektvoll, ohne Behördendeutsch.",
+         "Interne Kommunikation", "Über die Änderung „[ÄNDERUNG]“ ab [DATUM] informieren: warum, was ist zu tun, wer hilft ([KONTAKT])", "Alle Beschäftigten",
+         "Klar, respektvoll, kein Behördendeutsch", BSP, "Maximal [150] Wörter", "Nichts hinzufügen, was nicht angegeben ist",
+         "[STICHPUNKTE ZUR ÄNDERUNG]",
          "Inhalt und Datum vor dem Versand prüfen; Beteiligungsrechte (z. B. Betriebsrat) bei Bedarf klären."),
+    ]),
+    ("Excel und Auswertung (mit Plausibilitätscheck)", [
+        ("Auswertung nach Monat und Kategorie", "Eine Tabelle auswerten und das Ergebnis gegenrechnen lassen.",
+         "Controlling-Assistenz", "Die Daten nach Monat und Kategorie auswerten; Ergebnis: Summentabelle und Kurzfazit in 3 Sätzen", "Geschäftsleitung ohne Tabellenkenntnisse",
+         "Sachlich, klar", BSP, "Neue Blätter „Auswertung“ und „Plausibilität“", PLAUS,
+         "Tabelle mit [ANONYMISIERTEN ODER AGGREGIERTEN DATEN: Spalten …]",
+         "Nur Daten ohne Personenbezug (Datenampel!). Plausibilitätsblatt selbst stichprobenartig nachrechnen."),
+        ("Daten bereinigen und Dubletten finden", "Eine Liste aufräumen, ohne dass etwas unbemerkt verloren geht.",
+         "Datenpfleger/in", "Die Liste bereinigen (Schreibweisen vereinheitlichen, Dubletten markieren, Leerzeilen entfernen), aber nichts löschen, sondern markieren", "Kolleginnen und Kollegen, die die Liste weiterverwenden",
+         "Sachlich", BSP, "Neue Spalte „Hinweis“ je Zeile; Blatt „Änderungsprotokoll“; Blatt „Plausibilität“",
+         PLAUS + " Zähle Zeilen vorher und nachher und erkläre jede Differenz.",
+         "Liste mit [ANONYMISIERTEN BEISPIELDATEN]",
+         "Nur Test-/Beispieldaten ohne Personenbezug. Ergebnis immer mit dem Original abgleichen."),
+        ("Plan-Ist-Vergleich", "Abweichungen berechnen und erklären lassen.",
+         "Controller/in eines kleinen Betriebs", "Plan und Ist je Position vergleichen, Abweichungen in € und % berechnen, die drei größten markieren", "Geschäftsleitung",
+         "Nüchtern", BSP, "Tabelle plus Blatt „Plausibilität“; Erklärungen als Vermutungen kennzeichnen (nicht als Tatsachen)",
+         PLAUS + " Erfinde keine Ursachen für Abweichungen.",
+         "Plan- und Ist-Werte [ANONYMISIERT/AGGREGIERT]",
+         "Interne Zahlen sind meist gelb (Datenampel): nur in Tools der Stufe 2 oder 3. Berechnungen stichprobenartig selbst prüfen."),
+        ("Kennzahlen-Übersicht mit Prüfblatt", "Eine einfache Übersicht für Besprechungen aufbauen.",
+         "Business-Analyst/in", "Aus den Daten fünf Kennzahlen berechnen: [KENNZAHLEN] und übersichtlich darstellen", "Teamleitungen",
+         "Verständlich, ohne Fachjargon", BSP, "Blatt „Übersicht“ mit Definitionen der Kennzahlen, Blatt „Plausibilität“",
+         PLAUS + " Beschreibe bei jeder Kennzahl die Berechnung in einem Satz.",
+         "Daten: [ANONYMISIERT/AGGREGIERT]",
+         "Prüfen, ob die beschriebene Berechnung zu Ihrer Definition passt."),
     ]),
 ]
 
+LABELS = ["ROLLE", "ZIEL", "ZIELGRUPPE", "TON", "BEISPIEL", "FORMAT", "GRENZEN", "MATERIAL"]
+
+
+def assemble(p):
+    _, _, rolle, ziel, zg, ton, bsp, fmt, grenzen, material, _ = p
+    vals = [f"Du bist {rolle}.", ziel, zg, ton, bsp, fmt, grenzen, material]
+    return "\n".join(f"{l}: {v}" for l, v in zip(LABELS, vals))
+
 
 def build(outdir):
-    D = Doc("Prompt-Bibliothek", "30 Vorlagen für den Arbeitsalltag in kleinen Unternehmen", "Prompt-Bibliothek")
+    D = Doc("Prompt-Bibliothek", "34 Vorlagen für den Arbeitsalltag in kleinen Unternehmen – mit dem Kontext-Baukasten", "Prompt-Bibliothek")
     D.disclaimer_box()
     D.h1("So nutzen Sie diese Bibliothek")
     D.numbered(
         [
             "**Tool wählen:** Nur ein von Ihrem Betrieb freigegebenes KI-Tool verwenden.",
             "**Datenampel prüfen:** Gehört das, was Sie eingeben wollen, zu grün, gelb oder rot? Rote Daten nur anonymisiert oder im dafür freigegebenen Tool.",
-            "**Platzhalter ersetzen:** Alles in [ECKIGEN KLAMMERN] durch Ihre Angaben ersetzen – ohne echte Namen, Nummern oder vertrauliche Details.",
+            "**Platzhalter ersetzen:** Alles in [ECKIGEN KLAMMERN] durch Ihre Angaben ersetzen, ohne echte Namen, Nummern oder vertrauliche Details.",
             "**Prompt einfügen** und das Ergebnis als Entwurf behandeln.",
             "**Prüfen:** Fakten, Zahlen/Quellen, Namen/Anrede, Ton/Zusagen, Vertraulichkeit/Rechte. Erst dann verwenden.",
         ]
     )
-    D.callout(
-        "Aufbau eines guten Prompts",
+    D.h2("Der Kontext-Baukasten – in jedem Prompt sichtbar")
+    D.p("Jeder Prompt ist nach demselben Schema aufgebaut. **Je mehr dieser Bausteine Sie füllen, desto besser trifft die KI.** Probieren Sie es selbst: Siehe Aha-Übung 1 im Arbeitsblatt.")
+    D.table(
+        ["Baustein", "Bedeutung", "Beispiel"],
         [
-            "**Rolle** („Du bist …“) · **Aufgabe** (was genau?) · **Kontext** (Zielgruppe, Zweck, Ton) · **Format** (Länge, Gliederung) · **Grenzen** („Erfinde nichts. Markiere Unsicheres.“).",
-            "Bitten Sie die KI nie darum, Quellen, Paragraphen oder Urteile zu nennen und zu übernehmen – sie kann sie erfinden. Wenn Sie Quellen brauchen, suchen Sie sie selbst und prüfen Sie sie.",
+            ["ROLLE", "Wer soll die KI sein?", "Kundenservice-Mitarbeiter/in"],
+            ["ZIEL", "Was soll am Ende erreicht sein?", "Eine Antwort, die den Ärger aufgreift"],
+            ["ZIELGRUPPE", "Für wen ist der Text?", "Verärgerte Stammkundin"],
+            ["TON", "Wie soll es klingen?", "Ruhig, freundlich"],
+            ["BEISPIEL", "Wie klingt es bei uns? (stärkster Hebel für Ihren Stil)", "Zwei Sätze aus einer gelungenen Antwort"],
+            ["FORMAT", "Länge und Gliederung", "Maximal 120 Wörter, zwei Absätze"],
+            ["GRENZEN", "Was soll nicht passieren?", "Nichts erfinden, keine Zusagen"],
+            ["MATERIAL", "Das, womit gearbeitet wird (anonymisiert!)", "Die Beschwerde ohne Namen"],
         ],
+        widths=[3.0, 7.0, 6.4],
+        size=9.5,
     )
     D.callout(
-        "Vor dem ersten Einsatz",
-        ["Alle Beispiele sind Vorlagen und keine Garantie für ein gutes Ergebnis. Je nach Tool fallen Antworten unterschiedlich aus. Probieren Sie Prompts mit unkritischen Beispielen aus, bevor Sie sie im Alltag nutzen."],
+        "Wichtig",
+        [
+            "Bitten Sie die KI nie darum, Quellen, Paragraphen oder Urteile zu nennen und zu übernehmen. Sie kann sie erfinden. Wenn Sie Quellen brauchen, suchen Sie sie selbst und prüfen Sie sie.",
+            "Alle Beispiele sind Vorlagen und keine Garantie für ein gutes Ergebnis. Je nach Tool fallen Antworten unterschiedlich aus. Probieren Sie Prompts mit unkritischen Beispielen aus.",
+        ],
         fill=SOFT_FILL,
     )
     n = 0
     for cat, prompts in CATS:
         D.page_break()
-        D.h1(f"{cat}")
-        for title, zweck, prompt, hint in prompts:
+        D.h1(cat)
+        if cat.startswith("Excel"):
+            D.callout(
+                "Warum immer ein Plausibilitätscheck?",
+                [
+                    "**KI kann sich verrechnen, der Plausibilitätscheck macht Fehler sichtbar.** Deshalb fordern alle Prompts dieses Bereichs ein Blatt „Plausibilität“, in dem die Ergebnisse gegengerechnet werden. Prüfen Sie dieses Blatt trotzdem selbst: ein paar Stichproben mit dem Taschenrechner oder per eigener Formel.",
+                    "Je nach Tool und Tarif kann die KI Tabellen direkt erzeugen oder bearbeiten. Wenn nicht, lassen Sie sich Formeln und eine Schritt-für-Schritt-Anleitung ausgeben und legen Sie die Blätter selbst an. Nur anonymisierte oder aggregierte Daten ohne Personenbezug verwenden.",
+                ],
+                fill=NOTE_FILL,
+            )
+        for p in prompts:
             n += 1
             t = D.table(
-                [f"{n}. {title}", ""],
-                [
-                    ["Zweck", zweck],
-                    ["Prompt\n(kopieren)", prompt],
-                    ["Hinweis", hint],
-                ],
+                [f"{n}. {p[0]}", ""],
+                [["Zweck", p[1]], ["Prompt\n(kopieren)", assemble(p)], ["Hinweis", p[10]]],
                 widths=[2.8, 13.6],
                 size=10,
             )
             m = t.rows[0].cells[0].merge(t.rows[0].cells[1])
             for extra in m.paragraphs[1:]:
                 extra._element.getparent().remove(extra._element)
-    assert n == 30, n
+    assert n == 34, n
     D.save(f"{outdir}/{FILE}")
     return FILE

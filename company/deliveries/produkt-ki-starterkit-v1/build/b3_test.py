@@ -87,7 +87,7 @@ def build(outdir):
         ["Schulung", ""],
         [
             ["Thema", "KI sicher nutzen im Arbeitsalltag (Einführung)"],
-            ["Datum / Dauer", "[TT.MM.JJJJ] / [75 Minuten]"],
+            ["Datum / Dauer", "[TT.MM.JJJJ] / [90 Minuten]"],
             ["Ort / Format", "[Ort bzw. Online-Plattform]"],
             ["Schulungsleitung", "[NAME, Funktion]"],
             ["Inhalte", "Grundlagen und Grenzen von KI; Datenampel; Datenschutz; Tool-Freigabe; Prompts; 5-Punkte-Prüfung; Kennzeichnung; Meldung von Vorfällen; zwei Praxisübungen; Wissenstest"],
@@ -107,7 +107,7 @@ def build(outdir):
         [
             ["Name der Teilnehmerin / des Teilnehmers", ""],
             ["Funktion / Abteilung", ""],
-            ["Schulung (Thema, Datum, Dauer)", "KI sicher nutzen im Arbeitsalltag · [TT.MM.JJJJ] · [75 Minuten]"],
+            ["Schulung (Thema, Datum, Dauer)", "KI sicher nutzen im Arbeitsalltag · [TT.MM.JJJJ] · [90 Minuten]"],
             ["Wissenstest", "Ergebnis: ____ von 12 · Bestehensgrenze [9] · ☐ bestanden ☐ nicht bestanden (Wiederholung am: ______)"],
             ["Auffrischung fällig bis", "[TT.MM.JJJJ]"],
             ["Schulungsleitung (Name, Unterschrift, Datum)", ""],

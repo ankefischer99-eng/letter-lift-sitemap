@@ -1,7 +1,7 @@
 # Report Lieferung 2026-11-05
 Auftrag (aus STATE.md): Produkt „KI-Starterkit für kleine Unternehmen" v1 (D17) → `deliveries/produkt-ki-starterkit-v1/`, 8 Dateien, Verbotsliste einhalten, Skript für Varianten, QA.md.
 
-Erledigt (alles in `company/deliveries/produkt-ki-starterkit-v1/`):
+Erledigt (Nachtrag: Ergänzungen des Koordinators aus zwei Nachrichten, deckungsgleich mit D18/D19 und STATE.md, umgesetzt – jetzt 9 Dateien + QA, 84/84 Prüfungen; siehe „Nachtrag“; alles in `company/deliveries/produkt-ki-starterkit-v1/`):
 - `KI-Nutzungsrichtlinie.docx` — 7 Seiten, 13 Kapitel + Anhang A (Tool-Liste) + B (Kenntnisnahme), Platzhalter in [ECKIGEN KLAMMERN]
 - `KI-Schulung.pptx` — 22 Folien, Sprechernotiz auf jeder Folie, 2 Praxisübungen (Folien 13 und 17, je mit Auflösung)
 - `Wissenstest-und-Nachweis.docx` — 12 Fragen, Lösungsblatt, Teilnahmeliste, Einzelnachweis (6 Seiten)
@@ -12,7 +12,14 @@ Erledigt (alles in `company/deliveries/produkt-ki-starterkit-v1/`):
 - `QA.md` — Prüfprotokoll
 - `build/` — `build_kit.py` (erzeugt alles), `kit_lib.py` (Layout), `b1…b7_*.py` (Inhalte je Datei), `verify_kit.py` (prüft + schreibt QA.md neu)
 
-Ergebnis/Zahlen: 61 automatische Prüfungen, 61 bestanden (QA.md §1): alle Dateien öffnen sich (python-docx/-pptx/openpyxl, ZIP-Test), PDF-Export per LibreOffice, Seiten-/Folienzahlen im Soll, Excel-Formeln in 8 Szenarien per LibreOffice-Neuberechnung getestet (inkl. Grenzwert 50 %, K.-o.-Logik, Fälligkeit), Verbotsliste (3 Begriffe) + „§" + „Art. <Zahl>" + „AI Act": 0 Treffer. Folienlayout und zwei Dokumentseiten zusätzlich als Bild gesichtet. Eine Zwischenprüfung fand einen echten Fehler (Spaltenbreiten wurden in LibreOffice ignoriert) und zwei falsche Testerwartungen von mir; behoben.
+Nachtrag (D18/D19):
+- Neu: `Aha-Uebungen-Arbeitsblatt.docx` (7 S.; Übung 1 Pflicht „ohne/mit Kontext“ + 3 weitere: Halluzination provozieren, Prompt in 4 Runden verbessern, mit/ohne Beispiel; Notizfelder, Reflexionsfrage je Übung) und `Grundbegriffe-in-einfacher-Sprache.docx` (3 S.: Chat vs. Agent, Skill, Markdown, Modellwahl, Mermaid; tool-neutral).
+- `KI-Schulung.pptx`: 24 Folien; Aha-Übung 1 (Folien 3–4) steht vor jeder Erklärung (Erleben vor Erklären), danach Kontext-Baukasten (14), Übersichtsfolie weitere Aha-Übungen (16), Grundbegriffe (20–22). Um bei 24 Folien zu bleiben, vier Foliengruppen zusammengelegt (dichtere Folien).
+- `Prompt-Bibliothek.docx`: 34 Prompts, alle im Baukasten (ROLLE/ZIEL/ZIELGRUPPE/TON/BEISPIEL/FORMAT/GRENZEN/MATERIAL), davon 4 Excel-Prompts mit Plausibilitätsblatt + Begründungssatz.
+- „Stand: November 2026“ auf allen 9 Dateien; Kurzanleitung mit „Nächster Schritt“ ohne Werbung. Schulungsdauer jetzt ca. 90 Min. (bis 120 mit allen Aha-Übungen), Schätzung.
+- Wirkung der Aha-Übungen an echten Teilnehmenden ungetestet; Ergebnisse tool-abhängig.
+
+Ergebnis/Zahlen: 84 automatische Prüfungen, 84 bestanden (Stand vor Nachtrag: 61) (QA.md §1): alle Dateien öffnen sich (python-docx/-pptx/openpyxl, ZIP-Test), PDF-Export per LibreOffice, Seiten-/Folienzahlen im Soll, Excel-Formeln in 8 Szenarien per LibreOffice-Neuberechnung getestet (inkl. Grenzwert 50 %, K.-o.-Logik, Fälligkeit), Verbotsliste (3 Begriffe) + „§" + „Art. <Zahl>" + „AI Act": 0 Treffer. Folienlayout und zwei Dokumentseiten zusätzlich als Bild gesichtet. Eine Zwischenprüfung fand einen echten Fehler (Spaltenbreiten wurden in LibreOffice ignoriert) und zwei falsche Testerwartungen von mir; behoben.
 
 Erkenntnisse: → Kandidat für LEARNINGS
 - Bau des gesamten Kits ist skriptbar; Varianten (EN, Branche) kosten nur Textersatz in `b1…b7`, kein neues Layout.
