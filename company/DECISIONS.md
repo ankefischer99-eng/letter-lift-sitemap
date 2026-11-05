@@ -70,3 +70,14 @@ Ankes Idee übernommen und geschärft. Bausteine: Präsentation (Live-Schulung),
 Agenten-Hebel: **Anpassung an die Richtlinien des Kunden** — Kunde liefert seine Regeln, Lieferagent baut das Paket darauf um. Das ist Arbeit, die Agenten schnell und gut können und Menschen teuer ist.
 Grenzen: keine Garantie „erfüllt Art. 4 AI Act" oder „rechtssicher" (keine Rechtsberatung, RDG); stattdessen „unterstützt beim Aufbau von KI-Kompetenz und dokumentiert die Schulung".
 Preise und Stufen erst nach Scout-A-Daten (Wettbewerbspreise). Kein Bau vor Auswertung.
+
+## D15 · 2026-11-05 · Wechsel von Recherche zu Verkaufstest; Wette A als Live-Paket testen, Wette B pausiert
+Begründung: F4. Der günstigste Weg zu einem Nachfragebeleg ist jetzt ein echtes Angebot an echte Menschen, nicht ein vierter Recherchelauf.
+- **Wette A → Experiment E4 „KI-Starter für Teams"**: Live-Online-Workshop 90 Min für Teams bis 10 Personen + an die eigenen Regeln angepasste KI-Nutzungsrichtlinie + Teilnahmedokumentation. **Testpreis 390 € Pauschale** (Kleinunternehmerin, keine USt).
+  Preislogik: Wettbewerb rechnet pro Person (119–690 €/TN live); bei 4+ Teilnehmenden sind wir günstiger und liefern zusätzlich die Anpassung, die Agenten billig herstellen.
+  Ankes Zeit: ca. 90 Min Workshop + 30 Min Abstimmung ≈ 2 h → ca. 195 €/h vor Steuer.
+  Vertrieb ohne Produkt: Erst verkaufen, dann bauen. Material entsteht erst bei Zusage (Lieferagent, 3–5 Tage).
+- **Wette B pausiert** bis echte Verkaufsdaten (T8 oder manuelle Stichprobe). Kein Bau.
+- **Recherche pausiert** bis T8.
+Graubereich bewusst ausgeschlossen: keine Aussagen wie „erfüllt Art. 4" oder „rechtssicher" (RDG, irreführende Werbung).
+Überprüfen: E4-Abbruchkriterium.

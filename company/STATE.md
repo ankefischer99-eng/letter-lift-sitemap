@@ -1,6 +1,6 @@
 # STATE — Lage der Firma
 
-Zuletzt aktualisiert: 2026-11-05 von Koordinator (Sitzung 5)
+Zuletzt aktualisiert: 2026-11-05 von Koordinator (Sitzung 6)
 
 ## Zahlen
 - Umsatz gesamt: **0,00 €** · Ausgaben gesamt: **0,00 €** · Kunden: **0**
@@ -13,23 +13,28 @@ Agenten produzieren, Anke verkauft und gibt frei. Diese Hypothese darf vom Scout
 
 ## Aufträge an die Agenten (gültig bis zur nächsten Koordinatorsitzung)
 
-### Scout A — Wette A: KI-Kompetenz für Kleinbetriebe (D12) → Datei `opportunities/<datum>-scout-a.md`
-1. **Rechtslage zuerst:** Gilt Art. 4 EU AI Act (KI-Kompetenz) im Nov. 2026 als Pflicht für Betreiber? Wurde er durch den Digital Omnibus oder anderes geändert/abgeschwächt? Nur offizielle oder seriöse Fachquellen (EU, Bundesregierung, Kammern, Kanzleien), mit Datum.
-2. **Wettbewerb:** ≥ 15 Anbieter von KI-Kompetenz-Schulungen/Nachweisen in DACH mit URL, Format (E-Learning/Live/Zertifikat), Zielgruppe, Preis (pro Person/pro Firma).
-3. **Zahlungsbereitschaft/Nachfrage:** Gesuche, Ausschreibungen, Förderprogramme, die solche Schulungen für KMU bezahlen oder bezuschussen.
-4. **Lücke:** Was fehlt für Betriebe mit 1–20 Mitarbeitenden? Preisniveau, das sie zahlen würden (belegt, nicht geschätzt).
+### Vertrieb — Angebotskit für E4 „KI-Starter für Teams" (D15) → Datei `opportunities/angebote-2026-11-05-ki-starter.md`
+Zielgruppe: Teams/Kleinbetriebe 3–20 Personen in DACH, die KI (ChatGPT, Copilot, Claude o. Ä.) nutzen oder einführen wollen.
+Leistung: 90 Min Live-Online-Workshop (bis 10 Personen) + KI-Nutzungsrichtlinie, angepasst an die Regeln/Vorgaben des Kunden + Teilnahmedokumentation. Preis 390 € pauschal (Kleinunternehmerin gem. § 19 UStG, keine USt). Lieferung des Materials 5 Werktage nach Zusage.
+Inhalt des Workshops (grob): Was KI kann und nicht kann; sichere Nutzung; Datenschutz/DSGVO (keine personenbezogenen oder vertraulichen Daten in öffentliche Tools); Halluzinationen erkennen; Freigabe- und Kennzeichnungsregeln; Praxisübungen am eigenen Arbeitsalltag.
+Liefere:
+1. Einseiter (Problem → Leistung → Ablauf → Preis → Über Anke → Kontakt), deutsch, nüchtern, ohne Superlative.
+2. 3 Nachrichtenvorlagen an **persönliche Kontakte** (WhatsApp/Signal; LinkedIn-Direktnachricht an bestehende Kontakte; E-Mail an Bekannte), je max. 80 Wörter, persönlich anpassbar.
+3. 1 LinkedIn-Post (Ankes Stimme, Erfahrungswert statt Werbesprech).
+4. 1 TikTok-Skript ≤ 45 s im Stil „AI under the microscope", mit Werbekennzeichnung.
+5. FAQ (8 Fragen inkl. „Ist das ein Pflichtnachweis nach AI Act?" → ehrliche Antwort).
+Verboten: „rechtssicher", „erfüllt Art. 4", „zertifiziert", erfundene Referenzen/Kundenzahlen, Dringlichkeitstricks. „Über Anke" nur mit Fakten aus INBOX-ANKE.md.
 
-### Scout B — Wette B: Digitale Vorlagen DE (D12) → Datei `opportunities/<datum>-scout-b.md`
-1. Welche Marktplätze verkaufen deutschsprachige digitale Vorlagen an Käufer, die dort aktiv suchen? Gebührenmodell je Plattform mit Quelle.
-2. **≥ 10 Nischen** (Business/Selbstständige/Vereine/Praxen/Handwerk/Haushalt/Bewerbung o. Ä.) mit Belegen: Beispiel-Angebote mit URL, Preis, Anzahl Bewertungen/Verkäufe (sofern sichtbar), ungefähre Zahl Wettbewerber.
-3. Top-5-Nischen nach (belegte Verkäufe × Preis) / Wettbewerb, mit ehrlicher Einordnung.
+### Scout
+Pausiert bis T8 (D15).
 
-### Vertrieb / Lieferung
-Pausiert bis Scout A/B ausgewertet sind.
+### Lieferung
+Inaktiv bis Zusage in E4.
 
 ## Kapazität und Hypothesen
 - Anke: ca. 10 h/Woche. Markt: DACH, deutschsprachig (D9).
 - Portfolio D12: **Wette A** KI-Kompetenz für Kleinbetriebe, **Wette B** digitale Vorlagen DE, Rückfallebene H1 Typ D.
+- **Aktuell: Verkaufstest E4 (D15).** Wette B und Recherche pausiert.
 - Wette A Produktform: „KI-Starterpaket für Unternehmen" (D14). Reichweiten-Asset: TikTok „Revelations" > 1.000 Follower (D13).
 - Rechtsrahmen geklärt (D11): Gewerbe, Kleinunternehmerin, USt-ID, Nebentätigkeit angemeldet.
 - Break-even-Ziel: > ca. 20 €/Monat netto (Pro-Abo).

@@ -19,3 +19,9 @@ Kein Schuldbuch, sondern Firmenvermögen. Format: was, warum, was es gekostet ha
 - **Warum:** Netzwerkrichtlinie der Cloud-Umgebung.
 - **Kosten:** DE-Hypothese nicht testbar; Funde nur Indizien.
 - **Änderung:** Ticket T8 (Netzfreigabe). Bis dahin Funde als „Hinweis", nicht als „Nachfrage" werten.
+
+## F4 · Drei Scout-Läufe ohne einen Nachfragebeleg (2026-11-05)
+- **Was:** Scout 1, A, B lieferten 25 + 24 + 14 Funde, aber keinen einzigen Beleg zahlender Nachfrage im Zielsegment.
+- **Warum:** Webabruf gesperrt (F3); Websuche zeigt Angebote, kaum Gesuche oder Verkaufszahlen.
+- **Kosten:** 3 Agentensitzungen (1× Opus, 2× Sonnet), alle „mittel".
+- **Änderung:** D15 — Recherche pausiert, Nachfrage wird mit einem echten Angebot gemessen.
