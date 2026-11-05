@@ -138,3 +138,10 @@ Idee: KI lernen wie eine Sprache, täglich 5 Minuten, Fortschritt, Serien, Abzei
 Bewertung: Format stark (kleine Häppchen passen genau zur Zielgruppe von Wette C). Als echte App aber das teuerste und riskanteste Produkt im Portfolio: Entwicklung, App-Store-Gebühren und -Prüfung, Pflege, und vor allem Nutzergewinnung ohne Werbebudget — das ist F1 (Nachhaker/SaaS) in neuer Verpackung.
 Entscheidung: Keine App jetzt. Das Format wird zuerst ohne App getestet: Inhalte von Wette C als tägliche Mini-Lektionen (z. B. E-Mail-Kurs über Ankes Substack oder ein Arbeitsbuch mit 30 Tages-Lektionen). Zeigen Abschlussraten und Zahlungsbereitschaft Signal, folgt eine einfache Web-App (PWA, ohne App Store) aus denselben Inhalten.
 Voraussetzung: Kit verkauft sich ODER Wette C zeigt Signal (T16, Scout C).
+
+## D24 · 2026-11-05 · Fiverr: nur ein Paket „angepasst an Ihre Firma" (199 €)
+Begründung: (1) Fiverr-Regel gegen identischen KI-Output an viele Kunden (Scout C) macht „Kit unverändert" riskant; unverändert verkauft Digistore24. (2) Ankes Kapazität (10 h/Woche) reicht nicht für drei Pakete mit Freigabe. Premium (299 €) erst bei Nachfrage. Teil D der Verkaufstexte entsprechend vor Veröffentlichung kürzen.
+
+## D25 · 2026-11-05 · Wette C (Selbstlernkurs/KDP) herabgestuft
+KDP-Wettbewerb dicht, Preise 8–26 € (unter D21-Hypothese 19–49 €), Arbeitsbücher mit Übungen existieren schon. Wette C wird nur gebaut, wenn T16 (Kollege) ein starkes Signal liefert (klares Klick-Erlebnis + nennt Zahlungsbereitschaft). Positionierungsidee „ermutigend, 45+ im Beruf" bleibt Hypothese.
+Fokus bleibt: Kit v1 an den Markt (Digistore24 zuerst, Fiverr zweitens, TikTok begleitend).

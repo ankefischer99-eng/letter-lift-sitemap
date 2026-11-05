@@ -11,6 +11,7 @@ Format: `- [JJJJ-MM-TT] T<n>/Auftrag/Beleg: Inhalt`
 
 ## Verarbeitet
 
+- [2026-11-05] Vertrieb-2 (Verkaufstexte) + Scout C (Plattformregeln, KDP) verarbeitet → D24, D25, T12/T13 präzisiert, LEARNINGS. Koordinator-Prüfung Verkaufstexte: 0 Treffer Verbotsliste, Lieferumfang deckt sich mit Kit. (Koordinator)
 - [2026-11-05] Idee Anke: Lern-App für Privatpersonen fürs Handy, wie Sprachlern-Apps, mit Gamification, Thema AI Enablement. („nur ein Gedanke") → D23 (Backlog). (Koordinator)
 - [2026-11-05] Idee Anke: Viele Menschen haben Angst um ihren Job durch KI und keinen Plan, wie sie es lernen (Beispiel: Kollege, Mitte 50, ohne Vorkenntnisse). Selbstlernkurs, aufbauend, einfache Sprache, Bildsprache, Aufgaben, Tests. → D21, T16. (Koordinator)
 - [2026-11-05] Lieferung-Report Kit v1 + Vertrieb-Report (E4, obsolet) verarbeitet → D20, LEARNINGS, T14 aktiv, T15. (Koordinator)
