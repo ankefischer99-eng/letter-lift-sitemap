@@ -13,9 +13,9 @@ Plattformgeld gilt erst nach Auszahlung als „verfügbar".
 
 | Posten | € / Monat | Quelle | Seit |
 |---|---|---|---|
-| Claude Pro (Agentenbetrieb) | ausstehend (T6) | Ankes Rechnung | 2026-11 |
+| Claude Pro (Agentenbetrieb) | ca. 20,00 (Schätzung, Beleg fehlt) | Ankes Angabe | 2026-11 |
 
-Regel (D6): Das volle Pro-Abo zählt als Fixkosten der Firma. Schwarze Zahlen heißt: Monatsüberschuss > Pro-Betrag.
+Regel (D6): Das volle Pro-Abo zählt als Fixkosten der Firma. Schwarze Zahlen heißt: Monatsüberschuss > Pro-Betrag, also **> ca. 20 €/Monat netto nach Gebühren und Steuerrücklage**.
 
 ## Agentenkosten (Rechenleistung)
 

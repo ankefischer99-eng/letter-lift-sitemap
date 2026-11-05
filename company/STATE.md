@@ -25,9 +25,15 @@ Erst aktiv, wenn `opportunities/` mindestens einen Scout-Fund enthält. Dann: 1 
 ### Lieferung
 Inaktiv, bis ein bezahlter Auftrag in `INBOX-ANKE.md` steht.
 
+## Kapazität und Hypothesen
+- Anke: ca. 10 h/Woche. Markt: DACH, deutschsprachig (D9).
+- H1: Marktplatz-Kleinaufträge (Scout läuft).
+- H2: Kundenservice-/Sales-/AI-Enablement-Angebote auf Basis von Ankes Expertise (D8), **gesperrt bis T2**.
+- Break-even-Ziel: > ca. 20 €/Monat netto (Pro-Abo).
+
 ## Betrieb
 - Rechenbasis: Claude Pro (D5, D6). Agenten auf Sonnet (D7). Takt nach Probelauf festlegen.
 - Scout-Probelauf läuft seit 2026-11-05 13:34 UTC. Erstes Signal: Netzwerkzugriff auf Jobbörsen eingeschränkt → Ergebnis abwarten.
 
 ## Offene Blocker
-- T1 (Ankes 4 Antworten), T6 (Pro-Betrag). T2 vor erster Rechnung. T3/T5 zurückgestellt.
+- T2 (Arbeitsvertrag prüfen) und T7 (2 Kontextfragen). T3/T5 zurückgestellt.

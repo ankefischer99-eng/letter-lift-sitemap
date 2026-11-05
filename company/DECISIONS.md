@@ -30,3 +30,13 @@ Verworfen: Anteilige Zurechnung (würde den Break-even künstlich senken).
 
 ## D7 · 2026-11-05 · Agenten-Sessions laufen künftig auf Sonnet, nicht Opus
 Begründung: Recherche/Entwürfe brauchen kein Spitzenmodell; Opus verbraucht das Pro-Kontingent schneller. Koordinator darf für Entscheidungen Opus nutzen.
+
+## D8 · 2026-11-05 · Ankes Expertise wird zweite Geschäftshypothese (H2), nicht ignoriert
+Begründung: Käufer kaufen bei Menschen mit Glaubwürdigkeit. Anke bringt nachweisbare Führungserfahrung in Kundenservice-Qualität, Training, Sales-Performance und AI Enablement mit. Agenten ohne diesen Hebel konkurrieren mit dem ganzen Internet um Excel-Kleinaufträge.
+H2: Produkte/Leistungen für Kundenservice- und Vertriebsteams kleiner Firmen (z. B. QA-Scorecards, Coaching-Leitfäden, KI-Prompt-Kits für Servicemitarbeitende, Einführungsworkshops), DACH, deutschsprachig.
+Bedingung: **nur nach T2** (keine Konkurrenz zum Arbeitgeber, keine Firmeninterna, kein Material des Arbeitgebers). H1 (Marktplatz-Kleinaufträge) läuft parallel weiter.
+Überprüfen: nach T2/T7 und Scout-Lauf 2.
+
+## D9 · 2026-11-05 · Markt: DACH, deutschsprachig
+Begründung: Kundengespräche müssen auf Ankes Seite sicher laufen; Business-Englisch ist laut Anke schwach. Englische Texte darf der Vertrieb schreiben, aber Kundenbeziehungen mit Gesprächsbedarf nur auf Deutsch.
+Kapazität: 10 h/Woche Anke → Engpass, also nur Angebote mit wenig Abstimmungsaufwand pro Euro.
