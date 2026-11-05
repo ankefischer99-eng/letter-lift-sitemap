@@ -46,3 +46,15 @@ Begründung: Scout-Lauf 1 zeigt Medianpreise von ca. $50 auf einer US-Plattform 
 Bedingung bleibt: H2 startet erst nach T2 (Arbeitsvertrag) und T7.
 H1 bleibt nur für Typ D (Tabellen/Daten/Präsentationen) als Rückfallebene, falls H2 rechtlich nicht geht.
 Überprüfen: nach T2 und Scout-Lauf 2.
+
+## D11 · 2026-11-05 · Rechtlicher Rahmen geklärt, Suchraum geöffnet
+Anke hat Nebentätigkeit angemeldet, Gewerbe, Kleinunternehmerregelung, USt-ID. Firma darf jedes legale Geschäft prüfen; Graubereiche (nicht illegal) werden vor Start mit Anke als Advisor diskutiert und in DECISIONS dokumentiert.
+Restgrenze: Angebote für den Kundenservice der Energiewirtschaft vorher mit Anke abklären (Wettbewerb zum Arbeitgeber).
+
+## D12 · 2026-11-05 · Portfolio für Woche 1: zwei Wetten, eine Rückfallebene
+Auswahlkriterien: (1) belegte, bezahlte Nachfrage existiert schon, (2) Agenten liefern in hoher Qualität, (3) wenig Anke-Zeit pro Euro, (4) wiederholbar/automatisierbar, (5) erreichbar ohne eigene Reichweite.
+- **Wette A — KI-Kompetenz/AI Enablement für Kleinbetriebe (DACH).** Hypothese: Seit 2. Feb. 2025 verlangt Art. 4 EU AI Act, dass Betreiber von KI-Systemen für ausreichende KI-Kompetenz ihres Personals sorgen. Das erzeugt Nachfrage nach Schulung + Nachweis. Anke ist im Hauptberuf für AI Enablement und Training verantwortlich (Glaubwürdigkeit). Produkt: standardisiertes Schulungs- und Nachweispaket, von Agenten produziert, optional Live-Session durch Anke. **Unsicherheit:** Die EU hat 2025 Änderungen an Art. 4 diskutiert (Digital Omnibus). Ob und wie die Pflicht im Nov. 2026 gilt, ist nicht geprüft → Scout A klärt das zuerst. Ohne Pflicht schwächere, aber nicht tote Nachfrage.
+- **Wette B — Deutschsprachige digitale Vorlagen auf Marktplätzen mit eigener Suchnachfrage** (z. B. Etsy, Digistore24). Hypothese: Marktplätze liefern Käufer ohne eigene Reichweite; Agenten produzieren Vorlagen; Anke lädt hoch. Vollständig skalierbar, Grenzkosten ≈ 0. Risiko: Sättigung, niedrige Preise. Ausgeschlossen: Vorlagen, die Rechtsberatung ersetzen sollen (Verträge u. Ä.) ohne gesonderte Diskussion.
+- **Rückfallebene — H1 Typ D** (Tabellen/Daten auf Marktplätzen).
+Abbruch: Wette A stirbt, wenn Scout A weder Rechtspflicht noch bezahlte Nachfrage im Kleinbetriebssegment belegt. Wette B stirbt, wenn Scout B keine 5 Nischen mit belegten Verkäufen und < 50 Wettbewerbern findet.
+Verworfen (vorerst): Affiliate (Reichweite nötig), Arbitrage/Reselling (Kapitalbindung), eigene SaaS (F1), Werbung (kein Konversionsbeleg).
