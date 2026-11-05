@@ -119,3 +119,11 @@ Regel: tool-neutral formulieren, „Stand: <Monat Jahr>" auf jedes Dokument, kei
 - Keine anwaltliche Prüfung vor Start (Budget); stattdessen minimale Werbeaussagen. Neu prüfen nach ersten Verkäufen.
 - Nutzungsbedingungen (Betriebslizenz, keine Weitergabe, Haftungsausschluss) als Text für die Produktseite → Vertrieb nach T14.
 - E4-Angebotskit (`opportunities/angebote-2026-11-05-ki-starter.md`) ist obsolet (D16), bleibt als Archiv.
+
+## D21 · 2026-11-05 · Wette C: Selbstlernkurs „KI für Einsteiger" — angenommen, aber nach Kit-Start
+Problem: Viele Berufstätige (v. a. 45+) haben Sorge um ihren Job und keinen Einstieg. Echter, großer Schmerz.
+Warum gut: (1) Inhalte zu ca. 50 % schon im Kit (Grundbegriffe, Aha-Übungen, Kontext-Baukasten) → Kombinieren statt neu bauen. (2) Zwei Märkte mit einem Produkt: Privatkäufer (B2C) und Firmen, die den Kurs für ihre Belegschaft kaufen (Upsell zum Kit). (3) Komplett ohne Ankes Auftritt lieferbar.
+Risiken: B2C-Markt voll mit Gratis-Videos und Kursen; Zielgruppe 45+ ist auf TikTok schwach vertreten; Preise niedrig (ANNAHME 19–49 €).
+Kanal-Hypothese für 45+: **Amazon KDP (E-Book/Taschenbuch-Arbeitsbuch)** — Käufer suchen dort selbst, Zielgruppe kauft Bücher, Pseudonym möglich, KI-Inhalte müssen bei KDP angegeben werden. Zu prüfen (Wettbewerb „KI für Anfänger", Preise, Rezensionen).
+Leitplanken: Ermutigen statt Angst machen (keine Angstwerbung, kein „Wer jetzt nicht lernt, verliert seinen Job"). Kein „Zertifikat", nur Teilnahmebescheinigung. Respektvolle Sprache, kein Herablassen; große Schrift, Bildsprache, ein Gedanke pro Seite.
+Reihenfolge: Kit v1 an den Markt (Fokus). Parallel nur der kostenlose Realitätstest T16. Kein Bau vor Kit-Launch, außer T16 liefert starkes Signal.
