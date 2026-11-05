@@ -132,3 +132,9 @@ Reihenfolge: Kit v1 an den Markt (Fokus). Parallel nur der kostenlose Realitäts
 Anke ist einige Stunden abwesend → Pro-Kontingent ungenutzt. Zeit bis Markteintritt ist wertvoller als das Risiko, Texte nach T14 leicht anzupassen (Produktstruktur steht).
 Revision zu D20: Vertrieb startet vor T14, Texte gelten als Entwurf bis zur Abnahme.
 Scout klärt Fragen, die sonst Ankes Zeit kosten (Fiverr-Fotopflicht, Digistore24 als Wiederverkäufer/USt für Kleinunternehmer, KDP-Regeln) und den KDP-Wettbewerb für Wette C.
+
+## D23 · 2026-11-05 · Lern-App mit Gamification → Backlog, Format wird billig vorgetestet
+Idee: KI lernen wie eine Sprache, täglich 5 Minuten, Fortschritt, Serien, Abzeichen.
+Bewertung: Format stark (kleine Häppchen passen genau zur Zielgruppe von Wette C). Als echte App aber das teuerste und riskanteste Produkt im Portfolio: Entwicklung, App-Store-Gebühren und -Prüfung, Pflege, und vor allem Nutzergewinnung ohne Werbebudget — das ist F1 (Nachhaker/SaaS) in neuer Verpackung.
+Entscheidung: Keine App jetzt. Das Format wird zuerst ohne App getestet: Inhalte von Wette C als tägliche Mini-Lektionen (z. B. E-Mail-Kurs über Ankes Substack oder ein Arbeitsbuch mit 30 Tages-Lektionen). Zeigen Abschlussraten und Zahlungsbereitschaft Signal, folgt eine einfache Web-App (PWA, ohne App Store) aus denselben Inhalten.
+Voraussetzung: Kit verkauft sich ODER Wette C zeigt Signal (T16, Scout C).

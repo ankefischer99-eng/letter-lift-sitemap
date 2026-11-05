@@ -11,6 +11,7 @@ Format: `- [JJJJ-MM-TT] T<n>/Auftrag/Beleg: Inhalt`
 
 ## Verarbeitet
 
+- [2026-11-05] Idee Anke: Lern-App für Privatpersonen fürs Handy, wie Sprachlern-Apps, mit Gamification, Thema AI Enablement. („nur ein Gedanke") → D23 (Backlog). (Koordinator)
 - [2026-11-05] Idee Anke: Viele Menschen haben Angst um ihren Job durch KI und keinen Plan, wie sie es lernen (Beispiel: Kollege, Mitte 50, ohne Vorkenntnisse). Selbstlernkurs, aufbauend, einfache Sprache, Bildsprache, Aufgaben, Tests. → D21, T16. (Koordinator)
 - [2026-11-05] Lieferung-Report Kit v1 + Vertrieb-Report (E4, obsolet) verarbeitet → D20, LEARNINGS, T14 aktiv, T15. (Koordinator)
 - [2026-11-05] Weitere Praxisinhalte von Anke: Skills erklären („Agent = Mitarbeiter, Skill = Handbuch"), was ist .md / wann / wie aufbauen, Agent vs. Chat, welches Modell wann, PowerPoint bauen, Forms bauen, Excel-Grundsätze, **Plausibilitätssheet** bei Excel-Auswertungen, Mermaid. → D19, zweite Nachricht an Lieferung. (Koordinator)
