@@ -13,3 +13,9 @@ Kein Schuldbuch, sondern Firmenvermögen. Format: was, warum, was es gekostet ha
 - **Warum:** Koordinator hat den Modellparameter beim Start vergessen.
 - **Kosten:** Mehr Pro-Kontingent als nötig für eine Sitzung.
 - **Änderung:** D7; Modell wird bei jedem Agentenstart explizit gesetzt.
+
+## F3 · Scout blind für deutsche Quellen (2026-11-05)
+- **Was:** Webabruf auf reddit, freelancer.com, freelancermap.de, peopleperhour, guru, kleinanzeigen.de, hn.algolia gesperrt; alle 25 Funde nur aus Suchindex, keiner auf Originalseite geprüft.
+- **Warum:** Netzwerkrichtlinie der Cloud-Umgebung.
+- **Kosten:** DE-Hypothese nicht testbar; Funde nur Indizien.
+- **Änderung:** Ticket T8 (Netzfreigabe). Bis dahin Funde als „Hinweis", nicht als „Nachfrage" werten.

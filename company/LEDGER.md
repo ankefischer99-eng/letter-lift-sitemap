@@ -24,7 +24,7 @@ Bis zur Klärung: Kosten pro Sitzung als `kurz/mittel/lang` aus den Reports prot
 
 | Monat | Sitzungen | davon Scout | Vertrieb | Lieferung | Koordinator | Kosten € (falls bekannt) |
 |---|---|---|---|---|---|---|
-| 2026-11 | 1 | 0 | 0 | 0 | 1 | unbekannt |
+| 2026-11 | 4 | 1 (Opus, mittel) | 0 | 0 | 3 | im Pro-Abo |
 
 ## Saldo
 

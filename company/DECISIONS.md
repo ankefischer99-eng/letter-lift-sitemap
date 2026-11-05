@@ -40,3 +40,9 @@ Bedingung: **nur nach T2** (keine Konkurrenz zum Arbeitgeber, keine Firmenintern
 ## D9 · 2026-11-05 · Markt: DACH, deutschsprachig
 Begründung: Kundengespräche müssen auf Ankes Seite sicher laufen; Business-Englisch ist laut Anke schwach. Englische Texte darf der Vertrieb schreiben, aber Kundenbeziehungen mit Gesprächsbedarf nur auf Deutsch.
 Kapazität: 10 h/Woche Anke → Engpass, also nur Angebote mit wenig Abstimmungsaufwand pro Euro.
+
+## D10 · 2026-11-05 · H2 (Ankes Expertise) wird Hauptlinie, H1 (Marktplatz) wird Rückfallebene
+Begründung: Scout-Lauf 1 zeigt Medianpreise von ca. $50 auf einer US-Plattform mit Gebühren, neuem Profil ohne Bewertungen und englischer Kommunikation (D9). Bei 10 h/Woche ist Ankes Stunde zu wertvoll für $30-Aufträge. H2 bietet höhere Preise, DACH, Deutsch und Glaubwürdigkeit.
+Bedingung bleibt: H2 startet erst nach T2 (Arbeitsvertrag) und T7.
+H1 bleibt nur für Typ D (Tabellen/Daten/Präsentationen) als Rückfallebene, falls H2 rechtlich nicht geht.
+Überprüfen: nach T2 und Scout-Lauf 2.

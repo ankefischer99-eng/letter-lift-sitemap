@@ -1,6 +1,6 @@
 # STATE — Lage der Firma
 
-Zuletzt aktualisiert: 2026-11-05 von Koordinator (Sitzung 2)
+Zuletzt aktualisiert: 2026-11-05 von Koordinator (Sitzung 3)
 
 ## Zahlen
 - Umsatz gesamt: **0,00 €** · Ausgaben gesamt: **0,00 €** · Kunden: **0**
@@ -13,27 +13,26 @@ Agenten produzieren, Anke verkauft und gibt frei. Diese Hypothese darf vom Scout
 
 ## Aufträge an die Agenten (gültig bis zur nächsten Koordinatorsitzung)
 
-### Scout
-Finde **mindestens 15 öffentlich gepostete, bezahlte Anfragen** aus den letzten 14 Tagen, die ein KI-Agent mit menschlicher Endkontrolle liefern könnte.
-Pflichtfelder je Fund: Quelle (URL), Datum, Plattform, Aufgabe, Budget/Preis, Konkurrenz (Anzahl Bewerbungen, falls sichtbar), Lieferbarkeit durch uns (1–5), Begründung.
-Zusätzlich: Gruppiere Funde nach Auftragstyp und nenne die **3 Typen mit dem besten Verhältnis aus Häufigkeit × Preis × Lieferbarkeit**.
-Nicht erfinden: Ist eine Seite nicht erreichbar, steht das im Report.
+### Scout (Lauf 2, erst nach T8 starten)
+1. H2-Nachfrage DACH: Finde belegte Gesuche/Ausschreibungen/Diskussionen, in denen kleine und mittlere Firmen für Kundenservice-Qualität, Agenten-Training, Telefon-/Chat-Leitfäden, QA-Scorecards oder KI-Einführung im Kundenservice **bezahlen** (Gesuche, bezahlte Vorlagen-Produkte mit Preis, Workshop-Angebote mit Preis als Wettbewerbsdaten).
+2. 5–10 Funde aus Lauf 1 (Typ D) auf der Originalseite prüfen: noch offen? Bewerbungen?
+Pflichtfelder wie in Lauf 1. Modell: Sonnet (D7).
 
 ### Vertrieb
-Erst aktiv, wenn `opportunities/` mindestens einen Scout-Fund enthält. Dann: 1 Profiltext (DE+EN) und 3 Festpreis-Pakete für den bestbewerteten Auftragstyp entwerfen, in `opportunities/angebote-<datum>.md`.
+Pausiert bis Entscheidung nach T2. Keine Angebote für H1-Funde (D10).
 
 ### Lieferung
 Inaktiv, bis ein bezahlter Auftrag in `INBOX-ANKE.md` steht.
 
 ## Kapazität und Hypothesen
 - Anke: ca. 10 h/Woche. Markt: DACH, deutschsprachig (D9).
-- H1: Marktplatz-Kleinaufträge (Scout läuft).
-- H2: Kundenservice-/Sales-/AI-Enablement-Angebote auf Basis von Ankes Expertise (D8), **gesperrt bis T2**.
+- H1: Marktplatz-Kleinaufträge → Rückfallebene (D10). Scout-Lauf 1: 25 Indizien, Median ca. $50.
+- H2: Kundenservice-/Sales-/AI-Enablement-Angebote auf Basis von Ankes Expertise (D8) → **Hauptlinie** (D10), gesperrt bis T2.
 - Break-even-Ziel: > ca. 20 €/Monat netto (Pro-Abo).
 
 ## Betrieb
 - Rechenbasis: Claude Pro (D5, D6). Agenten auf Sonnet (D7). Takt nach Probelauf festlegen.
-- Scout-Probelauf läuft seit 2026-11-05 13:34 UTC. Erstes Signal: Netzwerkzugriff auf Jobbörsen eingeschränkt → Ergebnis abwarten.
+- Scout-Probelauf abgeschlossen (25 Funde, alle Upwork, nur Suchindex). Webabruf auf Börsen gesperrt (F3).
 
 ## Offene Blocker
-- T2 (Arbeitsvertrag prüfen) und T7 (2 Kontextfragen). T3/T5 zurückgestellt.
+- T2 (Arbeitsvertrag), T7 (2 Fragen), T8 (Netzfreigabe). T3/T5 zurückgestellt.
