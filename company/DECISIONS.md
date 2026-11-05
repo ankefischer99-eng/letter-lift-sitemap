@@ -127,3 +127,8 @@ Risiken: B2C-Markt voll mit Gratis-Videos und Kursen; Zielgruppe 45+ ist auf Tik
 Kanal-Hypothese für 45+: **Amazon KDP (E-Book/Taschenbuch-Arbeitsbuch)** — Käufer suchen dort selbst, Zielgruppe kauft Bücher, Pseudonym möglich, KI-Inhalte müssen bei KDP angegeben werden. Zu prüfen (Wettbewerb „KI für Anfänger", Preise, Rezensionen).
 Leitplanken: Ermutigen statt Angst machen (keine Angstwerbung, kein „Wer jetzt nicht lernt, verliert seinen Job"). Kein „Zertifikat", nur Teilnahmebescheinigung. Respektvolle Sprache, kein Herablassen; große Schrift, Bildsprache, ein Gedanke pro Seite.
 Reihenfolge: Kit v1 an den Markt (Fokus). Parallel nur der kostenlose Realitätstest T16. Kein Bau vor Kit-Launch, außer T16 liefert starkes Signal.
+
+## D22 · 2026-11-05 · Vertriebstexte jetzt vorbereiten (D20 teilweise revidiert); Scout prüft Plattformregeln + KDP
+Anke ist einige Stunden abwesend → Pro-Kontingent ungenutzt. Zeit bis Markteintritt ist wertvoller als das Risiko, Texte nach T14 leicht anzupassen (Produktstruktur steht).
+Revision zu D20: Vertrieb startet vor T14, Texte gelten als Entwurf bis zur Abnahme.
+Scout klärt Fragen, die sonst Ankes Zeit kosten (Fiverr-Fotopflicht, Digistore24 als Wiederverkäufer/USt für Kleinunternehmer, KDP-Regeln) und den KDP-Wettbewerb für Wette C.
